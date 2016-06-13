@@ -1,0 +1,7 @@
+persons:
+    type:     rest
+    resource: RESTBundle:People
+
+agbs:
+    type:     rest
+    resource: RESTBundle:Agb

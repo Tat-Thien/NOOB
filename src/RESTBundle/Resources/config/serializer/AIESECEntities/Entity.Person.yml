@@ -1,0 +1,4 @@
+AIESECGermany\EntityBundle\Entity\Person:
+    properties:
+        exchanges:
+            exclude: true

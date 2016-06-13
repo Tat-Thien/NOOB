@@ -1,0 +1,12 @@
+AIESECGermany\EntityBundle\Entity\Exchange:
+    properties:
+        person:
+            exclude: true
+        exchangeAgb:
+            exclude: true
+        welcomeHomeSeminar:
+            exclude: true
+        bankAccount:
+            exclude: true
+        standardsAndSatisfaction:
+            exclude: true
