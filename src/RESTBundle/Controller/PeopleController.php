@@ -10,6 +10,7 @@ use AIESECGermany\EntityBundle\Entity\Person;
 use AIESECGermany\EntityBundle\Entity\StandardsAndSatisfaction;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Request\ParamFetcher;
+use FOS\RestBundle\Request\ParamFetcherInterface;
 use RESTBundle\Form\AGBType;
 use RESTBundle\Form\BankAccountType;
 use RESTBundle\Form\ExchangeAGBType;
@@ -19,6 +20,7 @@ use RESTBundle\Form\PersonType;
 use RESTBundle\Form\StandardsAndSatisfactionType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
@@ -51,27 +53,40 @@ class PeopleController extends FOSRestController
         return new Response('', Response::HTTP_OK);
     }
 
+    private function checkAuthentication(ParamFetcherInterface $paramFetcher)
+    {
+        $providedAccessToken = $paramFetcher->get('access_token');
+        $securedAccessToken = $this->getParameter('access_token');
+        if ($providedAccessToken != $securedAccessToken) {
+            throw new AccessDeniedHttpException();
+        }
+    }
+
     /**
+     * @REST\QueryParam(name="access_token", allowBlank=false)
      * @ApiDoc(
      *  resource=true,
      *  description="Return all people"
      * )
      */
-    public function cgetAction()
+    public function cgetAction(ParamFetcherInterface $paramFetcher)
     {
+        $this->checkAuthentication($paramFetcher);
         $em = $this->getDoctrine()->getManager();
         $entities = $em->getRepository('AIESECGermany\EntityBundle\Entity\Person')->findAll();
         return $entities;
     }
 
     /**
+     * @REST\QueryParam(name="access_token", allowBlank=false)
      * @ApiDoc(
      *  resource=true,
      *  description="Return a person"
      * )
      */
-    public function getAction($personID)
+    public function getAction(ParamFetcherInterface $paramFetcher, $personID)
     {
+        $this->checkAuthentication($paramFetcher);
         $em = $this->getDoctrine()->getManager();
         $entity = $em->getRepository('AIESECGermany\EntityBundle\Entity\Person')->findOneById($personID);
         if ($entity) {
@@ -82,6 +97,7 @@ class PeopleController extends FOSRestController
     }
 
     /**
+     * @REST\QueryParam(name="access_token", allowBlank=false)
      * @ApiDoc(
      *  resource=true,
      *  description="Create a person",
@@ -89,8 +105,9 @@ class PeopleController extends FOSRestController
      *  output="RESTBundle\Form\PersonType"
      * )
      */
-    public function postAction(Request $request)
+    public function postAction(ParamFetcherInterface $paramFetcher, Request $request)
     {
+        $this->checkAuthentication($paramFetcher);
         $person = new Person();
         $form = $this->createForm(new PersonType(), $person);
         $form->submit($request);
@@ -106,19 +123,22 @@ class PeopleController extends FOSRestController
     }
 
     /**
+     * @REST\QueryParam(name="access_token", allowBlank=false)
      * @ApiDoc(
      *  resource=true,
      *  description="Get an exchange",
      *  output="RESTBundle\Form\ExchangeType"
      * )
      */
-    public function getExchangesAction($personID, $exchangeID)
+    public function getExchangesAction(ParamFetcherInterface $paramFetcher, $personID, $exchangeID)
     {
+        $this->checkAuthentication($paramFetcher);
         $em = $this->getDoctrine()->getManager();
         $exchange = $em->getRepository('AIESECGermany\EntityBundle\Entity\Exchange')->findOneById($exchangeID);
         return $exchange;
     }
     /**
+     * @REST\QueryParam(name="access_token", allowBlank=false)
      * @REST\QueryParam(name="salesforceID", description="Salesforce ID")
      * @ApiDoc(
      *  resource=true,
@@ -127,6 +147,7 @@ class PeopleController extends FOSRestController
      */
     public function cgetExchangesAction(ParamFetcher $paramFetcher, $personID)
     {
+        $this->checkAuthentication($paramFetcher);
         $em = $this->getDoctrine()->getManager();
         $qb = $em->createQueryBuilder();
         $qb->select('e')->from('AIESECGermany\EntityBundle\Entity\Exchange', 'e')->where('e.person = ?1')
@@ -141,6 +162,7 @@ class PeopleController extends FOSRestController
     }
 
     /**
+     * @REST\QueryParam(name="access_token", allowBlank=false)
      * @ApiDoc(
      *  resource=true,
      *  description="Create an exchange",
@@ -148,8 +170,9 @@ class PeopleController extends FOSRestController
      *  output="RESTBundle\Form\ExchangeType"
      * )
      */
-    public function postExchangesAction(Request $request, $personID)
+    public function postExchangesAction(ParamFetcher $paramFetcher, Request $request, $personID)
     {
+        $this->checkAuthentication($paramFetcher);
         $exchange = new Exchange();
         $form = $this->createForm(new ExchangeType(), $exchange);
         $form->submit($request);
@@ -172,13 +195,15 @@ class PeopleController extends FOSRestController
     }
 
     /**
+     * @REST\QueryParam(name="access_token", allowBlank=false)
      * @ApiDoc(
      *  resource=true,
      *  description="Get AGB data"
      * )
      */
-    public function getExchangesAgbAction($personID, $exchangeID)
+    public function getExchangesAgbAction(ParamFetcher $paramFetcher, $personID, $exchangeID)
     {
+        $this->checkAuthentication($paramFetcher);
         $em = $this->getDoctrine()->getManager();
         $person = $em->getRepository('AIESECGermany\EntityBundle\Entity\Person')->findOneById($personID);
         $exchange = $em->getRepository('AIESECGermany\EntityBundle\Entity\Exchange')->findOneById($exchangeID);
@@ -190,6 +215,7 @@ class PeopleController extends FOSRestController
     }
 
     /**
+     * @REST\QueryParam(name="access_token", allowBlank=false)
      * @ApiDoc(
      *  resource=true,
      *  description="Sign AGBs",
@@ -197,8 +223,9 @@ class PeopleController extends FOSRestController
      *  output="RESTBundle\Form\ExchangeAGBType"
      * )
      */
-    public function postExchangesAgbAction(Request $request, $personID, $exchangeID)
+    public function postExchangesAgbAction(ParamFetcher $paramFetcher, Request $request, $personID, $exchangeID)
     {
+        $this->checkAuthentication($paramFetcher);
         $exchangeAGB = new ExchangeAGB();
         $form = $this->createForm(new ExchangeAGBType(), $exchangeAGB);
         $form->submit($request);
