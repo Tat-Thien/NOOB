@@ -88,7 +88,7 @@ class WhsController extends FOSRestController
             $em = $this->getDoctrine()->getManager();
             $em->persist($whs);
             $em->flush();
-            return $this->routeRedirectView('get_whs', array('whID' => $whs->getId()));
+            return $this->routeRedirectView('get_whs', array('whsID' => $whs->getId()));
         }
         return array(
             'form' => $form
