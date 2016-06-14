@@ -97,7 +97,6 @@ class PeopleController extends FOSRestController
     }
 
     /**
-     * @REST\QueryParam(name="access_token", allowBlank=false)
      * @ApiDoc(
      *  resource=true,
      *  description="Create a person",
@@ -107,7 +106,7 @@ class PeopleController extends FOSRestController
      */
     public function postAction(ParamFetcherInterface $paramFetcher, Request $request)
     {
-        $this->checkAuthentication($paramFetcher);
+        //$this->checkAuthentication($paramFetcher);
         $person = new Person();
         $form = $this->createForm(new PersonType(), $person);
         $form->submit($request);
@@ -162,7 +161,6 @@ class PeopleController extends FOSRestController
     }
 
     /**
-     * @REST\QueryParam(name="access_token", allowBlank=false)
      * @ApiDoc(
      *  resource=true,
      *  description="Create an exchange",
@@ -172,7 +170,7 @@ class PeopleController extends FOSRestController
      */
     public function postExchangesAction(ParamFetcher $paramFetcher, Request $request, $personID)
     {
-        $this->checkAuthentication($paramFetcher);
+        //$this->checkAuthentication($paramFetcher);
         $exchange = new Exchange();
         $form = $this->createForm(new ExchangeType(), $exchange);
         $form->submit($request);
@@ -215,7 +213,6 @@ class PeopleController extends FOSRestController
     }
 
     /**
-     * @REST\QueryParam(name="access_token", allowBlank=false)
      * @ApiDoc(
      *  resource=true,
      *  description="Sign AGBs",
@@ -225,7 +222,7 @@ class PeopleController extends FOSRestController
      */
     public function postExchangesAgbAction(ParamFetcher $paramFetcher, Request $request, $personID, $exchangeID)
     {
-        $this->checkAuthentication($paramFetcher);
+        //$this->checkAuthentication($paramFetcher);
         $exchangeAGB = new ExchangeAGB();
         $form = $this->createForm(new ExchangeAGBType(), $exchangeAGB);
         $form->submit($request);
