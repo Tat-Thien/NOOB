@@ -9,3 +9,7 @@ agbs:
 ops:
     type:     rest
     resource: RESTBundle:Ops
+
+whs:
+    type:     rest
+    resource: RESTBundle:Whs
