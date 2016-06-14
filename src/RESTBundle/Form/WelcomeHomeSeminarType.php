@@ -32,7 +32,7 @@ class WelcomeHomeSeminarType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AIESECGermany\EntityBundle\Entity\OutgoerPreparation',
+            'data_class' => 'AIESECGermany\EntityBundle\Entity\WelcomeHomeSeminar',
             'csrf_protection' => false
         ));
     }
