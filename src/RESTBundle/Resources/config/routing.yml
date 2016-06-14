@@ -5,3 +5,7 @@ persons:
 agbs:
     type:     rest
     resource: RESTBundle:Agb
+
+ops:
+    type:     rest
+    resource: RESTBundle:Ops
