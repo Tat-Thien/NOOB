@@ -2,6 +2,7 @@
 
 namespace RESTBundle\Form;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -24,6 +25,9 @@ class ExchangeType extends AbstractType
             ->add('paymentMode')
             ->add('paid', CheckboxType::class)
             ->add('salesforceID')
+            ->add('welcomeHomeSeminar', EntityType::class, array(
+                'class' => 'AIESECGermanyEntityBundle:WelcomeHomeSeminar'
+            ))
         ;
     }
     
