@@ -93,4 +93,32 @@ class OpsController extends FOSRestController
             'form' => $form
         );
     }
+
+    /**
+     * @ApiDoc(
+     *  resource=true,
+     *  description="Edit an OPS",
+     *  input="RESTBundle\Form\OutgoerPreparationType",
+     *  output="RESTBundle\Form\OutgoerPreparationType"
+     * )
+     * @REST\Patch
+     */
+    public function patchAction(Request $request, $opsID)
+    {
+        //$this->checkAuthentication($paramFetcher);
+        $em = $this->getDoctrine()->getManager();
+        $ops = $em->getRepository('AIESECGermany\EntityBundle\Entity\OutgoerPreparation')->findOneById($opsID);
+        $form = $this->createForm(new OutgoerPreparationType(), $ops, [
+            'method' => 'PATCH'
+        ]);
+        $form->handleRequest($request);
+        if ($form->isValid()) {
+            $em->merge($ops);
+            $em->flush();
+            return $this->routeRedirectView('get_ops', array('opsID' => $opsID));
+        }
+        return array(
+            'form' => $form
+        );
+    }
 }
