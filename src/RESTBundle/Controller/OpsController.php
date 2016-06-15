@@ -43,7 +43,7 @@ class OpsController extends FOSRestController
         $qb->select('o')->from('AIESECGermany\EntityBundle\Entity\OutgoerPreparation', 'o');
         $salesforceID = $paramFetcher->get('salesforceID');
         if ($salesforceID) {
-            $qb->andWhere('o.salesforceID = ?1')->setParameter(1, $salesforceID);
+            $qb->andWhere('o.salesforceID LIKE :sfID')->setParameter('sfID', $salesforceID . '%');
         }
         $query = $qb->getQuery();
         $ops = $query->getResult();

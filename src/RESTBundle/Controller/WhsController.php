@@ -45,7 +45,7 @@ class WhsController extends FOSRestController
         $qb->select('w')->from('AIESECGermany\EntityBundle\Entity\WelcomeHomeSeminar', 'w');
         $salesforceID = $paramFetcher->get('salesforceID');
         if ($salesforceID) {
-            $qb->andWhere('w.salesforceID = ?1')->setParameter(1, $salesforceID);
+            $qb->andWhere('w.salesforceID LIKE :sfID')->setParameter('sfID', $salesforceID . '%');
         }
         $query = $qb->getQuery();
         $ops = $query->getResult();
