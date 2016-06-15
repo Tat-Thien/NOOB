@@ -20,6 +20,7 @@ use RESTBundle\Form\EmailHistoryType;
 use RESTBundle\Form\ExchangeAGBType;
 use RESTBundle\Form\ExchangeType;
 use FOS\RestBundle\Controller\Annotations as REST;
+use RESTBundle\Form\FinanceInformationType;
 use RESTBundle\Form\PersonType;
 use RESTBundle\Form\StandardsAndSatisfactionType;
 use Symfony\Component\HttpFoundation\Request;
@@ -294,6 +295,48 @@ class PeopleController extends RESTBundleController
             $em->flush();
             return $this->routeRedirectView('get_people_exchanges', array(
                 'personID' => $personID, 'exchangeID' => $exchange->getId()));
+        }
+        return array(
+            'form' => $form
+        );
+    }
+    /**
+     * @REST\QueryParam(name="access_token", allowBlank=false)
+     * @ApiDoc(
+     *  resource=true,
+     *  description="Get finance information for an exchange"
+     * )
+     */
+    public function getExchangesFinanceinformationAction(ParamFetcher $paramFetcher, $personID, $exchangeID)
+    {
+        $this->checkAuthentication($paramFetcher);
+        $em = $this->getDoctrine()->getManager();
+        $person = $em->getRepository('AIESECGermany\EntityBundle\Entity\Exchange')->findOneById($exchangeID);
+        return $person->getFinanceInformation();
+    }
+
+
+    /**
+     * @REST\Patch
+     * @ApiDoc(
+     *  resource=true,
+     *  description="Edit finance information for an exchange"
+     * )
+     */
+    public function patchExchangesFinanceinformationAction(Request $request, $personID, $exchangeID)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $exchange = $em->getRepository('AIESECGermany\EntityBundle\Entity\Exchange')->findOneById($exchangeID);
+        $financeInformation = $exchange->getFinanceInformation();
+        $form = $this->createForm(new FinanceInformationType(), $financeInformation, [
+            'method' => 'PATCH'
+        ]);
+        $form->handleRequest($request);
+        if ($form->isValid()) {
+            $em->merge($financeInformation);
+            $em->flush();
+            return $this->routeRedirectView('get_people_exchanges_financeinformation',
+                array('personID' => $personID, 'exchangeID' => $exchangeID));
         }
         return array(
             'form' => $form

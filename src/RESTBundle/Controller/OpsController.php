@@ -7,6 +7,7 @@ use FOS\RestBundle\Controller\Annotations as REST;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Request\ParamFetcherInterface;
 use RESTBundle\Form\OutgoerPreparationType;
+use Symfony\Component\BrowserKit\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
@@ -113,5 +114,12 @@ class OpsController extends RESTBundleController
         return array(
             'form' => $form
         );
+    }
+
+    public function deleteAction($opsID)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $ops = $em->getRepository('AIESECGermany\EntityBundle\Entity\OutgoerPreparation')->findOneById($opsID);
+        $em->remove($ops);
     }
 }

@@ -10,6 +10,8 @@ AIESECGermany\EntityBundle\Entity\Exchange:
             exclude: true
         standardsAndSatisfaction:
             exclude: true
+        financeInformation:
+            exclude: true
     relations:
         -
             rel: whs
@@ -19,3 +21,12 @@ AIESECGermany\EntityBundle\Entity\Exchange:
                     whsID: expr(object.getWelcomeHomeSeminar().getId())
             exclusion:
                 exclude_if: expr(object.getWelcomeHomeSeminar() === null)
+        -
+            rel: financeInformation
+            href:
+                route: get_people_exchanges_financeinformation
+                parameters:
+                    personID: expr(object.getPerson().getId())
+                    exchangeID: expr(object.getId())
+            exclusion:
+                exclude_if: expr(object.getFinanceInformation() === null)
