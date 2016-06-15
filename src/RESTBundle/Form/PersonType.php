@@ -3,6 +3,7 @@
 namespace RESTBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -23,6 +24,7 @@ class PersonType extends AbstractType
             ->add('email', EmailType::class, array(
                 'required' => true
             ))
+            ->add('opsOnline', CheckboxType::class)
         ;
     }
     
