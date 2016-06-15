@@ -102,3 +102,9 @@ jms_serializer:
             AIESECGermanyEntityBundle:
                 namespace_prefix: "AIESECGermany\\EntityBundle"
                 path: "@RESTBundle/Resources/config/serializer/AIESECEntities"
+            KnpPaginatorBundle:
+                namespace_prefix: Knp\Bundle\PaginatorBundle
+                path: "@RESTBundle/Resources/config/serializer/KnpPaginatorBundle"
+            KnpPager:
+                namespace_prefix: Knp\Component\Pager
+                path: "@RESTBundle/Resources/config/serializer/KnpPager"
