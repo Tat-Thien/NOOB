@@ -10,3 +10,12 @@ AIESECGermany\EntityBundle\Entity\Exchange:
             exclude: true
         standardsAndSatisfaction:
             exclude: true
+    relations:
+        -
+            rel: whs
+            href:
+                route: get_whs
+                parameters:
+                    whsID: expr(object.getWelcomeHomeSeminar().getId())
+            exclusion:
+                exclude_if: expr(object.getWelcomeHomeSeminar() === null)
