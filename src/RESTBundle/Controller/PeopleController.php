@@ -64,6 +64,8 @@ class PeopleController extends FOSRestController
 
     /**
      * @REST\QueryParam(name="access_token", allowBlank=false)
+     * @REST\QueryParam(name="page", requirements="\d+", default="1", description="Page of the overview.")
+     * @REST\QueryParam(name="limit", requirements="\d+", default="10", description="Entities per page.")
      * @ApiDoc(
      *  resource=true,
      *  description="Return all people"
@@ -72,9 +74,24 @@ class PeopleController extends FOSRestController
     public function cgetAction(ParamFetcherInterface $paramFetcher)
     {
         $this->checkAuthentication($paramFetcher);
+        $page = $paramFetcher->get('page');
+        $limit = $paramFetcher->get('limit');
         $em = $this->getDoctrine()->getManager();
-        $entities = $em->getRepository('AIESECGermany\EntityBundle\Entity\Person')->findAll();
-        return $entities;
+        $qb = $em->createQueryBuilder();
+        $qb->select('p')->from('AIESECGermany\EntityBundle\Entity\Person', 'p');
+        $query = $qb->getQuery();
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $query,
+            $page,
+            $limit
+        );
+
+        $serializer = $this->get('jms_serializer');
+        return new Response($serializer->serialize($pagination, 'json'), Response::HTTP_OK,
+            ['Content-Type' => 'application/json',
+        ]
+        );
     }
 
     /**
