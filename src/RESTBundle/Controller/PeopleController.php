@@ -16,6 +16,7 @@ use FOS\RestBundle\Request\ParamFetcher;
 use FOS\RestBundle\Request\ParamFetcherInterface;
 use RESTBundle\Form\AGBType;
 use RESTBundle\Form\BankAccountType;
+use RESTBundle\Form\EmailHistoryType;
 use RESTBundle\Form\ExchangeAGBType;
 use RESTBundle\Form\ExchangeType;
 use FOS\RestBundle\Controller\Annotations as REST;
@@ -145,6 +146,48 @@ class PeopleController extends RESTBundleController
             $em->merge($person);
             $em->flush();
             return $this->routeRedirectView('get_people', array('personID' => $person->getId()));
+        }
+        return array(
+            'form' => $form
+        );
+    }
+
+    /**
+     * @REST\QueryParam(name="access_token", allowBlank=false)
+     * @ApiDoc(
+     *  resource=true,
+     *  description="Get email history for a person"
+     * )
+     */
+    public function getEmailhistoryAction(ParamFetcher $paramFetcher, $personID)
+    {
+        $this->checkAuthentication($paramFetcher);
+        $em = $this->getDoctrine()->getManager();
+        $person = $em->getRepository('AIESECGermany\EntityBundle\Entity\Person')->findOneById($personID);
+        return $person->getEmailHistory();
+    }
+
+
+    /**
+     * @REST\Patch
+     * @ApiDoc(
+     *  resource=true,
+     *  description="Edit email history for a person"
+     * )
+     */
+    public function patchEmailhistoryAction(Request $request, $personID)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $person = $em->getRepository('AIESECGermany\EntityBundle\Entity\Person')->findOneById($personID);
+        $emailHistory = $person->getEmailHistory();
+        $form = $this->createForm(new EmailHistoryType(), $emailHistory, [
+            'method' => 'PATCH'
+        ]);
+        $form->handleRequest($request);
+        if ($form->isValid()) {
+            $em->merge($emailHistory);
+            $em->flush();
+            return $this->routeRedirectView('get_people_emailhistory', array('personID' => $personID));
         }
         return array(
             'form' => $form
