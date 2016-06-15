@@ -31,7 +31,7 @@ use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 /**
  * @REST\RouteResource("People")
  */
-class PeopleController extends FOSRestController
+class PeopleController extends RESTBundleController
 {
     
     public function postDummyAction()
@@ -54,28 +54,6 @@ class PeopleController extends FOSRestController
         $em->persist($exchange2);
         $em->flush();
         return new Response('', Response::HTTP_OK);
-    }
-
-    private function checkAuthentication(ParamFetcherInterface $paramFetcher)
-    {
-        $providedAccessToken = $paramFetcher->get('access_token');
-        $securedAccessToken = $this->getParameter('access_token');
-        if ($providedAccessToken != $securedAccessToken) {
-            throw new AccessDeniedHttpException();
-        }
-    }
-
-    private function createPaginationObject(ParamFetcherInterface $paramFetcher, Query $query)
-    {
-        $page = $paramFetcher->get('page');
-        $limit = $paramFetcher->get('limit');
-        $paginator = $this->get('knp_paginator');
-        $pagination = $paginator->paginate(
-            $query,
-            $page,
-            $limit
-        );
-        return $pagination;
     }
 
     /**

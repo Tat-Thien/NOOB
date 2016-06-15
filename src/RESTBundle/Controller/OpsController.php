@@ -15,30 +15,8 @@ use Symfony\Component\HttpKernel\Exception\HttpException;
 /**
  * @REST\RouteResource("Ops")
  */
-class OpsController extends FOSRestController
+class OpsController extends RESTBundleController
 {
-
-    private function checkAuthentication(ParamFetcherInterface $paramFetcher)
-    {
-        $providedAccessToken = $paramFetcher->get('access_token');
-        $securedAccessToken = $this->getParameter('access_token');
-        if ($providedAccessToken != $securedAccessToken) {
-            throw new AccessDeniedHttpException();
-        }
-    }
-
-    private function createPaginationObject(ParamFetcherInterface $paramFetcher, Query $query)
-    {
-        $page = $paramFetcher->get('page');
-        $limit = $paramFetcher->get('limit');
-        $paginator = $this->get('knp_paginator');
-        $pagination = $paginator->paginate(
-            $query,
-            $page,
-            $limit
-        );
-        return $pagination;
-    }
 
     /**
      * @REST\QueryParam(name="salesforceID", description="Salesforce ID")
