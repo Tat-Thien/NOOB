@@ -1,0 +1,13 @@
+AIESECGermany\EntityBundle\Entity\ExchangeAGB:
+    relations:
+        -
+            rel: agb
+            href:
+                route: get_agb
+                parameters:
+                    agbID: expr(object.getAgb().getId())
+    properties:
+        agb:
+            exclude: true
+        exchange:
+            exclude: true
