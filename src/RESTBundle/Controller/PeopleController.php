@@ -191,7 +191,9 @@ class PeopleController extends RESTBundleController
      * @REST\Patch
      * @ApiDoc(
      *  resource=true,
-     *  description="Edit email history for a person"
+     *  description="Edit email history for a person",
+     *  input="RESTBundle\Form\EmailHistoryType",
+     *  output="RESTBundle\Form\EmailHistoryType"
      * )
      */
     public function patchEmailhistoryAction(Request $request, $personID)
