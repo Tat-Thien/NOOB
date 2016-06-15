@@ -21,6 +21,7 @@ class AppKernel extends Kernel
             new Bazinga\Bundle\HateoasBundle\BazingaHateoasBundle(),
             new AIESECGermany\EntityBundle\AIESECGermanyEntityBundle(),
             new Nelmio\ApiDocBundle\NelmioApiDocBundle(),
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

@@ -25,7 +25,8 @@
         "friendsofsymfony/rest-bundle": "^1.7",
         "aiesecgermany/entity-bundle" : "@dev",
         "willdurand/hateoas-bundle": "^1.1",
-        "nelmio/api-doc-bundle": "^2.12"
+        "nelmio/api-doc-bundle": "^2.12",
+        "knplabs/knp-paginator-bundle": "^2.5"
     },
     "require-dev": {
         "sensio/generator-bundle": "~3.0",
