@@ -4,8 +4,10 @@ namespace RESTBundle\Controller;
 
 use AIESECGermany\EntityBundle\Entity\AGB;
 use AIESECGermany\EntityBundle\Entity\BankAccount;
+use AIESECGermany\EntityBundle\Entity\EmailHistory;
 use AIESECGermany\EntityBundle\Entity\Exchange;
 use AIESECGermany\EntityBundle\Entity\ExchangeAGB;
+use AIESECGermany\EntityBundle\Entity\FinanceInformation;
 use AIESECGermany\EntityBundle\Entity\Person;
 use AIESECGermany\EntityBundle\Entity\StandardsAndSatisfaction;
 use FOS\RestBundle\Controller\FOSRestController;
@@ -129,7 +131,10 @@ class PeopleController extends FOSRestController
         $form->submit($request);
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $emailHistory = new EmailHistory();
+            $person->setEmailHistory($emailHistory);
             $em->persist($person);
+            $em->persist($emailHistory);
             $em->flush();
             return $this->routeRedirectView('get_people', array('personID' => $person->getId()));
         }
@@ -225,9 +230,12 @@ class PeopleController extends FOSRestController
             if (!$person) {
                 throw new HttpException(404);
             }
+            $financeInformation = new FinanceInformation();
+            $exchange->setFinanceInformation($financeInformation);
             $person->addExchange($exchange);
             $exchange->setPerson($person);
             $em->persist($person);
+            $em->persist($financeInformation);
             $em->persist($exchange);
             $em->flush();
             return $this->routeRedirectView('get_people_exchanges', array('personID' => $personID, 'exchangeID' => $exchange->getId()));
