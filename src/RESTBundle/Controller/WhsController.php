@@ -115,4 +115,19 @@ class WhsController extends RESTBundleController
             'form' => $form
         );
     }
+
+    /**
+     * @ApiDoc(
+     *  resource=true,
+     *  description="Delete a WHS"
+     * )
+     */
+    public function deleteAction($whsID)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $whs = $em->getRepository('AIESECGermany\EntityBundle\Entity\WelcomeHomeSeminar')->findOneById($whsID);
+        $em->remove($whs);
+        $em->flush();
+        return $this->view(null, 204);
+    }
 }

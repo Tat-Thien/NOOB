@@ -154,6 +154,21 @@ class PeopleController extends RESTBundleController
     }
 
     /**
+     * @ApiDoc(
+     *  resource=true,
+     *  description="Delete a person"
+     * )
+     */
+    public function deleteAction($personID)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $person = $em->getRepository('AIESECGermany\EntityBundle\Entity\Person')->findOneById($personID);
+        $em->remove($person);
+        $em->flush();
+        return $this->view(null, 204);
+    }
+
+    /**
      * @REST\QueryParam(name="access_token", allowBlank=false)
      * @ApiDoc(
      *  resource=true,
@@ -300,6 +315,22 @@ class PeopleController extends RESTBundleController
             'form' => $form
         );
     }
+
+    /**
+     * @ApiDoc(
+     *  resource=true,
+     *  description="Delete an exchange"
+     * )
+     */
+    public function deleteExchangeAction($personID, $exchangeID)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $exchange = $em->getRepository('AIESECGermany\EntityBundle\Entity\Exchange')->findOneById($exchangeID);
+        $em->remove($exchange);
+        $em->flush();
+        return $this->view(null, 204);
+    }
+
     /**
      * @REST\QueryParam(name="access_token", allowBlank=false)
      * @ApiDoc(
@@ -427,6 +458,23 @@ class PeopleController extends RESTBundleController
         return array(
             'form' => $form
         );
+    }
+
+
+    /**
+     * @ApiDoc(
+     *  resource=true,
+     *  description="Delete a signed AGB"
+     * )
+     */
+    public function deleteExchangesAgbAction($personID, $exchangeID)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $exchange = $em->getRepository('AIESECGermany\EntityBundle\Entity\Exchange')->findOneById($exchangeID);
+        $exchangeAGB = $exchange->getExchangeAgb();
+        $em->remove($exchangeAGB);
+        $em->flush();
+        return $this->view(null, 204);
     }
 
     public function getExchangesBankaccountAction($personID, $exchangeID)
