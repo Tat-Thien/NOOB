@@ -191,6 +191,8 @@ class PeopleController extends FOSRestController
     /**
      * @REST\QueryParam(name="access_token", allowBlank=false)
      * @REST\QueryParam(name="salesforceID", description="Salesforce ID")
+     * @REST\QueryParam(name="page", requirements="\d+", default="1", description="Page of the overview.")
+     * @REST\QueryParam(name="limit", requirements="\d+", default="10", description="Entities per page.")
      * @ApiDoc(
      *  resource=true,
      *  description="Get all exchanges"
@@ -208,8 +210,8 @@ class PeopleController extends FOSRestController
             $qb->andWhere('e.salesforceID = ?2')->setParameter(2, $salesforceID);
         }
         $query = $qb->getQuery();
-        $exchanges = $query->getResult();
-        return $exchanges;
+        $pagination = $this->createPaginationObject($paramFetcher, $query);
+        return $pagination;
     }
 
     /**

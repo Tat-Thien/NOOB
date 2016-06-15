@@ -24,8 +24,23 @@ class AgbController extends FOSRestController
         }
     }
 
+    private function createPaginationObject(ParamFetcherInterface $paramFetcher, Query $query)
+    {
+        $page = $paramFetcher->get('page');
+        $limit = $paramFetcher->get('limit');
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $query,
+            $page,
+            $limit
+        );
+        return $pagination;
+    }
+
     /**
      * @REST\QueryParam(name="access_token", allowBlank=false)
+     * @REST\QueryParam(name="page", requirements="\d+", default="1", description="Page of the overview.")
+     * @REST\QueryParam(name="limit", requirements="\d+", default="10", description="Entities per page.")
      * @ApiDoc(
      *  resource=true,
      *  description="Get all AGB data"
@@ -35,8 +50,10 @@ class AgbController extends FOSRestController
     {
         $this->checkAuthentication($paramFetcher);
         $em = $this->getDoctrine()->getManager();
-        $entities = $em->getRepository('AIESECGermany\EntityBundle\Entity\AGB')->findAll();
-        return $entities;
+        $qb = $em->createQueryBuilder();
+        $qb->select('a')->from('AIESECGermany\EntityBundle\Entity\AGB', 'a');
+        $pagination = $this->createPaginationObject($paramFetcher, $qb->getQuery());
+        return $pagination;
     }
 
     /**

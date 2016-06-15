@@ -29,9 +29,24 @@ class WhsController extends FOSRestController
         }
     }
 
+    private function createPaginationObject(ParamFetcherInterface $paramFetcher, Query $query)
+    {
+        $page = $paramFetcher->get('page');
+        $limit = $paramFetcher->get('limit');
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $query,
+            $page,
+            $limit
+        );
+        return $pagination;
+    }
+
     /**
      * @REST\QueryParam(name="salesforceID", description="Salesforce ID")
      * @REST\QueryParam(name="access_token", allowBlank=false)
+     * @REST\QueryParam(name="page", requirements="\d+", default="1", description="Page of the overview.")
+     * @REST\QueryParam(name="limit", requirements="\d+", default="10", description="Entities per page.")
      * @ApiDoc(
      *  resource=true,
      *  description="Get all WHS"
@@ -48,8 +63,8 @@ class WhsController extends FOSRestController
             $qb->andWhere('w.salesforceID LIKE :sfID')->setParameter('sfID', $salesforceID . '%');
         }
         $query = $qb->getQuery();
-        $ops = $query->getResult();
-        return $ops;
+        $pagination = $this->createPaginationObject($paramFetcher, $query);
+        return $pagination;
     }
 
     /**
