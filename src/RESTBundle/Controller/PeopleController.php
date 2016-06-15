@@ -220,6 +220,36 @@ class PeopleController extends FOSRestController
         );
     }
 
+
+    /**
+     * @ApiDoc(
+     *  resource=true,
+     *  description="Edit an exchange",
+     *  input="RESTBundle\Form\ExchangeType",
+     *  output="RESTBundle\Form\ExchangeType"
+     * )
+     * @REST\Patch
+     */
+    public function patchExchangeAction(Request $request, $personID, $exchangeID)
+    {
+        //$this->checkAuthentication($paramFetcher);
+        $em = $this->getDoctrine()->getManager();
+        $exchange = $em->getRepository('AIESECGermany\EntityBundle\Entity\Exchange')->findOneById($exchangeID);
+        $form = $this->createForm(new ExchangeType(), $exchange, [
+            'method' => 'PATCH'
+        ]);
+        $form->handleRequest($request);
+        if ($form->isValid()) {
+            $em->merge($exchange);
+            $em->flush();
+            return $this->routeRedirectView('get_people_exchanges', array(
+                'personID' => $personID, 'exchangeID' => $exchange->getId()));
+        }
+        return array(
+            'form' => $form
+        );
+    }
+
     /**
      * @REST\QueryParam(name="access_token", allowBlank=false)
      * @ApiDoc(
