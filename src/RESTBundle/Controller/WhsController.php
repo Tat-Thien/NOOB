@@ -94,4 +94,32 @@ class WhsController extends FOSRestController
             'form' => $form
         );
     }
+
+    /**
+     * @ApiDoc(
+     *  resource=true,
+     *  description="Edit a WHS",
+     *  input="RESTBundle\Form\WelcomeHomeSeminarType",
+     *  output="RESTBundle\Form\WelcomeHomeSeminarType"
+     * )
+     * @REST\Patch
+     */
+    public function patchAction(Request $request, $whsID)
+    {
+        //$this->checkAuthentication($paramFetcher);
+        $em = $this->getDoctrine()->getManager();
+        $whs = $em->getRepository('AIESECGermany\EntityBundle\Entity\WelcomeHomeSeminar')->findOneById($whsID);
+        $form = $this->createForm(new WelcomeHomeSeminarType(), $whs, [
+            'method' => 'PATCH'
+        ]);
+        $form->handleRequest($request);
+        if ($form->isValid()) {
+            $em->merge($whs);
+            $em->flush();
+            return $this->routeRedirectView('get_whs', array('whsID' => $whsID));
+        }
+        return array(
+            'form' => $form
+        );
+    }
 }
