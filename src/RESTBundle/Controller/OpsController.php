@@ -116,10 +116,18 @@ class OpsController extends RESTBundleController
         );
     }
 
+    /**
+     * @ApiDoc(
+     *  resource=true,
+     *  description="Delete an OPS"
+     * )
+     */
     public function deleteAction($opsID)
     {
         $em = $this->getDoctrine()->getManager();
         $ops = $em->getRepository('AIESECGermany\EntityBundle\Entity\OutgoerPreparation')->findOneById($opsID);
         $em->remove($ops);
+        $em->flush();
+        return $this->view(null, 204);
     }
 }
