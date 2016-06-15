@@ -22,8 +22,6 @@ class ExchangeType extends AbstractType
             ->add('applicationID', IntegerType::class)
             ->add('feeAmount', IntegerType::class)
             ->add('focusOfInternship')
-            ->add('paymentMode')
-            ->add('paid', CheckboxType::class)
             ->add('salesforceID')
             ->add('welcomeHomeSeminar', EntityType::class, array(
                 'class' => 'AIESECGermanyEntityBundle:WelcomeHomeSeminar'
