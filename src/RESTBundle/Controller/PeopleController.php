@@ -305,6 +305,37 @@ class PeopleController extends FOSRestController
             'form' => $form
         );
     }
+
+    /**
+     * @ApiDoc(
+     *  resource=true,
+     *  description="Edit a signed AGB",
+     *  input="RESTBundle\Form\ExchangeAGBType",
+     *  output="RESTBundle\Form\ExchangeAGBType"
+     * )
+     * @REST\Patch
+     */
+    public function patchExchangesAgbAction(Request $request, $personID, $exchangeID)
+    {
+        //$this->checkAuthentication($paramFetcher);
+        $em = $this->getDoctrine()->getManager();
+        $exchange = $em->getRepository('AIESECGermany\EntityBundle\Entity\Exchange')->findOneById($exchangeID);
+        $exchangeAGB = $exchange->getExchangeAgb();
+        $form = $this->createForm(new ExchangeAGBType(), $exchangeAGB, [
+            'method' => 'PATCH'
+        ]);
+        $form->handleRequest($request);
+        if ($form->isValid()) {
+            $em->merge($exchangeAGB);
+            $em->flush();
+            return $this->routeRedirectView('get_people_exchanges_agb', array(
+                'personID' => $personID, 'exchangeID' => $exchange->getId()));
+        }
+        return array(
+            'form' => $form
+        );
+    }
+
     public function getExchangesBankaccountAction($personID, $exchangeID)
     {
         $em = $this->getDoctrine()->getManager();
