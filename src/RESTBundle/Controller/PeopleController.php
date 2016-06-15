@@ -10,6 +10,7 @@ use AIESECGermany\EntityBundle\Entity\ExchangeAGB;
 use AIESECGermany\EntityBundle\Entity\FinanceInformation;
 use AIESECGermany\EntityBundle\Entity\Person;
 use AIESECGermany\EntityBundle\Entity\StandardsAndSatisfaction;
+use Doctrine\ORM\Query;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Request\ParamFetcher;
 use FOS\RestBundle\Request\ParamFetcherInterface;
@@ -64,6 +65,19 @@ class PeopleController extends FOSRestController
         }
     }
 
+    private function createPaginationObject(ParamFetcherInterface $paramFetcher, Query $query)
+    {
+        $page = $paramFetcher->get('page');
+        $limit = $paramFetcher->get('limit');
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $query,
+            $page,
+            $limit
+        );
+        return $pagination;
+    }
+
     /**
      * @REST\QueryParam(name="access_token", allowBlank=false)
      * @REST\QueryParam(name="page", requirements="\d+", default="1", description="Page of the overview.")
@@ -76,24 +90,12 @@ class PeopleController extends FOSRestController
     public function cgetAction(ParamFetcherInterface $paramFetcher)
     {
         $this->checkAuthentication($paramFetcher);
-        $page = $paramFetcher->get('page');
-        $limit = $paramFetcher->get('limit');
         $em = $this->getDoctrine()->getManager();
         $qb = $em->createQueryBuilder();
         $qb->select('p')->from('AIESECGermany\EntityBundle\Entity\Person', 'p');
         $query = $qb->getQuery();
-        $paginator = $this->get('knp_paginator');
-        $pagination = $paginator->paginate(
-            $query,
-            $page,
-            $limit
-        );
-
-        $serializer = $this->get('jms_serializer');
-        return new Response($serializer->serialize($pagination, 'json'), Response::HTTP_OK,
-            ['Content-Type' => 'application/json',
-        ]
-        );
+        $pagination = $this->createPaginationObject($paramFetcher, $query);
+        return $pagination;
     }
 
     /**
