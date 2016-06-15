@@ -28,7 +28,7 @@ class BankAccountType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'EntityBundle\Entity\BankAccount',
+            'data_class' => 'AIESECGermany\EntityBundle\Entity\BankAccount',
             'csrf_protection' => false
         ));
     }

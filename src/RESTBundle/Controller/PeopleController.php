@@ -217,6 +217,115 @@ class PeopleController extends RESTBundleController
      * @REST\QueryParam(name="access_token", allowBlank=false)
      * @ApiDoc(
      *  resource=true,
+     *  description="Get bank account data for a person",
+     *  output="RESTBundle\Form\BankAccountType"
+     * )
+     */
+    public function getBankaccountAction(ParamFetcher $paramFetcher, $personID)
+    {
+        $this->checkAuthentication($paramFetcher);
+        $em = $this->getDoctrine()->getManager();
+        $person = $em->getRepository('AIESECGermany\EntityBundle\Entity\Person')->findOneById($personID);
+        if (!$person) {
+            throw new NotFoundHttpException();
+        }
+        $bankAccount = $person->getBankAccount();
+        if (!$bankAccount) {
+            throw new NotFoundHttpException();
+        }
+        return $bankAccount;
+    }
+
+    /**
+     * @ApiDoc(
+     *  resource=true,
+     *  description="Create a bank account",
+     *  input="RESTBundle\Form\BankAccountType",
+     *  output="RESTBundle\Form\BankAccountType"
+     * )
+     */
+    public function postBankaccountAction(Request $request, $personID)
+    {
+        $bankAccount = new BankAccount();
+        $form = $this->createForm(new BankAccountType(), $bankAccount);
+        $form->submit($request);
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $person = $em->getRepository('AIESECGermany\EntityBundle\Entity\Person')->findOneById($personID);
+            if (!$person) {
+                throw new HttpException(404);
+            }
+            $person->setBankAccount($bankAccount);
+            $em->persist($person);
+            $em->persist($bankAccount);
+            $em->flush();
+            return $this->routeRedirectView('get_people_bankaccount', array('personID' => $personID));
+        }
+        return array(
+            'form' => $form
+        );
+    }
+
+    /**
+     * @REST\Patch
+     * @ApiDoc(
+     *  resource=true,
+     *  description="Edit bank account data for a person",
+     *  input="RESTBundle\Form\BankAccountType",
+     *  output="RESTBundle\Form\BankAccountType"
+     * )
+     */
+    public function patchBankaccountAction(Request $request, $personID)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $person = $em->getRepository('AIESECGermany\EntityBundle\Entity\Person')->findOneById($personID);
+        if (!$person) {
+            throw new NotFoundHttpException();
+        }
+        $bankAccount = $person->getBankAccount();
+        if (!$bankAccount) {
+            throw new NotFoundHttpException();
+        }
+        $form = $this->createForm(new BankAccountType(), $bankAccount, [
+            'method' => 'PATCH'
+        ]);
+        $form->handleRequest($request);
+        if ($form->isValid()) {
+            $em->merge($bankAccount);
+            $em->flush();
+            return $this->routeRedirectView('get_people_bankaccount', array('personID' => $personID));
+        }
+        return array(
+            'form' => $form
+        );
+    }
+
+    /**
+     * @ApiDoc(
+     *  resource=true,
+     *  description="Delete a bank account"
+     * )
+     */
+    public function deleteBankaccountAction($personID)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $person = $em->getRepository('AIESECGermany\EntityBundle\Entity\Person')->findOneById($personID);
+        if (!$person) {
+            throw new NotFoundHttpException();
+        }
+        $bankAccount = $person->getBankAccount();
+        if (!$bankAccount) {
+            throw new NotFoundHttpException();
+        }
+        $em->remove($bankAccount);
+        $em->flush();
+        return $this->view(null, 204);
+    }
+
+    /**
+     * @REST\QueryParam(name="access_token", allowBlank=false)
+     * @ApiDoc(
+     *  resource=true,
      *  description="Get an exchange",
      *  output="RESTBundle\Form\ExchangeType"
      * )
@@ -487,45 +596,6 @@ class PeopleController extends RESTBundleController
         $em->remove($exchangeAGB);
         $em->flush();
         return $this->view(null, 204);
-    }
-
-    public function getExchangesBankaccountAction($personID, $exchangeID)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $person = $em->getRepository('AIESECGermany\EntityBundle\Entity\Person')->findOneById($personID);
-        $exchange = $em->getRepository('AIESECGermany\EntityBundle\Entity\Exchange')->findOneById($exchangeID);
-        $bankAccount = $exchange->getBankAccount();
-        if (!$person || !$exchange || !$bankAccount) {
-            throw new NotFoundHttpException();
-        }
-        return $bankAccount;
-    }
-
-    public function postExchangesBankaccountAction(Request $request, $personID, $exchangeID)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $person = $em->getRepository('AIESECGermany\EntityBundle\Entity\Person')->findOneById($personID);
-        if (!$person) {
-            throw new HttpException(404);
-        }
-        $exchange = $em->getRepository('AIESECGermany\EntityBundle\Entity\Exchange')->findOneById($exchangeID);
-        if (!$exchange) {
-            throw new HttpException(404);
-        }
-        $bankAccount = new BankAccount();
-        $form = $this->createForm(new BankAccountType(), $bankAccount);
-        $form->handleRequest($request);
-        if ($form->isValid()) {
-            $exchange->setBankAccount($bankAccount);
-            $bankAccount->setExchange($exchange);
-            $em->persist($exchange);
-            $em->persist($bankAccount);
-            $em->flush();
-            return $this->routeRedirectView('post_people_exchanges_bankaccount', array('personID' => $personID, 'exchangeID' => $exchangeID));
-        }
-        return array(
-            'form' => $form
-        );
     }
 
     public function getExchangesStandardsandsatisfactionAction($personID, $exchangeID)
