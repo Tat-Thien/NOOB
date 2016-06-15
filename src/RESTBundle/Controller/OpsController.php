@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 use Symfony\Component\HttpKernel\Exception\HttpException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * @REST\RouteResource("Ops")
@@ -126,6 +127,9 @@ class OpsController extends RESTBundleController
     {
         $em = $this->getDoctrine()->getManager();
         $ops = $em->getRepository('AIESECGermany\EntityBundle\Entity\OutgoerPreparation')->findOneById($opsID);
+        if (!$ops) {
+            throw new NotFoundHttpException();
+        }
         $em->remove($ops);
         $em->flush();
         return $this->view(null, 204);

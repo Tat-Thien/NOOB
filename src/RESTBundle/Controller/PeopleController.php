@@ -163,6 +163,9 @@ class PeopleController extends RESTBundleController
     {
         $em = $this->getDoctrine()->getManager();
         $person = $em->getRepository('AIESECGermany\EntityBundle\Entity\Person')->findOneById($personID);
+        if (!$person) {
+            throw new NotFoundHttpException();
+        }
         $em->remove($person);
         $em->flush();
         return $this->view(null, 204);
@@ -326,6 +329,9 @@ class PeopleController extends RESTBundleController
     {
         $em = $this->getDoctrine()->getManager();
         $exchange = $em->getRepository('AIESECGermany\EntityBundle\Entity\Exchange')->findOneById($exchangeID);
+        if (!$exchange) {
+            throw new NotFoundHttpException();
+        }
         $em->remove($exchange);
         $em->flush();
         return $this->view(null, 204);
@@ -471,7 +477,13 @@ class PeopleController extends RESTBundleController
     {
         $em = $this->getDoctrine()->getManager();
         $exchange = $em->getRepository('AIESECGermany\EntityBundle\Entity\Exchange')->findOneById($exchangeID);
+        if (!$exchange) {
+            throw new NotFoundHttpException();
+        }
         $exchangeAGB = $exchange->getExchangeAgb();
+        if (!$exchangeAGB) {
+            throw new NotFoundHttpException();
+        }
         $em->remove($exchangeAGB);
         $em->flush();
         return $this->view(null, 204);

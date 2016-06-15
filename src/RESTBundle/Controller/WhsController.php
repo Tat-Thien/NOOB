@@ -13,6 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 use Symfony\Component\HttpKernel\Exception\HttpException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * @REST\RouteResource("Whs")
@@ -126,6 +127,9 @@ class WhsController extends RESTBundleController
     {
         $em = $this->getDoctrine()->getManager();
         $whs = $em->getRepository('AIESECGermany\EntityBundle\Entity\WelcomeHomeSeminar')->findOneById($whsID);
+        if (!$whs) {
+            throw new NotFoundHttpException();
+        }
         $em->remove($whs);
         $em->flush();
         return $this->view(null, 204);
