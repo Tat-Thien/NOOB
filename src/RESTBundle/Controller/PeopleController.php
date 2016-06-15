@@ -122,6 +122,34 @@ class PeopleController extends FOSRestController
     }
 
     /**
+     * @ApiDoc(
+     *  resource=true,
+     *  description="Edit a person",
+     *  input="RESTBundle\Form\PersonType",
+     *  output="RESTBundle\Form\PersonType"
+     * )
+     * @REST\Patch
+     */
+    public function patchAction(Request $request, $personID)
+    {
+        //$this->checkAuthentication($paramFetcher);
+        $em = $this->getDoctrine()->getManager();
+        $person = $em->getRepository('AIESECGermany\EntityBundle\Entity\Person')->findOneById($personID);
+        $form = $this->createForm(new PersonType(), $person, [
+            'method' => 'PATCH'
+        ]);
+        $form->handleRequest($request);
+        if ($form->isValid()) {
+            $em->merge($person);
+            $em->flush();
+            return $this->routeRedirectView('get_people', array('personID' => $person->getId()));
+        }
+        return array(
+            'form' => $form
+        );
+    }
+
+    /**
      * @REST\QueryParam(name="access_token", allowBlank=false)
      * @ApiDoc(
      *  resource=true,
