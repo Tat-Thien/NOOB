@@ -18,7 +18,9 @@ class ExchangeAGBType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('dateSigned', DateType::class)
+            ->add('dateSigned', DateType::class, array(
+                'widget' => 'single_text'
+            ))
             ->add('agb', EntityType::class, array(
                 'class' => 'AIESECGermanyEntityBundle:AGB'
             ))
