@@ -25,6 +25,7 @@ class PersonType extends AbstractType
                 'required' => true
             ))
             ->add('opsOnline', CheckboxType::class)
+            ->add('leadSource')
         ;
     }
     
