@@ -118,3 +118,4 @@ nelmio_cors:
             allow_origin: ['*']
             allow_methods: ['POST', 'PUT', 'GET', 'DELETE', 'PATCH', 'OPTIONS']
             max_age: 3600
+            allow_headers: ['Content-Type']
