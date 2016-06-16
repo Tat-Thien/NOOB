@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "50ff90e2bc6590729d0ee7c8e646e38e",
-    "content-hash": "577cf34bcceef1bc051b8c6bdbfb0035",
+    "hash": "3af6c501ce06c612e99ba6155f6e4a00",
+    "content-hash": "9046095ff8ea82b670366acc503aed0b",
     "packages": [
         {
             "name": "aiesecgermany/entity-bundle",
@@ -14,12 +14,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AIESECGermany/EntityBundle.git",
-                "reference": "0487c68e996866328b5bd7164cc54af32d5d164b"
+                "reference": "56348b48b9ccb41ba8e58d10325c9b4662966e35"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AIESECGermany/EntityBundle/zipball/0487c68e996866328b5bd7164cc54af32d5d164b",
-                "reference": "0487c68e996866328b5bd7164cc54af32d5d164b",
+                "url": "https://api.github.com/repos/AIESECGermany/EntityBundle/zipball/56348b48b9ccb41ba8e58d10325c9b4662966e35",
+                "reference": "56348b48b9ccb41ba8e58d10325c9b4662966e35",
                 "shasum": ""
             },
             "require": {
@@ -54,7 +54,7 @@
                 "source": "https://github.com/AIESECGermany/EntityBundle/tree/master",
                 "issues": "https://github.com/AIESECGermany/EntityBundle/issues"
             },
-            "time": "2016-06-14 22:28:30"
+            "time": "2016-06-16 12:09:17"
         },
         {
             "name": "doctrine/annotations",
@@ -1627,6 +1627,63 @@
                 "rest"
             ],
             "time": "2016-06-13 09:12:09"
+        },
+        {
+            "name": "nelmio/cors-bundle",
+            "version": "1.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nelmio/NelmioCorsBundle.git",
+                "reference": "fa14a81737c605bf4766054cdcb72a16a433d537"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nelmio/NelmioCorsBundle/zipball/fa14a81737c605bf4766054cdcb72a16a433d537",
+                "reference": "fa14a81737c605bf4766054cdcb72a16a433d537",
+                "shasum": ""
+            },
+            "require": {
+                "symfony/framework-bundle": "^2.2 || ^3.0"
+            },
+            "require-dev": {
+                "matthiasnoback/symfony-dependency-injection-test": "^0.7.6",
+                "mockery/mockery": "0.9.*"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.4.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Nelmio\\CorsBundle\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nelmio",
+                    "homepage": "http://nelm.io"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://github.com/nelmio/NelmioCorsBundle/contributors"
+                }
+            ],
+            "description": "Adds CORS (Cross-Origin Resource Sharing) headers support in your Symfony2 application",
+            "keywords": [
+                "api",
+                "cors",
+                "crossdomain"
+            ],
+            "time": "2015-12-09 17:26:34"
         },
         {
             "name": "paragonie/random_compat",

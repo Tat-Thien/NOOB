@@ -110,3 +110,11 @@ jms_serializer:
             KnpPager:
                 namespace_prefix: Knp\Component\Pager
                 path: "@RESTBundle/Resources/config/serializer/KnpPager"
+
+nelmio_cors:
+    paths:
+        '^/':
+            origin_regex: true
+            allow_origin: ['*']
+            allow_methods: ['POST', 'PUT', 'GET', 'DELETE', 'PATCH', 'OPTIONS']
+            max_age: 3600

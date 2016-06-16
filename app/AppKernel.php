@@ -22,6 +22,7 @@ class AppKernel extends Kernel
             new AIESECGermany\EntityBundle\AIESECGermanyEntityBundle(),
             new Nelmio\ApiDocBundle\NelmioApiDocBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+            new Nelmio\CorsBundle\NelmioCorsBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {
