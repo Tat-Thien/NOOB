@@ -342,6 +342,7 @@ class PeopleController extends RESTBundleController
     /**
      * @REST\QueryParam(name="access_token", allowBlank=false)
      * @REST\QueryParam(name="salesforceID", description="Salesforce ID")
+     * @REST\QueryParam(name="applicationID", description="Application ID")
      * @REST\QueryParam(name="page", requirements="\d+", default="1", description="Page of the overview.")
      * @REST\QueryParam(name="limit", requirements="\d+", default="10", description="Entities per page.")
      * @ApiDoc(
@@ -359,6 +360,10 @@ class PeopleController extends RESTBundleController
         $salesforceID = $paramFetcher->get('salesforceID');
         if ($salesforceID) {
             $qb->andWhere('e.salesforceID = ?2')->setParameter(2, $salesforceID);
+        }
+        $applicationID = $paramFetcher->get('applicationID');
+        if ($applicationID) {
+            $qb->andWhere('e.applicationID = ?3')->setParameter(3, $applicationID);
         }
         $query = $qb->getQuery();
         $pagination = $this->createPaginationObject($paramFetcher, $query);
