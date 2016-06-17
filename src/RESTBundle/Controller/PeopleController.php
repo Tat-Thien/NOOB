@@ -114,7 +114,6 @@ class PeopleController extends RESTBundleController
         $form->submit($request);
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $person = $em->getRepository('AIESECGermany\EntityBundle\Entity\Person')->findOneById($person->getId());
             $em->persist($person);
             $em->flush();
             return $this->routeRedirectView('get_people', array('personID' => $person->getId()));
