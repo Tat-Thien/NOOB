@@ -15,7 +15,7 @@ AIESECGermany\EntityBundle\Entity\Person:
         email:
             - NotBlank: ~
         opsOnline:
-            - NotBlank: ~
+            - NotNull: ~
 AIESECGermany\EntityBundle\Entity\ExchangeAGB:
     properties:
         dateSigned:
@@ -33,34 +33,34 @@ AIESECGermany\EntityBundle\Entity\WelcomeHomeSeminar:
 AIESECGermany\EntityBundle\Entity\StandardsAndSatisfaction:
     properties:
         visaWorkPermit:
-            - NotBlank: ~
+            - NotNull: ~
         arrivalPickup:
-            - NotBlank: ~
+            - NotNull: ~
         departureSupport:
-            - NotBlank: ~
+            - NotNull: ~
         jobDescription:
-            - NotBlank: ~
+            - NotNull: ~
         duration:
-            - NotBlank: ~
+            - NotNull: ~
         workingHours:
-            - NotBlank: ~
+            - NotNull: ~
         firstDayOfWork:
-            - NotBlank: ~
+            - NotNull: ~
         individualGoals:
-            - NotBlank: ~
+            - NotNull: ~
         insurance:
-            - NotBlank: ~
+            - NotNull: ~
         accomodation:
-            - NotBlank: ~
+            - NotNull: ~
         livingCosts:
-            - NotBlank: ~
+            - NotNull: ~
         purpose:
-            - NotBlank: ~
+            - NotNull: ~
         expectationSetting:
-            - NotBlank: ~
+            - NotNull: ~
         preparation:
-            - NotBlank: ~
+            - NotNull: ~
         hostFacilitatedLearning:
-            - NotBlank: ~
+            - NotNull: ~
         homeFacilitatedLearning:
             - NotBlank: ~
