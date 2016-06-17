@@ -366,7 +366,7 @@ class PeopleController extends RESTBundleController
     {
         $this->checkAuthentication($paramFetcher);
         $em = $this->getDoctrine()->getManager();
-        $person = $em->getRepository('AIESECGermany\EntityBundle\Entity\Exchange')->findOneById($personID);
+        $person = $em->getRepository('AIESECGermany\EntityBundle\Entity\Person')->findOneById($personID);
         if (!$person) {
             throw new NotFoundHttpException();
         }
@@ -435,7 +435,7 @@ class PeopleController extends RESTBundleController
     {
         //$this->checkAuthentication($paramFetcher);
         $em = $this->getDoctrine()->getManager();
-        $person = $em->getRepository('AIESECGermany\EntityBundle\Entity\Exchange')->findOneById($personID);
+        $person = $em->getRepository('AIESECGermany\EntityBundle\Entity\Person')->findOneById($personID);
         if (!$person) {
             throw new NotFoundHttpException();
         }
@@ -467,7 +467,7 @@ class PeopleController extends RESTBundleController
     public function deleteExchangeAction($personID, $exchangeID)
     {
         $em = $this->getDoctrine()->getManager();
-        $person = $em->getRepository('AIESECGermany\EntityBundle\Entity\Exchange')->findOneById($personID);
+        $person = $em->getRepository('AIESECGermany\EntityBundle\Entity\Person')->findOneById($personID);
         if (!$person) {
             throw new NotFoundHttpException();
         }
