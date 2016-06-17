@@ -115,10 +115,7 @@ class PeopleController extends RESTBundleController
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $person = $em->getRepository('AIESECGermany\EntityBundle\Entity\Person')->findOneById($person->getId());
-            $emailHistory = new EmailHistory();
-            $person->setEmailHistory($emailHistory);
             $em->persist($person);
-            $em->persist($emailHistory);
             $em->flush();
             return $this->routeRedirectView('get_people', array('personID' => $person->getId()));
         }
@@ -191,6 +188,36 @@ class PeopleController extends RESTBundleController
         return $person->getEmailHistory();
     }
 
+
+    /**
+     * @ApiDoc(
+     *  resource=true,
+     *  description="Create email history for a person",
+     *  input="RESTBundle\Form\BankAccountType",
+     *  output="RESTBundle\Form\BankAccountType"
+     * )
+     */
+    public function postEmailhistoryAction(Request $request, $personID)
+    {
+        $emailHistory = new EmailHistory();
+        $form = $this->createForm(new EmailHistory(), $emailHistory);
+        $form->submit($request);
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $person = $em->getRepository('AIESECGermany\EntityBundle\Entity\Person')->findOneById($personID);
+            if (!$person) {
+                throw new HttpException(404);
+            }
+            $person->setEmailHistory($emailHistory);
+            $em->persist($person);
+            $em->persist($emailHistory);
+            $em->flush();
+            return $this->routeRedirectView('get_people_emailhistory', array('personID' => $personID));
+        }
+        return array(
+            'form' => $form
+        );
+    }
 
     /**
      * @REST\Patch
