@@ -199,7 +199,7 @@ class PeopleController extends RESTBundleController
     public function postEmailhistoryAction(Request $request, $personID)
     {
         $emailHistory = new EmailHistory();
-        $form = $this->createForm(new EmailHistory(), $emailHistory);
+        $form = $this->createForm(new EmailHistoryType(), $emailHistory);
         $form->submit($request);
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
