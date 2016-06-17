@@ -13,3 +13,7 @@ ops:
 whs:
     type:     rest
     resource: RESTBundle:Whs
+
+lead_assignment:
+    type:     rest
+    resource: RESTBundle:Leadassignment
