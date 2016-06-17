@@ -30,3 +30,37 @@ AIESECGermany\EntityBundle\Entity\WelcomeHomeSeminar:
             - NotBlank: ~
         endDate:
             - NotBlank: ~
+AIESECGermany\EntityBundle\Entity\StandardsAndSatisfaction:
+    properties:
+        visaWorkPermit:
+            - NotBlank: ~
+        arrivalPickup:
+            - NotBlank: ~
+        departureSupport:
+            - NotBlank: ~
+        jobDescription:
+            - NotBlank: ~
+        duration:
+            - NotBlank: ~
+        workingHours:
+            - NotBlank: ~
+        firstDayOfWork:
+            - NotBlank: ~
+        individualGoals:
+            - NotBlank: ~
+        insurance:
+            - NotBlank: ~
+        accomodation:
+            - NotBlank: ~
+        livingCosts:
+            - NotBlank: ~
+        purpose:
+            - NotBlank: ~
+        expectationSetting:
+            - NotBlank: ~
+        preparation:
+            - NotBlank: ~
+        hostFacilitatedLearning:
+            - NotBlank: ~
+        homeFacilitatedLearning:
+            - NotBlank: ~
