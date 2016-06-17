@@ -640,7 +640,6 @@ class PeopleController extends RESTBundleController
         );
     }
 
-
     /**
      * @ApiDoc(
      *  resource=true,
@@ -698,6 +697,7 @@ class PeopleController extends RESTBundleController
      * @ApiDoc(
      *  resource=true,
      *  description="Create standards and satisfaction",
+     *  input="RESTBundle\Form\StandardsAndSatisfactionType",
      *  output="RESTBundle\Form\StandardsAndSatisfactionType"
      * )
      */
@@ -727,6 +727,45 @@ class PeopleController extends RESTBundleController
             $em->persist($sands);
             $em->flush();
             return $this->routeRedirectView('get_people_exchanges_standardsandsatisfaction', array('personID' => $personID, 'exchangeID' => $exchangeID));
+        }
+        return array(
+            'form' => $form
+        );
+    }
+
+    /**
+     * @ApiDoc(
+     *  resource=true,
+     *  description="Edit standards and satisfaction",
+     *  input="RESTBundle\Form\StandardsAndSatisfactionType",
+     *  output="RESTBundle\Form\StandardsAndSatisfactionType"
+     * )
+     * @REST\Patch
+     */
+    public function patchExchangesStandardsandsatisfactionAction(Request $request, $personID, $exchangeID)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $person = $em->getRepository('AIESECGermany\EntityBundle\Entity\Person')->findOneById($personID);
+        if (!$person) {
+            throw new NotFoundHttpException();
+        }
+        $exchange = $em->getRepository('AIESECGermany\EntityBundle\Entity\Exchange')->findOneById($exchangeID);
+        if (!$exchange) {
+            throw new NotFoundHttpException();
+        }
+        $sands = $exchange->getStandardsAndSatisfaction();
+        if (!$sands) {
+            throw new NotFoundHttpException();
+        }
+        $form = $this->createForm(new StandardsAndSatisfactionType(), $sands, [
+            'method' => 'PATCH'
+        ]);
+        $form->handleRequest($request);
+        if ($form->isValid()) {
+            $em->merge($sands);
+            $em->flush();
+            return $this->routeRedirectView('get_people_exchanges_standardsandsatisfaction', array(
+                'personID' => $personID, 'exchangeID' => $exchangeID));
         }
         return array(
             'form' => $form
