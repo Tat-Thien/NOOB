@@ -667,24 +667,40 @@ class PeopleController extends RESTBundleController
         return $this->view(null, 204);
     }
 
-    public function getExchangesStandardsandsatisfactionAction($personID, $exchangeID)
+    /**
+     * @REST\QueryParam(name="access_token", allowBlank=false)
+     * @ApiDoc(
+     *  resource=true,
+     *  description="Get standards and satisfaction",
+     *  output="RESTBundle\Form\StandardsAndSatisfactionType"
+     * )
+     */
+    public function getExchangesStandardsandsatisfactionAction(ParamFetcherInterface $paramFetcher, $personID, $exchangeID)
     {
+        $this->checkAuthentication($paramFetcher);
         $em = $this->getDoctrine()->getManager();
         $person = $em->getRepository('AIESECGermany\EntityBundle\Entity\Person')->findOneById($personID);
         if (!$person) {
-            throw new HttpException(404);
+            throw new NotFoundHttpException();
         }
         $exchange = $em->getRepository('AIESECGermany\EntityBundle\Entity\Exchange')->findOneById($exchangeID);
         if (!$exchange) {
-            throw new HttpException(404);
+            throw new NotFoundHttpException();
         }
         $sands = $exchange->getStandardsAndSatisfaction();
         if (!$sands) {
-            throw new HttpException(404);
+            throw new NotFoundHttpException();
         }
         return $sands;
     }
 
+    /**
+     * @ApiDoc(
+     *  resource=true,
+     *  description="Create standards and satisfaction",
+     *  output="RESTBundle\Form\StandardsAndSatisfactionType"
+     * )
+     */
     public function postExchangesStandardsandsatisfactionAction(Request $request, $personID, $exchangeID)
     {
         $logger = $this->get('logger');
