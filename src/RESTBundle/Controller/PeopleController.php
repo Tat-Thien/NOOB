@@ -26,6 +26,7 @@ use RESTBundle\Form\StandardsAndSatisfactionType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
@@ -113,6 +114,7 @@ class PeopleController extends RESTBundleController
         $form->submit($request);
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $person = $em->getRepository('AIESECGermany\EntityBundle\Entity\Person')->findOneById($person->getId());
             $emailHistory = new EmailHistory();
             $person->setEmailHistory($emailHistory);
             $em->persist($person);
@@ -139,6 +141,9 @@ class PeopleController extends RESTBundleController
         //$this->checkAuthentication($paramFetcher);
         $em = $this->getDoctrine()->getManager();
         $person = $em->getRepository('AIESECGermany\EntityBundle\Entity\Person')->findOneById($personID);
+        if (!$person) {
+            throw new NotFoundHttpException();
+        }
         $form = $this->createForm(new PersonType(), $person, [
             'method' => 'PATCH'
         ]);
@@ -200,6 +205,9 @@ class PeopleController extends RESTBundleController
     {
         $em = $this->getDoctrine()->getManager();
         $person = $em->getRepository('AIESECGermany\EntityBundle\Entity\Person')->findOneById($personID);
+        if (!$person) {
+            throw new NotFoundHttpException();
+        }
         $emailHistory = $person->getEmailHistory();
         $form = $this->createForm(new EmailHistoryType(), $emailHistory, [
             'method' => 'PATCH'
@@ -336,6 +344,10 @@ class PeopleController extends RESTBundleController
     {
         $this->checkAuthentication($paramFetcher);
         $em = $this->getDoctrine()->getManager();
+        $person = $em->getRepository('AIESECGermany\EntityBundle\Entity\Exchange')->findOneById($personID);
+        if (!$person) {
+            throw new NotFoundHttpException();
+        }
         $exchange = $em->getRepository('AIESECGermany\EntityBundle\Entity\Exchange')->findOneById($exchangeID);
         return $exchange;
     }
@@ -354,6 +366,10 @@ class PeopleController extends RESTBundleController
     {
         $this->checkAuthentication($paramFetcher);
         $em = $this->getDoctrine()->getManager();
+        $person = $em->getRepository('AIESECGermany\EntityBundle\Entity\Exchange')->findOneById($personID);
+        if (!$person) {
+            throw new NotFoundHttpException();
+        }
         $qb = $em->createQueryBuilder();
         $qb->select('e')->from('AIESECGermany\EntityBundle\Entity\Exchange', 'e')->where('e.person = ?1')
             ->setParameter(1, $personID);
@@ -419,7 +435,14 @@ class PeopleController extends RESTBundleController
     {
         //$this->checkAuthentication($paramFetcher);
         $em = $this->getDoctrine()->getManager();
+        $person = $em->getRepository('AIESECGermany\EntityBundle\Entity\Exchange')->findOneById($personID);
+        if (!$person) {
+            throw new NotFoundHttpException();
+        }
         $exchange = $em->getRepository('AIESECGermany\EntityBundle\Entity\Exchange')->findOneById($exchangeID);
+        if (!$exchange) {
+            throw new NotFoundHttpException();
+        }
         $form = $this->createForm(new ExchangeType(), $exchange, [
             'method' => 'PATCH'
         ]);
@@ -430,7 +453,6 @@ class PeopleController extends RESTBundleController
             return $this->routeRedirectView('get_people_exchanges', array(
                 'personID' => $personID, 'exchangeID' => $exchange->getId()));
         }
-        return $form->getErrorsAsString();
         return array(
             'form' => $form
         );
@@ -445,6 +467,10 @@ class PeopleController extends RESTBundleController
     public function deleteExchangeAction($personID, $exchangeID)
     {
         $em = $this->getDoctrine()->getManager();
+        $person = $em->getRepository('AIESECGermany\EntityBundle\Entity\Exchange')->findOneById($personID);
+        if (!$person) {
+            throw new NotFoundHttpException();
+        }
         $exchange = $em->getRepository('AIESECGermany\EntityBundle\Entity\Exchange')->findOneById($exchangeID);
         if (!$exchange) {
             throw new NotFoundHttpException();
@@ -465,8 +491,15 @@ class PeopleController extends RESTBundleController
     {
         $this->checkAuthentication($paramFetcher);
         $em = $this->getDoctrine()->getManager();
-        $person = $em->getRepository('AIESECGermany\EntityBundle\Entity\Exchange')->findOneById($exchangeID);
-        return $person->getFinanceInformation();
+        $person = $em->getRepository('AIESECGermany\EntityBundle\Entity\Person')->findOneById($personID);
+        if (!$person) {
+            throw new NotFoundHttpException();
+        }
+        $exchange = $em->getRepository('AIESECGermany\EntityBundle\Entity\Exchange')->findOneById($exchangeID);
+        if (!$exchange) {
+            throw new NotFoundHttpException();
+        }
+        return $exchange->getFinanceInformation();
     }
 
 
@@ -481,7 +514,14 @@ class PeopleController extends RESTBundleController
     public function patchExchangesFinanceinformationAction(Request $request, $personID, $exchangeID)
     {
         $em = $this->getDoctrine()->getManager();
+        $person = $em->getRepository('AIESECGermany\EntityBundle\Entity\Person')->findOneById($personID);
+        if (!$person) {
+            throw new NotFoundHttpException();
+        }
         $exchange = $em->getRepository('AIESECGermany\EntityBundle\Entity\Exchange')->findOneById($exchangeID);
+        if (!$exchange) {
+            throw new NotFoundHttpException();
+        }
         $financeInformation = $exchange->getFinanceInformation();
         $form = $this->createForm(new FinanceInformationType(), $financeInformation, [
             'method' => 'PATCH'
@@ -510,10 +550,16 @@ class PeopleController extends RESTBundleController
         $this->checkAuthentication($paramFetcher);
         $em = $this->getDoctrine()->getManager();
         $person = $em->getRepository('AIESECGermany\EntityBundle\Entity\Person')->findOneById($personID);
+        if (!$person) {
+            throw new NotFoundHttpException();
+        }
         $exchange = $em->getRepository('AIESECGermany\EntityBundle\Entity\Exchange')->findOneById($exchangeID);
+        if (!$exchange) {
+            throw new NotFoundHttpException();
+        }
         $agb = $exchange->getExchangeAgb();
-        if (!$person || !$exchange || !$agb) {
-            throw new HttpException(404);
+        if (!$agb) {
+            throw new NotFoundHttpException();
         }
         return $agb;
     }
@@ -536,11 +582,11 @@ class PeopleController extends RESTBundleController
             $em = $this->getDoctrine()->getManager();
             $person = $em->getRepository('AIESECGermany\EntityBundle\Entity\Person')->findOneById($personID);
             if (!$person) {
-                throw new HttpException(404);
+                throw new NotFoundHttpException();
             }
             $exchange = $em->getRepository('AIESECGermany\EntityBundle\Entity\Exchange')->findOneById($exchangeID);
             if (!$exchange) {
-                throw new HttpException(404);
+                throw new NotFoundHttpException();
             }
             $exchangeAGB->setExchange($exchange);
             $exchange->setExchangeAgb($exchangeAGB);
@@ -567,8 +613,18 @@ class PeopleController extends RESTBundleController
     {
         //$this->checkAuthentication($paramFetcher);
         $em = $this->getDoctrine()->getManager();
+        $person = $em->getRepository('AIESECGermany\EntityBundle\Entity\Person')->findOneById($personID);
+        if (!$person) {
+            throw new NotFoundHttpException();
+        }
         $exchange = $em->getRepository('AIESECGermany\EntityBundle\Entity\Exchange')->findOneById($exchangeID);
+        if (!$exchange) {
+            throw new NotFoundHttpException();
+        }
         $exchangeAGB = $exchange->getExchangeAgb();
+        if (!$exchangeAGB) {
+            throw new NotFoundHttpException();
+        }
         $form = $this->createForm(new ExchangeAGBType(), $exchangeAGB, [
             'method' => 'PATCH'
         ]);
@@ -594,6 +650,10 @@ class PeopleController extends RESTBundleController
     public function deleteExchangesAgbAction($personID, $exchangeID)
     {
         $em = $this->getDoctrine()->getManager();
+        $person = $em->getRepository('AIESECGermany\EntityBundle\Entity\Person')->findOneById($personID);
+        if (!$person) {
+            throw new NotFoundHttpException();
+        }
         $exchange = $em->getRepository('AIESECGermany\EntityBundle\Entity\Exchange')->findOneById($exchangeID);
         if (!$exchange) {
             throw new NotFoundHttpException();

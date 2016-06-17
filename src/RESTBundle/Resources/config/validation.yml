@@ -7,6 +7,8 @@ AIESECGermany\EntityBundle\Entity\OutgoerPreparation:
         endDate:
             - NotBlank: ~
 AIESECGermany\EntityBundle\Entity\Person:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: id
     properties:
         id:
             - NotBlank: ~

@@ -102,6 +102,9 @@ class OpsController extends RESTBundleController
         //$this->checkAuthentication($paramFetcher);
         $em = $this->getDoctrine()->getManager();
         $ops = $em->getRepository('AIESECGermany\EntityBundle\Entity\OutgoerPreparation')->findOneById($opsID);
+        if (!$ops) {
+            throw new NotFoundHttpException();
+        }
         $form = $this->createForm(new OutgoerPreparationType(), $ops, [
             'method' => 'PATCH'
         ]);
