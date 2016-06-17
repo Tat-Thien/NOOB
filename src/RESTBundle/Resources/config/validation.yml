@@ -1,0 +1,30 @@
+AIESECGermany\EntityBundle\Entity\OutgoerPreparation:
+    properties:
+        lc:
+            - NotBlank: ~
+        startDate:
+            - NotBlank: ~
+        endDate:
+            - NotBlank: ~
+AIESECGermany\EntityBundle\Entity\Person:
+    properties:
+        id:
+            - NotBlank: ~
+        email:
+            - NotBlank: ~
+        opsOnline:
+            - NotBlank: ~
+AIESECGermany\EntityBundle\Entity\ExchangeAGB:
+    properties:
+        dateSigned:
+            - NotBlank: ~
+        agb:
+            - NotBlank: ~
+AIESECGermany\EntityBundle\Entity\WelcomeHomeSeminar:
+    properties:
+        lc:
+            - NotBlank: ~
+        startDate:
+            - NotBlank: ~
+        endDate:
+            - NotBlank: ~
