@@ -103,6 +103,9 @@ class WhsController extends RESTBundleController
         //$this->checkAuthentication($paramFetcher);
         $em = $this->getDoctrine()->getManager();
         $whs = $em->getRepository('AIESECGermany\EntityBundle\Entity\WelcomeHomeSeminar')->findOneById($whsID);
+        if (!$whs) {
+            throw new NotFoundHttpException();
+        }
         $form = $this->createForm(new WelcomeHomeSeminarType(), $whs, [
             'method' => 'PATCH'
         ]);
