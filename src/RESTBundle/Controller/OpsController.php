@@ -83,7 +83,6 @@ class OpsController extends RESTBundleController
             $em->flush();
             return $this->routeRedirectView('get_ops', array('opsID' => $ops->getId()));
         }
-        return (string) $form->getErrors(true);
         return array(
             'form' => $form
         );
