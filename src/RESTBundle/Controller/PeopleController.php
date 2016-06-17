@@ -430,6 +430,7 @@ class PeopleController extends RESTBundleController
             return $this->routeRedirectView('get_people_exchanges', array(
                 'personID' => $personID, 'exchangeID' => $exchange->getId()));
         }
+        return $form->getErrorsAsString();
         return array(
             'form' => $form
         );
@@ -473,7 +474,8 @@ class PeopleController extends RESTBundleController
      * @REST\Patch
      * @ApiDoc(
      *  resource=true,
-     *  description="Edit finance information for an exchange"
+     *  description="Edit finance information for an exchange",
+     *  input="RESTBundle\Form\FinanceInformationType"
      * )
      */
     public function patchExchangesFinanceinformationAction(Request $request, $personID, $exchangeID)
