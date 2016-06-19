@@ -27,7 +27,8 @@ class OpsController extends RESTBundleController
      * @REST\QueryParam(name="limit", requirements="\d+", default="10", description="Entities per page.")
      * @ApiDoc(
      *  resource=true,
-     *  description="Get all OPS"
+     *  description="Get all OPS",
+     *  output={"class"="RESTBundle\Form\OutgoerPreparationType", "collection"=true}
      * )
      */
     public function cgetAction(ParamFetcherInterface $paramFetcher)
@@ -49,7 +50,8 @@ class OpsController extends RESTBundleController
      * @REST\QueryParam(name="access_token", allowBlank=false)
      * @ApiDoc(
      *  resource=true,
-     *  description="Get OPS"
+     *  description="Get OPS",
+     *  output="RESTBundle\Form\OutgoerPreparationType"
      * )
      */
     public function getAction(ParamFetcherInterface $paramFetcher, $opsID)

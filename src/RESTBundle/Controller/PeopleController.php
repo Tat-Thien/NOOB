@@ -65,7 +65,8 @@ class PeopleController extends RESTBundleController
      * @REST\QueryParam(name="limit", requirements="\d+", default="10", description="Entities per page.")
      * @ApiDoc(
      *  resource=true,
-     *  description="Return all people"
+     *  description="Return all people",
+     *  output={"class"="RESTBundle\Form\PersonType", "collection"=true}
      * )
      */
     public function cgetAction(ParamFetcherInterface $paramFetcher)
@@ -83,7 +84,8 @@ class PeopleController extends RESTBundleController
      * @REST\QueryParam(name="access_token", allowBlank=false)
      * @ApiDoc(
      *  resource=true,
-     *  description="Return a person"
+     *  description="Return a person",
+     *  output="RESTBundle\Form\PersonType"
      * )
      */
     public function getAction(ParamFetcherInterface $paramFetcher, $personID)
@@ -176,7 +178,8 @@ class PeopleController extends RESTBundleController
      * @REST\QueryParam(name="access_token", allowBlank=false)
      * @ApiDoc(
      *  resource=true,
-     *  description="Get email history for a person"
+     *  description="Get email history for a person",
+     *  output={"class"="RESTBundle\Form\EmailHistoryType", "collection"=true}
      * )
      */
     public function getEmailhistoryAction(ParamFetcher $paramFetcher, $personID)
@@ -407,7 +410,8 @@ class PeopleController extends RESTBundleController
      * @REST\QueryParam(name="limit", requirements="\d+", default="10", description="Entities per page.")
      * @ApiDoc(
      *  resource=true,
-     *  description="Get all exchanges"
+     *  description="Get all exchanges",
+     *  output={"class"="RESTBundle\Form\ExchangeType", "collection"=true}
      * )
      */
     public function cgetExchangesAction(ParamFetcher $paramFetcher, $personID)
@@ -532,7 +536,8 @@ class PeopleController extends RESTBundleController
      * @REST\QueryParam(name="access_token", allowBlank=false)
      * @ApiDoc(
      *  resource=true,
-     *  description="Get finance information for an exchange"
+     *  description="Get finance information for an exchange",
+     *  output="RESTBundle\Form\FinanceInformationType"
      * )
      */
     public function getExchangesFinanceinformationAction(ParamFetcher $paramFetcher, $personID, $exchangeID)
@@ -556,7 +561,8 @@ class PeopleController extends RESTBundleController
      * @ApiDoc(
      *  resource=true,
      *  description="Edit finance information for an exchange",
-     *  input="RESTBundle\Form\FinanceInformationType"
+     *  input="RESTBundle\Form\FinanceInformationType",
+     *  output="RESTBundle\Form\FinanceInformationType"
      * )
      */
     public function patchExchangesFinanceinformationAction(Request $request, $personID, $exchangeID)
@@ -590,7 +596,8 @@ class PeopleController extends RESTBundleController
      * @REST\QueryParam(name="access_token", allowBlank=false)
      * @ApiDoc(
      *  resource=true,
-     *  description="Get AGB data"
+     *  description="Get AGB data",
+     *  output={"class"="RESTBundle\Form\ExchangeAGBType", "collection"=true}
      * )
      */
     public function getExchangesAgbAction(ParamFetcher $paramFetcher, $personID, $exchangeID)

@@ -21,7 +21,8 @@ class AgbController extends RESTBundleController
      * @REST\QueryParam(name="limit", requirements="\d+", default="10", description="Entities per page.")
      * @ApiDoc(
      *  resource=true,
-     *  description="Get all AGB data"
+     *  description="Get all AGB data",
+     *  output={"class"="RESTBundle\Form\AGBType", "collection"=true}
      * )
      */
     public function cgetAction(ParamFetcherInterface $paramFetcher)
@@ -38,7 +39,8 @@ class AgbController extends RESTBundleController
      * @REST\QueryParam(name="access_token", allowBlank=false)
      * @ApiDoc(
      *  resource=true,
-     *  description="Get AGB data"
+     *  description="Get AGB data",
+     *  output="RESTBundle\Form\AGBType"
      * )
      */
     public function getAction(ParamFetcherInterface $paramFetcher, $agbID)

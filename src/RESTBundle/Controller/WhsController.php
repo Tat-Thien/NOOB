@@ -28,7 +28,8 @@ class WhsController extends RESTBundleController
      * @REST\QueryParam(name="limit", requirements="\d+", default="10", description="Entities per page.")
      * @ApiDoc(
      *  resource=true,
-     *  description="Get all WHS"
+     *  description="Get all WHS",
+     *  output={"class"="RESTBundle\Form\WelcomeHomeSeminarType", "collection"=true}
      * )
      */
     public function cgetAction(ParamFetcherInterface $paramFetcher)
@@ -50,7 +51,8 @@ class WhsController extends RESTBundleController
      * @REST\QueryParam(name="access_token", allowBlank=false)
      * @ApiDoc(
      *  resource=true,
-     *  description="Get WHS"
+     *  description="Get WHS",
+     *  output="RESTBundle\Form\WelcomeHomeSeminarType"
      * )
      */
     public function getAction(ParamFetcherInterface $paramFetcher, $whsID)
