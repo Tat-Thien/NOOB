@@ -30,6 +30,7 @@ class PersonType extends AbstractType
             ->add('outgoerPreparation', EntityType::class, array(
                 'class' => 'AIESECGermanyEntityBundle:OutgoerPreparation'
             ))
+            ->add('rejected', CheckboxType::class)
         ;
     }
     
