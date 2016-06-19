@@ -26,7 +26,7 @@ class AGBType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'EntityBundle\Entity\AGB',
+            'data_class' => 'AIESECGermany\EntityBundle\Entity\AGB',
             'csrf_protection' => false
         ));
     }
