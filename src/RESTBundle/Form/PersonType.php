@@ -31,6 +31,7 @@ class PersonType extends AbstractType
                 'class' => 'AIESECGermanyEntityBundle:OutgoerPreparation'
             ))
             ->add('rejected', CheckboxType::class)
+            ->add('gtUp', CheckboxType::class)
         ;
     }
     
