@@ -1,4 +1,6 @@
 AIESECGermany\EntityBundle\Entity\OutgoerPreparation:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: salesforceID
     properties:
         lc:
             - NotBlank: ~
@@ -9,6 +11,7 @@ AIESECGermany\EntityBundle\Entity\OutgoerPreparation:
 AIESECGermany\EntityBundle\Entity\Person:
     constraints:
         - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: id
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: email
     properties:
         id:
             - NotBlank: ~
@@ -16,6 +19,10 @@ AIESECGermany\EntityBundle\Entity\Person:
             - NotBlank: ~
         opsOnline:
             - NotNull: ~
+AIESECGermany\EntityBundle\Entity\Exchange:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: salesforceID
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: applicationID
 AIESECGermany\EntityBundle\Entity\ExchangeAGB:
     properties:
         dateSigned:
@@ -23,6 +30,8 @@ AIESECGermany\EntityBundle\Entity\ExchangeAGB:
         agb:
             - NotBlank: ~
 AIESECGermany\EntityBundle\Entity\WelcomeHomeSeminar:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: salesforceID
     properties:
         lc:
             - NotBlank: ~
