@@ -2,3 +2,34 @@ AIESECGermany\EntityBundle\Entity\Person:
     properties:
         exchanges:
             exclude: true
+        outgoerPreparation:
+            exclude: true
+        emailHistory:
+            exclude: true
+        bankAccount:
+            exclude: true
+    relations:
+        -
+            rel: outgoerPreparation
+            href:
+                route: get_ops
+                parameters:
+                    opsID: expr(object.getOutgoerPreparation().getId())
+            exclusion:
+                exclude_if: expr(object.getOutgoerPreparation() === null)
+        -
+            rel: emailHistory
+            href:
+                route: get_people_emailhistory
+                parameters:
+                    personID: expr(object.getId())
+            exclusion:
+                exclude_if: expr(object.getEmailHistory() === null)
+        -
+            rel: bankAccount
+            href:
+                route: get_people_bankaccount
+                parameters:
+                    personID: expr(object.getId())
+            exclusion:
+                exclude_if: expr(object.getBankAccount() === null)
