@@ -238,6 +238,9 @@ class PeopleController extends RESTBundleController
             throw new NotFoundHttpException();
         }
         $emailHistory = $person->getEmailHistory();
+        if (!$emailHistory) {
+            throw new NotFoundHttpException();
+        }
         $form = $this->createForm(new EmailHistoryType(), $emailHistory, [
             'method' => 'PATCH'
         ]);
