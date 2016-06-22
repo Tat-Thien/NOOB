@@ -27,6 +27,7 @@ class ExchangeType extends AbstractType
                 'class' => 'AIESECGermanyEntityBundle:WelcomeHomeSeminar'
             ))
             ->add('internshipNumber', IntegerType::class)
+            ->add('reintegrationActivity')
         ;
     }
     
