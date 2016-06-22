@@ -33,3 +33,4 @@ AIESECGermany\EntityBundle\Entity\Person:
                     personID: expr(object.getId())
             exclusion:
                 exclude_if: expr(object.getBankAccount() === null)
+    relation_providers: [ 'RESTBundle\Controller\PersonExchangeRelationProvider::getRelations']
