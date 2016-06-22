@@ -15,8 +15,11 @@ class AGBType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('dateSigned', 'date')
-            ->add('version', 'date')
+            ->add('implementationDate',  'date', array(
+                'widget' => 'single_text'
+            ))
+            ->add('pdfUrl')
+            ->add('text')
         ;
     }
     
