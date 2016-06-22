@@ -26,6 +26,7 @@ class ExchangeType extends AbstractType
             ->add('welcomeHomeSeminar', EntityType::class, array(
                 'class' => 'AIESECGermanyEntityBundle:WelcomeHomeSeminar'
             ))
+            ->add('internshipNumber', IntegerType::class)
         ;
     }
     
