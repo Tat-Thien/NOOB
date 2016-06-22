@@ -24,6 +24,9 @@ AIESECGermany\EntityBundle\Entity\Exchange:
         - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: salesforceID
         - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: applicationID
 AIESECGermany\EntityBundle\Entity\ExchangeAGB:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: exchange
+AIESECGermany\EntityBundle\Entity\ExchangeAGB:
     properties:
         dateSigned:
             - NotBlank: ~
