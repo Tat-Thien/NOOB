@@ -1,12 +1,16 @@
 <?php
 
 namespace RESTBundle\Controller;
+use AIESECGermany\EntityBundle\Entity\AGB;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Request\ParamFetcherInterface;
+use RESTBundle\Form\AGBType;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use FOS\RestBundle\Controller\Annotations as REST;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 
 /**
@@ -55,7 +59,57 @@ class AgbController extends RESTBundleController
         }
     }
 
-    public function postAction($agbID)
+    /**
+     * @ApiDoc(
+     *  resource=true,
+     *  description="Create an AGB",
+     *  input="RESTBundle\Form\AGBType",
+     *  output="RESTBundle\Form\AGBType"
+     * )
+     */
+    public function postAction(Request $request)
     {
+        $agb = new AGB();
+        $form = $this->createForm(new AGBType(), $agb);
+        $form->submit($request);
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($agb);
+            $em->flush();
+            return $this->routeRedirectView('get_agb', array('agbID' => $agb->getId()));
+        }
+        return array(
+            'form' => $form
+        );
+    }
+
+    /**
+     * @REST\Patch
+     * @ApiDoc(
+     *  resource=true,
+     *  description="Edit an AGB",
+     *  input="RESTBundle\Form\AGBType",
+     *  output="RESTBundle\Form\AGBType"
+     * )
+     */
+    public function patchAction(Request $request, $agbID)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $agb = $em->getRepository('AIESECGermany\EntityBundle\Entity\AGB')->findOneById($agbID);
+        if (!$agb) {
+            throw new NotFoundHttpException();
+        }
+        $form = $this->createForm(new AGBType(), $agb, [
+            'method' => 'PATCH'
+        ]);
+        $form->handleRequest($request);
+        if ($form->isValid()) {
+            $em->merge($agb);
+            $em->flush();
+            return $this->routeRedirectView('get_agb', array('personID' => $agbID));
+        }
+        return array(
+            'form' => $form
+        );
     }
 }
