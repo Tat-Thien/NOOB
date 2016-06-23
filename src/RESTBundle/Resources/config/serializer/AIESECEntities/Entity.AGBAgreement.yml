@@ -1,4 +1,4 @@
-AIESECGermany\EntityBundle\Entity\ExchangeAGB:
+AIESECGermany\EntityBundle\Entity\AGBAgreement:
     relations:
         -
             rel: agb
@@ -6,6 +6,12 @@ AIESECGermany\EntityBundle\Entity\ExchangeAGB:
                 route: get_agb
                 parameters:
                     agbID: expr(object.getAgb().getId())
+        -
+            rel: exchange
+            href:
+                route: get_peopleexchanges
+                parameters:
+                    agbID: expr(object.getExchange().getId())
     properties:
         agb:
             exclude: true

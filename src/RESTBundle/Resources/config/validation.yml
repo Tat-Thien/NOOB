@@ -8,10 +8,12 @@ AIESECGermany\EntityBundle\Entity\OutgoerPreparation:
             - NotBlank: ~
         endDate:
             - NotBlank: ~
+AIESECGermany\EntityBundle\Entity\OutgoerPreparationParticipation:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: person
 AIESECGermany\EntityBundle\Entity\Person:
     constraints:
         - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: id
-        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: email
     properties:
         id:
             - NotBlank: ~

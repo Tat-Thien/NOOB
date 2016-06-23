@@ -2,7 +2,7 @@ AIESECGermany\EntityBundle\Entity\Exchange:
     properties:
         person:
             exclude: true
-        exchangeAgb:
+        agbAgreement:
             exclude: true
         bankAccount:
             exclude: true
@@ -15,6 +15,15 @@ AIESECGermany\EntityBundle\Entity\Exchange:
     relations:
         -
             rel: financeInformation
+            href:
+                route: get_people_exchanges_financeinformation
+                parameters:
+                    personID: expr(object.getPerson().getId())
+                    exchangeID: expr(object.getId())
+            exclusion:
+                exclude_if: expr(object.getFinanceInformation() === null)
+        -
+            rel: agbAgreement
             href:
                 route: get_people_exchanges_financeinformation
                 parameters:

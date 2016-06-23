@@ -6,9 +6,17 @@ agbs:
     type:     rest
     resource: RESTBundle:Agb
 
-ops:
+agb_agreement:
     type:     rest
-    resource: RESTBundle:Ops
+    resource: RESTBundle:AgbAgreement
+
+outgoer_preparation:
+    type:     rest
+    resource: RESTBundle:OutgoerPreparation
+
+outgoer_preparation_participation:
+    type:     rest
+    resource: RESTBundle:OutgoerPreparationParticipation
 
 reintegration_activity:
     type:     rest
