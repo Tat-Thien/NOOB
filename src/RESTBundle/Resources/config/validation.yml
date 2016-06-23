@@ -25,14 +25,21 @@ AIESECGermany\EntityBundle\Entity\Exchange:
     constraints:
         - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: salesforceID
         - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: applicationID
-AIESECGermany\EntityBundle\Entity\ExchangeAGB:
+AIESECGermany\EntityBundle\Entity\AGB:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: implementationDate
+    properties:
+        implementationDate:
+            - NotBlank: ~
+AIESECGermany\EntityBundle\Entity\AGBAgreement:
     constraints:
         - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: exchange
-AIESECGermany\EntityBundle\Entity\ExchangeAGB:
     properties:
         dateSigned:
             - NotBlank: ~
         agb:
+            - NotBlank: ~
+        exchange:
             - NotBlank: ~
 AIESECGermany\EntityBundle\Entity\StandardReintegrationActivity:
     constraints:
