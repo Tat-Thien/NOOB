@@ -1,0 +1,24 @@
+AIESECGermany\EntityBundle\Entity\ReintegrationActivityParticipation:
+    relations:
+        -
+            rel: exchange
+            href:
+                route: get_people_exchanges
+                parameters:
+                    personID: expr(object.getExchange().getPerson().getId())
+                    exchangeID: expr(object.getExchange().getId())
+            exclusion:
+                exclude_if: expr(object.getExchange() === null)
+        -
+            rel: reintegrationActivity
+            href:
+                route: get_reintegrationactivity
+                parameters:
+                    reintegrationActivityID: expr(object.getReintegrationActivity().getId())
+            exclusion:
+                exclude_if: expr(object.getReintegrationActivity() === null)
+    properties:
+        exchange:
+            exclude: true
+        reintegrationActivity:
+            exclude: true

@@ -10,6 +10,8 @@ AIESECGermany\EntityBundle\Entity\Exchange:
             exclude: true
         financeInformation:
             exclude: true
+        reintegrationActivityParticipations:
+            exclude: true
     relations:
         -
             rel: financeInformation
@@ -20,3 +22,4 @@ AIESECGermany\EntityBundle\Entity\Exchange:
                     exchangeID: expr(object.getId())
             exclusion:
                 exclude_if: expr(object.getFinanceInformation() === null)
+    relation_providers: [ 'RESTBundle\Controller\ExchangeReintegrationActivityParticipationRelationProvider::getRelations']

@@ -28,6 +28,7 @@ class ReintegrationActivityController extends RESTBundleController
 
     /**
      * @REST\QueryParam(name="salesforceID", description="Salesforce ID")
+     * @REST\QueryParam(name="name", description="name")
      * @REST\QueryParam(name="access_token", allowBlank=false)
      * @REST\QueryParam(name="page", requirements="\d+", default="1", description="Page of the overview.")
      * @REST\QueryParam(name="limit", requirements="\d+", default="10", description="Entities per page.")
@@ -42,10 +43,18 @@ class ReintegrationActivityController extends RESTBundleController
         $this->checkAuthentication($paramFetcher);
         $em = $this->getDoctrine()->getManager();
         $qb = $em->createQueryBuilder();
-        $qb->select('r')->from('AIESECGermany\EntityBundle\Entity\ReintegrationActivity', 'r');
+
         $salesforceID = $paramFetcher->get('salesforceID');
+        $name = $paramFetcher->get('name');
         if ($salesforceID) {
+            $qb->select('r')->from('AIESECGermany\EntityBundle\Entity\WelcomeHomeSeminar', 'r');
             $qb->andWhere('r.salesforceID LIKE :sfID')->setParameter('sfID', $salesforceID . '%');
+        }
+        else if ($name) {
+            $qb->select('r')->from('AIESECGermany\EntityBundle\Entity\StandardReintegrationActivity', 'r');
+            $qb->andWhere('r.name = :name')->setParameter('name', $name);
+        } else {
+            $qb->select('r')->from('AIESECGermany\EntityBundle\Entity\ReintegrationActivity', 'r');
         }
         $query = $qb->getQuery();
         $pagination = $this->createPaginationObject($paramFetcher, $query);

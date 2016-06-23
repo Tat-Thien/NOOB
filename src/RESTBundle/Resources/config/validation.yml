@@ -32,6 +32,9 @@ AIESECGermany\EntityBundle\Entity\ExchangeAGB:
             - NotBlank: ~
         agb:
             - NotBlank: ~
+AIESECGermany\EntityBundle\Entity\StandardReintegrationActivity:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: name
 AIESECGermany\EntityBundle\Entity\WelcomeHomeSeminar:
     constraints:
         - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: salesforceID
