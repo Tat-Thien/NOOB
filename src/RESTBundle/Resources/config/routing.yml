@@ -10,9 +10,9 @@ ops:
     type:     rest
     resource: RESTBundle:Ops
 
-whs:
+reintegration_activity:
     type:     rest
-    resource: RESTBundle:Whs
+    resource: RESTBundle:ReintegrationActivity
 
 lead_assignment:
     type:     rest

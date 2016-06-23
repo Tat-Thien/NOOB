@@ -1,4 +1,0 @@
-AIESECGermany\EntityBundle\Entity\WelcomeHomeSeminar:
-    properties:
-        exchange:
-            exclude: true

@@ -7,7 +7,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class WelcomeHomeSeminarType extends AbstractType
+class ReintegrationActivityType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -16,27 +16,34 @@ class WelcomeHomeSeminarType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('type', TextType::class, array(
+            ->add('type')
+            ->add('name', TextType::class, array(
                 'mapped' => false
             ))
-            ->add('lc')
+            ->add('lc', TextType::class, array(
+                'mapped' => false
+            ))
             ->add('startDate', 'date', array(
+                'mapped' => false,
                 'widget' => 'single_text'
             ))
             ->add('endDate', 'date', array(
+                'mapped' => false,
                 'widget' => 'single_text'
             ))
-            ->add('salesforceID')
+            ->add('salesforceID', TextType::class, array(
+                'mapped' => false
+            ))
         ;
     }
-    
+
     /**
      * @param OptionsResolver $resolver
      */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AIESECGermany\EntityBundle\Entity\WelcomeHomeSeminar',
+            'data_class' => 'RESTBundle\Entity\ReintegrationActivity',
             'csrf_protection' => false
         ));
     }
