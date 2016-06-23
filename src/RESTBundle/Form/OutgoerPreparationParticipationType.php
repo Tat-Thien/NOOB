@@ -5,12 +5,11 @@ namespace RESTBundle\Form;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class PersonType extends AbstractType
+class OutgoerPreparationParticipationType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -19,32 +18,29 @@ class PersonType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('id', IntegerType::class, array(
-                'required' => true
+            ->add('confirmed', CheckboxType::class)
+            ->add('person', EntityType::class, array(
+                'class' => 'AIESECGermanyEntityBundle:Person'
             ))
-            ->add('email', EmailType::class, array(
-                'required' => true
+            ->add('outgoerPreparation', EntityType::class, array(
+                'class' => 'AIESECGermanyEntityBundle:OutgoerPreparation'
             ))
-            ->add('opsOnline', CheckboxType::class)
-            ->add('leadSource')
-            ->add('rejected', CheckboxType::class)
-            ->add('gtUp', CheckboxType::class)
         ;
     }
-    
+
     /**
      * @param OptionsResolver $resolver
      */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AIESECGermany\EntityBundle\Entity\Person',
+            'data_class' => 'AIESECGermany\EntityBundle\Entity\OutgoerPreparationParticipation',
             'csrf_protection' => false
         ));
     }
 
     public function getName()
     {
-        return "person";
+        return "outgoerPreparationParticipation";
     }
 }

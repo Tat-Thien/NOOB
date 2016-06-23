@@ -9,7 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ExchangeAGBType extends AbstractType
+class AGBAgreementType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -24,6 +24,9 @@ class ExchangeAGBType extends AbstractType
             ->add('agb', EntityType::class, array(
                 'class' => 'AIESECGermanyEntityBundle:AGB'
             ))
+            ->add('exchange', EntityType::class, array(
+                'class' => 'AIESECGermanyEntityBundle:Exchange'
+            ))
         ;
     }
     
@@ -33,13 +36,13 @@ class ExchangeAGBType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AIESECGermany\EntityBundle\Entity\ExchangeAGB',
+            'data_class' => 'AIESECGermany\EntityBundle\Entity\AGBAgreement',
             'csrf_protection' => false
         ));
     }
 
     public function getName()
     {
-        return "exchangeAgb";
+        return "agbAgreement";
     }
 }

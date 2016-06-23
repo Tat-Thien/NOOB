@@ -2,7 +2,7 @@ AIESECGermany\EntityBundle\Entity\Person:
     properties:
         exchanges:
             exclude: true
-        outgoerPreparation:
+        outgoerPreparationParticipation:
             exclude: true
         emailHistory:
             exclude: true
@@ -10,13 +10,13 @@ AIESECGermany\EntityBundle\Entity\Person:
             exclude: true
     relations:
         -
-            rel: outgoerPreparation
+            rel: outgoerPreparationParticipation
             href:
-                route: get_ops
+                route: get_outgoerpreparationparticipation
                 parameters:
-                    opsID: expr(object.getOutgoerPreparation().getId())
+                    opsID: expr(object.getOutgoerPreparationParticipation().getId())
             exclusion:
-                exclude_if: expr(object.getOutgoerPreparation() === null)
+                exclude_if: expr(object.getOutgoerPreparationParticipation() === null)
         -
             rel: emailHistory
             href:

@@ -15,9 +15,9 @@ use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
- * @REST\RouteResource("Ops")
+ * @REST\RouteResource("OutgoerPreparation")
  */
-class OpsController extends RESTBundleController
+class OutgoerPreparationController extends RESTBundleController
 {
 
     /**
@@ -27,7 +27,7 @@ class OpsController extends RESTBundleController
      * @REST\QueryParam(name="limit", requirements="\d+", default="10", description="Entities per page.")
      * @ApiDoc(
      *  resource=true,
-     *  description="Get all OPS",
+     *  description="Get all outgoer preparations",
      *  output={"class"="RESTBundle\Form\OutgoerPreparationType", "collection"=true}
      * )
      */
@@ -50,15 +50,15 @@ class OpsController extends RESTBundleController
      * @REST\QueryParam(name="access_token", allowBlank=false)
      * @ApiDoc(
      *  resource=true,
-     *  description="Get OPS",
+     *  description="Get outgoer preparation",
      *  output="RESTBundle\Form\OutgoerPreparationType"
      * )
      */
-    public function getAction(ParamFetcherInterface $paramFetcher, $opsID)
+    public function getAction(ParamFetcherInterface $paramFetcher, $outgoerPreparationID)
     {
         $this->checkAuthentication($paramFetcher);
         $em = $this->getDoctrine()->getManager();
-        $entity = $em->getRepository('AIESECGermany\EntityBundle\Entity\OutgoerPreparation')->findOneById($opsID);
+        $entity = $em->getRepository('AIESECGermany\EntityBundle\Entity\OutgoerPreparation')->findOneById($outgoerPreparationID);
         if ($entity) {
             return $entity;
         } else {
@@ -69,7 +69,7 @@ class OpsController extends RESTBundleController
     /**
      * @ApiDoc(
      *  resource=true,
-     *  description="Create OPS",
+     *  description="Create outgoer preparation",
      *  input="RESTBundle\Form\OutgoerPreparationType",
      *  output="RESTBundle\Form\OutgoerPreparationType"
      * )
@@ -83,7 +83,7 @@ class OpsController extends RESTBundleController
             $em = $this->getDoctrine()->getManager();
             $em->persist($ops);
             $em->flush();
-            return $this->routeRedirectView('get_ops', array('opsID' => $ops->getId()));
+            return $this->routeRedirectView('get_outgoerpreparation', array('outgoerPreparationID' => $ops->getId()));
         }
         return array(
             'form' => $form
@@ -93,17 +93,17 @@ class OpsController extends RESTBundleController
     /**
      * @ApiDoc(
      *  resource=true,
-     *  description="Edit an OPS",
+     *  description="Edit an outgoer preparations",
      *  input="RESTBundle\Form\OutgoerPreparationType",
      *  output="RESTBundle\Form\OutgoerPreparationType"
      * )
      * @REST\Patch
      */
-    public function patchAction(Request $request, $opsID)
+    public function patchAction(Request $request, $outgoerPreparationID)
     {
         //$this->checkAuthentication($paramFetcher);
         $em = $this->getDoctrine()->getManager();
-        $ops = $em->getRepository('AIESECGermany\EntityBundle\Entity\OutgoerPreparation')->findOneById($opsID);
+        $ops = $em->getRepository('AIESECGermany\EntityBundle\Entity\OutgoerPreparation')->findOneById($outgoerPreparationID);
         if (!$ops) {
             throw new NotFoundHttpException();
         }
@@ -114,7 +114,7 @@ class OpsController extends RESTBundleController
         if ($form->isValid()) {
             $em->merge($ops);
             $em->flush();
-            return $this->routeRedirectView('get_ops', array('opsID' => $opsID));
+            return $this->routeRedirectView('get_outgoerpreparation', array('outgoerPreparationID' => $outgoerPreparationID));
         }
         return array(
             'form' => $form
@@ -124,13 +124,13 @@ class OpsController extends RESTBundleController
     /**
      * @ApiDoc(
      *  resource=true,
-     *  description="Delete an OPS"
+     *  description="Delete an outgoer preparations"
      * )
      */
-    public function deleteAction($opsID)
+    public function deleteAction($outgoerPreparationID)
     {
         $em = $this->getDoctrine()->getManager();
-        $ops = $em->getRepository('AIESECGermany\EntityBundle\Entity\OutgoerPreparation')->findOneById($opsID);
+        $ops = $em->getRepository('AIESECGermany\EntityBundle\Entity\OutgoerPreparation')->findOneById($outgoerPreparationID);
         if (!$ops) {
             throw new NotFoundHttpException();
         }
