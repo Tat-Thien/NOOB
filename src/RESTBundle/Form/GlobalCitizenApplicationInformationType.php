@@ -1,0 +1,28 @@
+<?php
+
+namespace RESTBundle\Form;
+
+use AIESECGermany\EntityBundle\Entity\GlobalCitizenApplicationInformation;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\FormBuilderInterface;
+
+class GlobalCitizenApplicationInformationType extends AbstractRESTFormType
+{
+
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+        $builder
+            ->add('type', TextType::class, array(
+                'mapped' => false
+            ))
+            ->add('fieldOfStudy')
+            ->add('howHeard')
+            ->add('comments')
+        ;
+    }
+
+    protected function getDataClass()
+    {
+        return GlobalCitizenApplicationInformation::class;
+    }
+}

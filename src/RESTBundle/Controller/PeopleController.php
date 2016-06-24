@@ -8,20 +8,28 @@ use AIESECGermany\EntityBundle\Entity\EmailHistory;
 use AIESECGermany\EntityBundle\Entity\Exchange;
 use AIESECGermany\EntityBundle\Entity\ExchangeAGB;
 use AIESECGermany\EntityBundle\Entity\FinanceInformation;
+use AIESECGermany\EntityBundle\Entity\GlobalCitizenApplicationInformation;
+use AIESECGermany\EntityBundle\Entity\GlobalTalentApplicationInformation;
 use AIESECGermany\EntityBundle\Entity\Person;
 use AIESECGermany\EntityBundle\Entity\StandardsAndSatisfaction;
+use AIESECGermany\EntityBundle\Entity\YouthTalentApplicationInformation;
 use Doctrine\ORM\Query;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Request\ParamFetcher;
 use FOS\RestBundle\Request\ParamFetcherInterface;
+use RESTBundle\Entity\ApplicationInformation;
 use RESTBundle\Form\AGBType;
+use RESTBundle\Form\ApplicationInformationType;
 use RESTBundle\Form\BankAccountType;
 use RESTBundle\Form\EmailHistoryType;
 use RESTBundle\Form\ExchangeType;
 use FOS\RestBundle\Controller\Annotations as REST;
 use RESTBundle\Form\FinanceInformationType;
+use RESTBundle\Form\GlobalCitizenApplicationInformationType;
+use RESTBundle\Form\GlobalTalentApplicationInformationType;
 use RESTBundle\Form\PersonType;
 use RESTBundle\Form\StandardsAndSatisfactionType;
+use RESTBundle\Form\YouthTalentApplicationInformationType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
@@ -277,6 +285,121 @@ class PeopleController extends RESTBundleController
         $em->remove($emailHistory);
         $em->flush();
         return $this->view(null, 204);
+    }
+
+    /**
+     * @REST\Get("/people/{personID}/applicationInformation")
+     * @REST\QueryParam(name="access_token", allowBlank=false)
+     * @ApiDoc(
+     *  resource=true,
+     *  description="Get application information for a person",
+     *  output="RESTBundle\Form\ApplicationInformationType"
+     * )
+     */
+    public function getApplicationInformationAction(ParamFetcher $paramFetcher, $personID)
+    {
+        $this->checkAuthentication($paramFetcher);
+        $em = $this->getDoctrine()->getManager();
+        $person = $em->getRepository('AIESECGermany\EntityBundle\Entity\Person')->findOneById($personID);
+        if (!$person) {
+            throw new NotFoundHttpException();
+        }
+        $applicationInformation = $person->getApplicationInformation();
+        if (!$applicationInformation) {
+            throw new NotFoundHttpException();
+        }
+        return $applicationInformation;
+    }
+
+    /**
+     * @REST\Post("/people/{personID}/applicationInformation")
+     * @ApiDoc(
+     *  resource=true,
+     *  description="Create application information",
+     *  input="RESTBundle\Form\ApplicationInformationType",
+     *  output="RESTBundle\Form\ApplicationInformationType"
+     * )
+     */
+    public function postApplicationInformationAction(Request $request, $personID)
+    {
+        $applicationInformation = new ApplicationInformation();
+        $form = $this->createForm(new ApplicationInformationType(), $applicationInformation);
+        $form->submit($request);
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $person = $em->getRepository('AIESECGermany\EntityBundle\Entity\Person')->findOneById($personID);
+            if (!$person) {
+                throw new HttpException(404);
+            }
+            $type = $applicationInformation->getType();
+            if ($type != 'globalCitizenApplicationInformation' &&
+                $type != 'globalTalentApplicationInformation' &&
+                $type != 'youthTalentApplicationInformation') {
+                throw new BadRequestHttpException();
+            }
+            $informationEntityMapper =
+                ['globalCitizenApplicationInformation' => new GlobalCitizenApplicationInformation(),
+                'globalTalentApplicationInformation' => new GlobalTalentApplicationInformation(),
+                'youthTalentApplicationInformation' => new YouthTalentApplicationInformation()];
+            $informationTypeMapper =
+                ['globalCitizenApplicationInformation' => new GlobalCitizenApplicationInformationType(),
+                    'globalTalentApplicationInformation' => new GlobalTalentApplicationInformationType(),
+                    'youthTalentApplicationInformation' => new YouthTalentApplicationInformationType()];
+            $applicationInformation = $informationEntityMapper[$type];
+            $applicationInformationType = $informationTypeMapper[$type];
+            $form = $this->createForm($applicationInformationType, $applicationInformation);
+            $form->submit($request);
+            if ($form->isValid()) {
+                $person->setApplicationInformation($applicationInformation);
+                $em->persist($person);
+                $em->persist($applicationInformation);
+                $em->flush();
+                return $this->routeRedirectView('get_people_application_information', array('personID' => $personID));
+            }
+        }
+        return array(
+            'form' => $form
+        );
+    }
+
+    /**
+     * @REST\Patch("/people/{personID}/applicationInformation")
+     * @ApiDoc(
+     *  resource=true,
+     *  description="Edit application information for a person",
+     *  input="RESTBundle\Form\ApplicationInformationType",
+     *  output="RESTBundle\Form\ApplicationInformationType"
+     * )
+     */
+    public function patchApplicationInformationAction(Request $request, $personID)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $person = $em->getRepository('AIESECGermany\EntityBundle\Entity\Person')->findOneById($personID);
+        if (!$person) {
+            throw new NotFoundHttpException();
+        }
+        $applicationInformation = $person->getApplicationInformation();
+        if (!$applicationInformation) {
+            throw new NotFoundHttpException();
+        }
+        $informationTypeMapper =
+            [GlobalCitizenApplicationInformation::class => new GlobalCitizenApplicationInformationType(),
+                GlobalTalentApplicationInformation::class => new GlobalTalentApplicationInformationType(),
+                YouthTalentApplicationInformation::class => new YouthTalentApplicationInformationType()];
+        $class = get_class($applicationInformation);
+        $informationType = $informationTypeMapper[$class];
+        $form = $this->createForm($informationType, $applicationInformation, [
+            'method' => 'PATCH'
+        ]);
+        $form->handleRequest($request);
+        if ($form->isValid()) {
+            $em->merge($applicationInformation);
+            $em->flush();
+            return $this->routeRedirectView('get_people_application_information', array('personID' => $personID));
+        }
+        return array(
+            'form' => $form
+        );
     }
 
     /**
