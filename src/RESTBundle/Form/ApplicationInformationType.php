@@ -4,6 +4,7 @@ namespace RESTBundle\Form;
 
 use RESTBundle\Entity\ApplicationInformation;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -14,7 +15,12 @@ class ApplicationInformationType extends AbstractRESTFormType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('type')
+            ->add('type', ChoiceType::class, array(
+                'choices'  => [
+                    'globalCitizenApplicationInformation',
+                    'globalTalentApplicationInformation',
+                    'youthTalentApplicationInformation'],
+                'choices_as_values' => true))
             ->add('fieldOfStudy', TextType::class, array(
                 'mapped' => false
             ))
