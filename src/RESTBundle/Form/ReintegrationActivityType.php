@@ -2,7 +2,7 @@
 
 namespace RESTBundle\Form;
 
-use AIESECGermany\EntityBundle\Entity\ReintegrationActivity;
+use RESTBundle\Entity\ReintegrationActivity;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 
