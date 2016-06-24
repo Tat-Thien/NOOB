@@ -27,6 +27,7 @@ class PersonType extends AbstractRESTFormType
             ->add('leadSource')
             ->add('rejected', CheckboxType::class)
             ->add('gtUp', CheckboxType::class)
+            ->add('newsletterPermitted', CheckboxType::class)
         ;
     }
 
