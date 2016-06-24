@@ -19,6 +19,7 @@ class AgbAgreementController extends RESTBundleController
 {
 
     /**
+     * @REST\Get("/agbAgreements")
      * @REST\QueryParam(name="agb", description="AGB ID")
      * @REST\QueryParam(name="exchange", description="Exchange ID")
      * @REST\QueryParam(name="access_token", allowBlank=false)
@@ -51,6 +52,7 @@ class AgbAgreementController extends RESTBundleController
     }
 
     /**
+     * @REST\Get("/agbAgreements/{agbAgreementID}")
      * @REST\QueryParam(name="access_token", allowBlank=false)
      * @ApiDoc(
      *  resource=true,
@@ -70,6 +72,7 @@ class AgbAgreementController extends RESTBundleController
     }
 
     /**
+     * @REST\Post("/agbAgreements")
      * @ApiDoc(
      *  resource=true,
      *  description="Sign AGBs",

@@ -29,6 +29,7 @@ class OutgoerPreparationParticipationController extends RESTBundleController
 {
 
     /**
+     * @REST\Get("/outgoerPreparationParticipations")
      * @REST\QueryParam(name="outgoerPreparation", description="Outgoer Preparation ID")
      * @REST\QueryParam(name="person", description="Person ID")
      * @REST\QueryParam(name="access_token", allowBlank=false)
@@ -60,6 +61,7 @@ class OutgoerPreparationParticipationController extends RESTBundleController
     }
 
     /**
+     * @REST\Get("/outgoerPreparationParticipation/{participationID}")
      * @REST\QueryParam(name="access_token", allowBlank=false)
      * @ApiDoc(
      *  resource=true,
@@ -80,6 +82,7 @@ class OutgoerPreparationParticipationController extends RESTBundleController
     }
 
     /**
+     * @REST\Post("/outgoerPreparationParticipations")
      * @ApiDoc(
      *  resource=true,
      *  description="Create a outgoer preparation participation",

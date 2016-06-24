@@ -27,6 +27,7 @@ class ReintegrationActivityController extends RESTBundleController
 {
 
     /**
+     * @REST\Get("/reintegrationActivities")
      * @REST\QueryParam(name="salesforceID", description="Salesforce ID")
      * @REST\QueryParam(name="name", description="name")
      * @REST\QueryParam(name="access_token", allowBlank=false)
@@ -62,6 +63,7 @@ class ReintegrationActivityController extends RESTBundleController
     }
 
     /**
+     * @REST\Get("/reintegrationActivities/{reintegrationActivityID}")
      * @REST\QueryParam(name="access_token", allowBlank=false)
      * @ApiDoc(
      *  resource=true,
@@ -82,6 +84,7 @@ class ReintegrationActivityController extends RESTBundleController
     }
 
     /**
+     * @REST\Post("/reintegrationActivities")
      * @ApiDoc(
      *  resource=true,
      *  description="Create WHS",
@@ -117,13 +120,13 @@ class ReintegrationActivityController extends RESTBundleController
     }
 
     /**
+     * @REST\Patch("/reintegrationActivities/{reintegrationActivityID}")
      * @ApiDoc(
      *  resource=true,
      *  description="Edit a WHS",
      *  input="RESTBundle\Form\ReintegrationActivityType",
      *  output="RESTBundle\Form\ReintegrationActivityType"
      * )
-     * @REST\Patch
      */
     public function patchAction(Request $request, $reintegrationActivityID)
     {
@@ -150,6 +153,7 @@ class ReintegrationActivityController extends RESTBundleController
     }
 
     /**
+     * @REST\Delete("/reintegrationActivities/{reintegrationActivityID}")
      * @ApiDoc(
      *  resource=true,
      *  description="Delete a reintegration activity"

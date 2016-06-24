@@ -29,6 +29,7 @@ class ReintegrationActivityParticipationController extends RESTBundleController
 {
 
     /**
+     * @REST\Get("/reintegrationActivityParticipations")
      * @REST\QueryParam(name="reintegrationActivity", description="Reintegration activity ID")
      * @REST\QueryParam(name="exchange", description="Exchange ID")
      * @REST\QueryParam(name="access_token", allowBlank=false)
@@ -60,6 +61,7 @@ class ReintegrationActivityParticipationController extends RESTBundleController
     }
 
     /**
+     * @REST\Get("/reintegrationActivityParticipations/{participationID}")
      * @REST\QueryParam(name="access_token", allowBlank=false)
      * @ApiDoc(
      *  resource=true,
@@ -80,6 +82,7 @@ class ReintegrationActivityParticipationController extends RESTBundleController
     }
 
     /**
+     * @REST\Post("/reintegrationActivityParticipations")
      * @ApiDoc(
      *  resource=true,
      *  description="Create a reintegration activity participation",

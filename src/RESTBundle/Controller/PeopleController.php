@@ -174,6 +174,7 @@ class PeopleController extends RESTBundleController
     }
 
     /**
+     * @REST\Get("/people/{personID}/emailHistory")
      * @REST\QueryParam(name="access_token", allowBlank=false)
      * @ApiDoc(
      *  resource=true,
@@ -191,11 +192,12 @@ class PeopleController extends RESTBundleController
 
 
     /**
+     * @REST\Post("/people/{personID}/emailHistory")
      * @ApiDoc(
      *  resource=true,
      *  description="Create email history for a person",
-     *  input="RESTBundle\Form\BankAccountType",
-     *  output="RESTBundle\Form\BankAccountType"
+     *  input="RESTBundle\Form\EmailHistoryType",
+     *  output="RESTBundle\Form\EmailHistoryType"
      * )
      */
     public function postEmailhistoryAction(Request $request, $personID)
@@ -221,7 +223,7 @@ class PeopleController extends RESTBundleController
     }
 
     /**
-     * @REST\Patch
+     * @REST\Patch("/people/{personID}/emailHistory")
      * @ApiDoc(
      *  resource=true,
      *  description="Edit email history for a person",
@@ -255,6 +257,7 @@ class PeopleController extends RESTBundleController
     }
 
     /**
+     * @REST\Delete("/people/{personID}/emailHistory")
      * @ApiDoc(
      *  resource=true,
      *  description="Delete a email history"
@@ -277,6 +280,7 @@ class PeopleController extends RESTBundleController
     }
 
     /**
+     * @REST\Get("/people/{personID}/bankAccount")
      * @REST\QueryParam(name="access_token", allowBlank=false)
      * @ApiDoc(
      *  resource=true,
@@ -300,6 +304,7 @@ class PeopleController extends RESTBundleController
     }
 
     /**
+     * @REST\Post("/people/{personID}/bankAccount")
      * @ApiDoc(
      *  resource=true,
      *  description="Create a bank account",
@@ -330,7 +335,7 @@ class PeopleController extends RESTBundleController
     }
 
     /**
-     * @REST\Patch
+     * @REST\Patch("/people/{personID}/bankAccount")
      * @ApiDoc(
      *  resource=true,
      *  description="Edit bank account data for a person",
@@ -364,6 +369,7 @@ class PeopleController extends RESTBundleController
     }
 
     /**
+     * @REST\Delete("/people/{personID}/bankAccount")
      * @ApiDoc(
      *  resource=true,
      *  description="Delete a bank account"
@@ -538,6 +544,7 @@ class PeopleController extends RESTBundleController
     }
 
     /**
+     * @REST\Get("/people/{personID}/exchanges/{exchangeID}/financeInformation")
      * @REST\QueryParam(name="access_token", allowBlank=false)
      * @ApiDoc(
      *  resource=true,
@@ -562,7 +569,7 @@ class PeopleController extends RESTBundleController
 
 
     /**
-     * @REST\Patch
+     * @REST\Patch("/people/{personID}/exchanges/{exchangeID}/financeInformation")
      * @ApiDoc(
      *  resource=true,
      *  description="Edit finance information for an exchange",
@@ -598,6 +605,7 @@ class PeopleController extends RESTBundleController
     }
 
     /**
+     * @REST\Get("/people/{personID}/exchanges/{exchangeID}/standardsAndSatisfaction")
      * @REST\QueryParam(name="access_token", allowBlank=false)
      * @ApiDoc(
      *  resource=true,
@@ -625,6 +633,7 @@ class PeopleController extends RESTBundleController
     }
 
     /**
+     * @REST\Post("/people/{personID}/exchanges/{exchangeID}/standardsAndSatisfaction")
      * @ApiDoc(
      *  resource=true,
      *  description="Create standards and satisfaction",
@@ -665,13 +674,13 @@ class PeopleController extends RESTBundleController
     }
 
     /**
+     * @REST\Patch("/people/{personID}/exchanges/{exchangeID}/standardsAndSatisfaction")
      * @ApiDoc(
      *  resource=true,
      *  description="Edit standards and satisfaction",
      *  input="RESTBundle\Form\StandardsAndSatisfactionType",
      *  output="RESTBundle\Form\StandardsAndSatisfactionType"
      * )
-     * @REST\Patch
      */
     public function patchExchangesStandardsandsatisfactionAction(Request $request, $personID, $exchangeID)
     {
@@ -704,6 +713,7 @@ class PeopleController extends RESTBundleController
     }
 
     /**
+     * @REST\Delete("/people/{personID}/exchanges/{exchangeID}/standardsAndSatisfaction")
      * @ApiDoc(
      *  resource=true,
      *  description="Delete standards and satisfaction"

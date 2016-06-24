@@ -21,6 +21,7 @@ class OutgoerPreparationController extends RESTBundleController
 {
 
     /**
+     * @REST\Get("/outgoerPreparations")
      * @REST\QueryParam(name="salesforceID", description="Salesforce ID")
      * @REST\QueryParam(name="access_token", allowBlank=false)
      * @REST\QueryParam(name="page", requirements="\d+", default="1", description="Page of the overview.")
@@ -47,6 +48,7 @@ class OutgoerPreparationController extends RESTBundleController
     }
 
     /**
+     * @REST\Get("/outgoerPreparations/{outgoerPreparationID}")
      * @REST\QueryParam(name="access_token", allowBlank=false)
      * @ApiDoc(
      *  resource=true,
@@ -67,6 +69,7 @@ class OutgoerPreparationController extends RESTBundleController
     }
 
     /**
+     * @REST\Post("/outgoerPreparations")
      * @ApiDoc(
      *  resource=true,
      *  description="Create outgoer preparation",
@@ -91,13 +94,13 @@ class OutgoerPreparationController extends RESTBundleController
     }
 
     /**
+     * @REST\Patch("/outgoerPreparations/{outgoerPreparationID}")
      * @ApiDoc(
      *  resource=true,
      *  description="Edit an outgoer preparations",
      *  input="RESTBundle\Form\OutgoerPreparationType",
      *  output="RESTBundle\Form\OutgoerPreparationType"
      * )
-     * @REST\Patch
      */
     public function patchAction(Request $request, $outgoerPreparationID)
     {
@@ -122,6 +125,7 @@ class OutgoerPreparationController extends RESTBundleController
     }
 
     /**
+     * @REST\Delete("/outgoerPreparations/{outgoerPreparationID}")
      * @ApiDoc(
      *  resource=true,
      *  description="Delete an outgoer preparations"

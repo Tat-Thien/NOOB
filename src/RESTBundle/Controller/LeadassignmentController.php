@@ -16,6 +16,7 @@ class LeadassignmentController extends RESTBundleController
 {
 
     /**
+     * @REST\Get("/leadAssignment")
      * @REST\QueryParam(name="university", allowBlank=false)
      * @REST\QueryParam(name="program", allowBlank=false)
      * @ApiDoc(
