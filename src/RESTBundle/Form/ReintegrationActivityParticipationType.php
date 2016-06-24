@@ -2,45 +2,31 @@
 
 namespace RESTBundle\Form;
 
+use AIESECGermany\EntityBundle\Entity\Exchange;
+use AIESECGermany\EntityBundle\Entity\ReintegrationActivity;
+use AIESECGermany\EntityBundle\Entity\ReintegrationActivityParticipation;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ReintegrationActivityParticipationType extends AbstractType
+class ReintegrationActivityParticipationType extends AbstractRESTFormType
 {
-    /**
-     * @param FormBuilderInterface $builder
-     * @param array $options
-     */
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->add('confirmed', CheckboxType::class)
             ->add('exchange', EntityType::class, array(
-                'class' => 'AIESECGermanyEntityBundle:Exchange'
+                'class' => Exchange::class
             ))
             ->add('reintegrationActivity', EntityType::class, array(
-                'class' => 'AIESECGermanyEntityBundle:ReintegrationActivity'
+                'class' => ReintegrationActivity::class
             ))
         ;
     }
 
-    /**
-     * @param OptionsResolver $resolver
-     */
-    public function configureOptions(OptionsResolver $resolver)
+    protected function getDataClass()
     {
-        $resolver->setDefaults(array(
-            'data_class' => 'AIESECGermany\EntityBundle\Entity\ReintegrationActivityParticipation',
-            'csrf_protection' => false
-        ));
-    }
-
-    public function getName()
-    {
-        return "reintegrationActivityParticipation";
+        return ReintegrationActivityParticipation::class;
     }
 }

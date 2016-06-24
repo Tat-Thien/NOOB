@@ -2,14 +2,12 @@
 
 namespace RESTBundle\Form;
 
-use Symfony\Component\Form\AbstractType;
+use AIESECGermany\EntityBundle\Entity\StandardsAndSatisfaction;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class StandardsAndSatisfactionType extends AbstractType
+class StandardsAndSatisfactionType extends AbstractRESTFormType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -37,20 +35,9 @@ class StandardsAndSatisfactionType extends AbstractType
             ->add('comments', TextType::class)
         ;
     }
-    
-    /**
-     * @param OptionsResolver $resolver
-     */
-    public function configureOptions(OptionsResolver $resolver)
-    {
-        $resolver->setDefaults(array(
-            'data_class' => 'AIESECGermany\EntityBundle\Entity\StandardsAndSatisfaction',
-            'csrf_protection' => false
-        ));
-    }
 
-    public function getName()
+    protected function getDataClass()
     {
-        return "standardsAndSatisfaction";
+        return StandardsAndSatisfaction::class;
     }
 }

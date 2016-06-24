@@ -2,12 +2,11 @@
 
 namespace RESTBundle\Form;
 
-use Symfony\Component\Form\AbstractType;
+use AIESECGermany\EntityBundle\Entity\WelcomeHomeSeminar;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class WelcomeHomeSeminarType extends AbstractType
+class WelcomeHomeSeminarType extends AbstractRESTFormType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -29,20 +28,9 @@ class WelcomeHomeSeminarType extends AbstractType
             ->add('salesforceID')
         ;
     }
-    
-    /**
-     * @param OptionsResolver $resolver
-     */
-    public function configureOptions(OptionsResolver $resolver)
-    {
-        $resolver->setDefaults(array(
-            'data_class' => 'AIESECGermany\EntityBundle\Entity\WelcomeHomeSeminar',
-            'csrf_protection' => false
-        ));
-    }
 
-    public function getName()
+    protected function getDataClass()
     {
-        return "reintegrationActivity";
+        return WelcomeHomeSeminar::class;
     }
 }

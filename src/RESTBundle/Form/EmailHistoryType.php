@@ -2,20 +2,13 @@
 
 namespace RESTBundle\Form;
 
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use Symfony\Component\Form\AbstractType;
+use AIESECGermany\EntityBundle\Entity\EmailHistory;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class EmailHistoryType extends AbstractType
+class EmailHistoryType extends AbstractRESTFormType
 {
-    /**
-     * @param FormBuilderInterface $builder
-     * @param array $options
-     */
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -25,20 +18,9 @@ class EmailHistoryType extends AbstractType
             ->add('opsOnlineMailSent', CheckboxType::class)
         ;
     }
-    
-    /**
-     * @param OptionsResolver $resolver
-     */
-    public function configureOptions(OptionsResolver $resolver)
-    {
-        $resolver->setDefaults(array(
-            'data_class' => 'AIESECGermany\EntityBundle\Entity\EmailHistory',
-            'csrf_protection' => false
-        ));
-    }
 
-    public function getName()
+    protected function getDataClass()
     {
-        return "emailHistory";
+        return EmailHistory::class;
     }
 }

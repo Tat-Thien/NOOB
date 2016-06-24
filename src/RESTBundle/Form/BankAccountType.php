@@ -2,16 +2,12 @@
 
 namespace RESTBundle\Form;
 
-use Symfony\Component\Form\AbstractType;
+use AIESECGermany\EntityBundle\Entity\BankAccount;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class BankAccountType extends AbstractType
+class BankAccountType extends AbstractRESTFormType
 {
-    /**
-     * @param FormBuilderInterface $builder
-     * @param array $options
-     */
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -21,20 +17,9 @@ class BankAccountType extends AbstractType
             ->add('bankName')
         ;
     }
-    
-    /**
-     * @param OptionsResolver $resolver
-     */
-    public function configureOptions(OptionsResolver $resolver)
-    {
-        $resolver->setDefaults(array(
-            'data_class' => 'AIESECGermany\EntityBundle\Entity\BankAccount',
-            'csrf_protection' => false
-        ));
-    }
 
-    public function getName()
+    protected function getDataClass()
     {
-        return "bankAccount";
+        return BankAccount::class;
     }
 }

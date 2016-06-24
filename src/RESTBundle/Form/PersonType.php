@@ -2,15 +2,13 @@
 
 namespace RESTBundle\Form;
 
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use Symfony\Component\Form\AbstractType;
+use AIESECGermany\EntityBundle\Entity\Person;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class PersonType extends AbstractType
+class PersonType extends AbstractRESTFormType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -31,20 +29,9 @@ class PersonType extends AbstractType
             ->add('gtUp', CheckboxType::class)
         ;
     }
-    
-    /**
-     * @param OptionsResolver $resolver
-     */
-    public function configureOptions(OptionsResolver $resolver)
-    {
-        $resolver->setDefaults(array(
-            'data_class' => 'AIESECGermany\EntityBundle\Entity\Person',
-            'csrf_protection' => false
-        ));
-    }
 
-    public function getName()
+    protected function getDataClass()
     {
-        return "person";
+        return Person::class;
     }
 }

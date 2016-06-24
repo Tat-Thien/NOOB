@@ -2,17 +2,13 @@
 
 namespace RESTBundle\Form;
 
-use Symfony\Component\Form\AbstractType;
+use AIESECGermany\EntityBundle\Entity\ReintegrationActivity;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ReintegrationActivityType extends AbstractType
+class ReintegrationActivityType extends AbstractRESTFormType
 {
-    /**
-     * @param FormBuilderInterface $builder
-     * @param array $options
-     */
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -37,19 +33,8 @@ class ReintegrationActivityType extends AbstractType
         ;
     }
 
-    /**
-     * @param OptionsResolver $resolver
-     */
-    public function configureOptions(OptionsResolver $resolver)
+    protected function getDataClass()
     {
-        $resolver->setDefaults(array(
-            'data_class' => 'RESTBundle\Entity\ReintegrationActivity',
-            'csrf_protection' => false
-        ));
-    }
-
-    public function getName()
-    {
-        return "reintegrationActivity";
+        return ReintegrationActivity::class;
     }
 }
