@@ -42,5 +42,5 @@ AIESECGermany\EntityBundle\Entity\Person:
                 parameters:
                     personID: expr(object.getId())
             exclusion:
-                exclude_if: expr(object.getOutgoerPreparationParticipation() === null)
+                exclude_if: expr(object.getApplicationInformation() === null)
     relation_providers: [ 'RESTBundle\Controller\PersonExchangeRelationProvider::getRelations']
