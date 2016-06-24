@@ -9,9 +9,10 @@ AIESECGermany\EntityBundle\Entity\AGBAgreement:
         -
             rel: exchange
             href:
-                route: get_peopleexchanges
+                route: get_people_exchanges
                 parameters:
-                    agbID: expr(object.getExchange().getId())
+                    personID: expr(object.getExchange().getPerson().getId())
+                    exchangeID: expr(object.getExchange().getId())
     properties:
         agb:
             exclude: true
