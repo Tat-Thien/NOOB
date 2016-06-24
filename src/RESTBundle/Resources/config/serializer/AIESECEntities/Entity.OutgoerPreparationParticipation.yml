@@ -11,9 +11,9 @@ AIESECGermany\EntityBundle\Entity\OutgoerPreparationParticipation:
         -
             rel: outgoerPreparation
             href:
-                route: get_ops
+                route: get_outgoerpreparation
                 parameters:
-                    opsID: expr(object.getOutgoerPreparation().getId())
+                    outgoerPreparationID: expr(object.getOutgoerPreparation().getId())
             exclusion:
                 exclude_if: expr(object.getOutgoerPreparation() === null)
     properties:
