@@ -16,11 +16,14 @@ use Symfony\Component\HttpKernel\Exception\HttpException;
 abstract class RESTBundleController extends FOSRestController
 {
 
-    protected function checkAuthentication(ParamFetcherInterface $paramFetcher)
+    protected function checkAuthentication(ParamFetcherInterface $paramFetcher, $advanced=false)
     {
         $providedAccessToken = $paramFetcher->get('access_token');
-        $securedAccessToken = $this->getParameter('access_token');
-        if ($providedAccessToken != $securedAccessToken) {
+        $validTokens = [$this->getParameter('advanced_access_token')];
+        if (!$advanced) {
+            array_push($validTokens, $this->getParameter('simple_access_token'));
+        }
+        if (!in_array($providedAccessToken, $validTokens)) {
             throw new AccessDeniedHttpException();
         }
     }
