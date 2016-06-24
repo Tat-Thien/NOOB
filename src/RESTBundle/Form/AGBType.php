@@ -3,6 +3,7 @@
 namespace RESTBundle\Form;
 
 use AIESECGermany\EntityBundle\Entity\AGB;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 class AGBType extends AbstractRESTFormType
@@ -11,7 +12,7 @@ class AGBType extends AbstractRESTFormType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('implementationDate',  'date', array(
+            ->add('implementationDate', DateType::class, array(
                 'widget' => 'single_text'
             ))
             ->add('pdfUrl')

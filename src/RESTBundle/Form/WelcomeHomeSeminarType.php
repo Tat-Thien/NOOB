@@ -3,6 +3,7 @@
 namespace RESTBundle\Form;
 
 use AIESECGermany\EntityBundle\Entity\WelcomeHomeSeminar;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 
@@ -19,10 +20,10 @@ class WelcomeHomeSeminarType extends AbstractRESTFormType
                 'mapped' => false
             ))
             ->add('lc')
-            ->add('startDate', 'date', array(
+            ->add('startDate', DateType::class, array(
                 'widget' => 'single_text'
             ))
-            ->add('endDate', 'date', array(
+            ->add('endDate', DateType::class, array(
                 'widget' => 'single_text'
             ))
             ->add('salesforceID')

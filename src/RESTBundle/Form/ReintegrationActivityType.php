@@ -3,6 +3,7 @@
 namespace RESTBundle\Form;
 
 use RESTBundle\Entity\ReintegrationActivity;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 
@@ -19,11 +20,11 @@ class ReintegrationActivityType extends AbstractRESTFormType
             ->add('lc', TextType::class, array(
                 'mapped' => false
             ))
-            ->add('startDate', 'date', array(
+            ->add('startDate', DateType::class, array(
                 'mapped' => false,
                 'widget' => 'single_text'
             ))
-            ->add('endDate', 'date', array(
+            ->add('endDate', DateType::class, array(
                 'mapped' => false,
                 'widget' => 'single_text'
             ))

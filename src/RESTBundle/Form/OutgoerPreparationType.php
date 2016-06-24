@@ -4,6 +4,7 @@ namespace RESTBundle\Form;
 
 use AIESECGermany\EntityBundle\Entity\OutgoerPreparation;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -15,10 +16,10 @@ class OutgoerPreparationType extends AbstractRESTFormType
         $builder
             ->add('type')
             ->add('lc')
-            ->add('startDate', 'date', array(
+            ->add('startDate', DateType::class, array(
                 'widget' => 'single_text'
             ))
-            ->add('endDate', 'date', array(
+            ->add('endDate', DateType::class, array(
                 'widget' => 'single_text'
             ))
             ->add('salesforceID')
