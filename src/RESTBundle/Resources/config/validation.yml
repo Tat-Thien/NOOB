@@ -11,6 +11,13 @@ AIESECGermany\EntityBundle\Entity\OutgoerPreparation:
 AIESECGermany\EntityBundle\Entity\OutgoerPreparationParticipation:
     constraints:
         - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: person
+    properties:
+        confirmed:
+            - NotNull: ~
+        person:
+            - NotBlank: ~
+        outgoerPreparation:
+            - NotBlank: ~
 AIESECGermany\EntityBundle\Entity\Person:
     constraints:
         - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: id
@@ -40,6 +47,14 @@ AIESECGermany\EntityBundle\Entity\AGBAgreement:
         agb:
             - NotBlank: ~
         exchange:
+            - NotBlank: ~
+AIESECGermany\EntityBundle\Entity\ReintegrationActivityParticipation:
+    properties:
+        confirmed:
+            - NotNull: ~
+        exchange:
+            - NotBlank: ~
+        reintegrationActivity:
             - NotBlank: ~
 AIESECGermany\EntityBundle\Entity\StandardReintegrationActivity:
     constraints:
