@@ -8,6 +8,8 @@ AIESECGermany\EntityBundle\Entity\Person:
             exclude: true
         bankAccount:
             exclude: true
+        applicationInformation:
+            exclude: true
     relations:
         -
             rel: outgoerPreparationParticipation
@@ -33,4 +35,12 @@ AIESECGermany\EntityBundle\Entity\Person:
                     personID: expr(object.getId())
             exclusion:
                 exclude_if: expr(object.getBankAccount() === null)
+        -
+            rel: applicationInformation
+            href:
+                route: get_people_application_information
+                parameters:
+                    personID: expr(object.getId())
+            exclusion:
+                exclude_if: expr(object.getOutgoerPreparationParticipation() === null)
     relation_providers: [ 'RESTBundle\Controller\PersonExchangeRelationProvider::getRelations']
