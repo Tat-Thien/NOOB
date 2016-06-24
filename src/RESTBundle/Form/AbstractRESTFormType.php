@@ -11,11 +11,16 @@ abstract class AbstractRESTFormType extends AbstractType
 
     protected abstract function getDataClass();
 
+    protected function allowExtraFields() {
+        return false;
+    }
+
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
             'data_class' => $this->getDataClass(),
-            'csrf_protection' => false
+            'csrf_protection' => false,
+            'allow_extra_fields' => $this->allowExtraFields()
         ));
     }
 
