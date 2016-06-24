@@ -83,6 +83,7 @@ class OutgoerPreparationParticipationController extends RESTBundleController
 
     /**
      * @REST\Post("/outgoerPreparationParticipations")
+     * @REST\QueryParam(name="access_token", allowBlank=false)
      * @ApiDoc(
      *  resource=true,
      *  description="Create a outgoer preparation participation",
@@ -90,8 +91,9 @@ class OutgoerPreparationParticipationController extends RESTBundleController
      *  output="RESTBundle\Form\OutgoerPreparationParticipationType"
      * )
      */
-    public function postAction(Request $request)
+    public function postAction(ParamFetcherInterface $paramFetcher, Request $request)
     {
+        $this->checkAuthentication($paramFetcher, true);
         $outgoerPreparationParticipation = new OutgoerPreparationParticipation();
         $form = $this->createForm(new OutgoerPreparationParticipationType(), $outgoerPreparationParticipation);
         $form->submit($request);

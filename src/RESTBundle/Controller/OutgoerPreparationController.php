@@ -70,6 +70,7 @@ class OutgoerPreparationController extends RESTBundleController
 
     /**
      * @REST\Post("/outgoerPreparations")
+     * @REST\QueryParam(name="access_token", allowBlank=false)
      * @ApiDoc(
      *  resource=true,
      *  description="Create outgoer preparation",
@@ -77,8 +78,9 @@ class OutgoerPreparationController extends RESTBundleController
      *  output="RESTBundle\Form\OutgoerPreparationType"
      * )
      */
-    public function postAction(Request $request)
+    public function postAction(ParamFetcherInterface $paramFetcher, Request $request)
     {
+        $this->checkAuthentication($paramFetcher, true);
         $ops = new OutgoerPreparation();
         $form = $this->createForm(new OutgoerPreparationType(), $ops);
         $form->submit($request);
@@ -95,6 +97,7 @@ class OutgoerPreparationController extends RESTBundleController
 
     /**
      * @REST\Patch("/outgoerPreparations/{outgoerPreparationID}")
+     * @REST\QueryParam(name="access_token", allowBlank=false)
      * @ApiDoc(
      *  resource=true,
      *  description="Edit an outgoer preparations",
@@ -102,9 +105,9 @@ class OutgoerPreparationController extends RESTBundleController
      *  output="RESTBundle\Form\OutgoerPreparationType"
      * )
      */
-    public function patchAction(Request $request, $outgoerPreparationID)
+    public function patchAction(ParamFetcherInterface $paramFetcher, Request $request, $outgoerPreparationID)
     {
-        //$this->checkAuthentication($paramFetcher);
+        $this->checkAuthentication($paramFetcher, true);
         $em = $this->getDoctrine()->getManager();
         $ops = $em->getRepository('AIESECGermany\EntityBundle\Entity\OutgoerPreparation')->findOneById($outgoerPreparationID);
         if (!$ops) {
@@ -126,13 +129,15 @@ class OutgoerPreparationController extends RESTBundleController
 
     /**
      * @REST\Delete("/outgoerPreparations/{outgoerPreparationID}")
+     * @REST\QueryParam(name="access_token", allowBlank=false)
      * @ApiDoc(
      *  resource=true,
      *  description="Delete an outgoer preparations"
      * )
      */
-    public function deleteAction($outgoerPreparationID)
+    public function deleteAction(ParamFetcherInterface $paramFetcher, $outgoerPreparationID)
     {
+        $this->checkAuthentication($paramFetcher, true);
         $em = $this->getDoctrine()->getManager();
         $ops = $em->getRepository('AIESECGermany\EntityBundle\Entity\OutgoerPreparation')->findOneById($outgoerPreparationID);
         if (!$ops) {

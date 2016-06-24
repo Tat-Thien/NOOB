@@ -83,6 +83,7 @@ class ReintegrationActivityParticipationController extends RESTBundleController
 
     /**
      * @REST\Post("/reintegrationActivityParticipations")
+     * @REST\QueryParam(name="access_token", allowBlank=false)
      * @ApiDoc(
      *  resource=true,
      *  description="Create a reintegration activity participation",
@@ -90,8 +91,9 @@ class ReintegrationActivityParticipationController extends RESTBundleController
      *  output="RESTBundle\Form\ReintegrationActivityParticipationType"
      * )
      */
-    public function postAction(Request $request)
+    public function postAction(ParamFetcherInterface $paramFetcher, Request $request)
     {
+        $this->checkAuthentication($paramFetcher, true);
         $reintegrationActivityParticipation = new ReintegrationActivityParticipation();
         $form = $this->createForm(new ReintegrationActivityParticipationType(), $reintegrationActivityParticipation);
         $form->submit($request);

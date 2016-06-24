@@ -85,6 +85,7 @@ class ReintegrationActivityController extends RESTBundleController
 
     /**
      * @REST\Post("/reintegrationActivities")
+     * @REST\QueryParam(name="access_token", allowBlank=false)
      * @ApiDoc(
      *  resource=true,
      *  description="Create WHS",
@@ -92,8 +93,9 @@ class ReintegrationActivityController extends RESTBundleController
      *  output="RESTBundle\Form\ReintegrationActivityType"
      * )
      */
-    public function postAction(Request $request)
+    public function postAction(ParamFetcherInterface $paramFetcher, Request $request)
     {
+        $this->checkAuthentication($paramFetcher, true);
         $reintegrationActivity = new ReintegrationActivity();
         $form = $this->createForm(new ReintegrationActivityType(), $reintegrationActivity);
         $form->submit($request);
@@ -121,6 +123,7 @@ class ReintegrationActivityController extends RESTBundleController
 
     /**
      * @REST\Patch("/reintegrationActivities/{reintegrationActivityID}")
+     * @REST\QueryParam(name="access_token", allowBlank=false)
      * @ApiDoc(
      *  resource=true,
      *  description="Edit a WHS",
@@ -128,9 +131,9 @@ class ReintegrationActivityController extends RESTBundleController
      *  output="RESTBundle\Form\ReintegrationActivityType"
      * )
      */
-    public function patchAction(Request $request, $reintegrationActivityID)
+    public function patchAction(ParamFetcherInterface $paramFetcher, Request $request, $reintegrationActivityID)
     {
-        //$this->checkAuthentication($paramFetcher);
+        $this->checkAuthentication($paramFetcher, true);
         $em = $this->getDoctrine()->getManager();
         $reintegrationActivity = $em->getRepository('AIESECGermany\EntityBundle\Entity\ReintegrationActivity')->findOneById($reintegrationActivityID);
         if (!$reintegrationActivity) {
@@ -154,13 +157,15 @@ class ReintegrationActivityController extends RESTBundleController
 
     /**
      * @REST\Delete("/reintegrationActivities/{reintegrationActivityID}")
+     * @REST\QueryParam(name="access_token", allowBlank=false)
      * @ApiDoc(
      *  resource=true,
      *  description="Delete a reintegration activity"
      * )
      */
-    public function deleteAction($reintegrationActivityID)
+    public function deleteAction(ParamFetcherInterface $paramFetcher, $reintegrationActivityID)
     {
+        $this->checkAuthentication($paramFetcher, true);
         $em = $this->getDoctrine()->getManager();
         $whs = $em->getRepository('AIESECGermany\EntityBundle\Entity\ReintegrationActivity')->findOneById($reintegrationActivityID);
         if (!$whs) {

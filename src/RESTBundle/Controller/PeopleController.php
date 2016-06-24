@@ -108,6 +108,7 @@ class PeopleController extends RESTBundleController
     }
 
     /**
+     * @REST\QueryParam(name="access_token", allowBlank=false)
      * @ApiDoc(
      *  resource=true,
      *  description="Create a person",
@@ -117,7 +118,7 @@ class PeopleController extends RESTBundleController
      */
     public function postAction(ParamFetcherInterface $paramFetcher, Request $request)
     {
-        //$this->checkAuthentication($paramFetcher);
+        $this->checkAuthentication($paramFetcher);
         $person = new Person();
         $form = $this->createForm(new PersonType(), $person);
         $form->submit($request);
@@ -133,6 +134,7 @@ class PeopleController extends RESTBundleController
     }
 
     /**
+     * @REST\QueryParam(name="access_token", allowBlank=false)
      * @ApiDoc(
      *  resource=true,
      *  description="Edit a person",
@@ -141,9 +143,9 @@ class PeopleController extends RESTBundleController
      * )
      * @REST\Patch
      */
-    public function patchAction(Request $request, $personID)
+    public function patchAction(ParamFetcherInterface $paramFetcher, Request $request, $personID)
     {
-        //$this->checkAuthentication($paramFetcher);
+        $this->checkAuthentication($paramFetcher);
         $em = $this->getDoctrine()->getManager();
         $person = $em->getRepository('AIESECGermany\EntityBundle\Entity\Person')->findOneById($personID);
         if (!$person) {
@@ -164,13 +166,15 @@ class PeopleController extends RESTBundleController
     }
 
     /**
+     * @REST\QueryParam(name="access_token", allowBlank=false)
      * @ApiDoc(
      *  resource=true,
      *  description="Delete a person"
      * )
      */
-    public function deleteAction($personID)
+    public function deleteAction(ParamFetcherInterface $paramFetcher, $personID)
     {
+        $this->checkAuthentication($paramFetcher, true);
         $em = $this->getDoctrine()->getManager();
         $person = $em->getRepository('AIESECGermany\EntityBundle\Entity\Person')->findOneById($personID);
         if (!$person) {
@@ -200,6 +204,7 @@ class PeopleController extends RESTBundleController
 
 
     /**
+     * @REST\QueryParam(name="access_token", allowBlank=false)
      * @REST\Post("/people/{personID}/emailHistory")
      * @ApiDoc(
      *  resource=true,
@@ -208,8 +213,9 @@ class PeopleController extends RESTBundleController
      *  output="RESTBundle\Form\EmailHistoryType"
      * )
      */
-    public function postEmailhistoryAction(Request $request, $personID)
+    public function postEmailhistoryAction(ParamFetcher $paramFetcher, Request $request, $personID)
     {
+        $this->checkAuthentication($paramFetcher);
         $emailHistory = new EmailHistory();
         $form = $this->createForm(new EmailHistoryType(), $emailHistory);
         $form->submit($request);
@@ -232,6 +238,7 @@ class PeopleController extends RESTBundleController
 
     /**
      * @REST\Patch("/people/{personID}/emailHistory")
+     * @REST\QueryParam(name="access_token", allowBlank=false)
      * @ApiDoc(
      *  resource=true,
      *  description="Edit email history for a person",
@@ -239,8 +246,9 @@ class PeopleController extends RESTBundleController
      *  output="RESTBundle\Form\EmailHistoryType"
      * )
      */
-    public function patchEmailhistoryAction(Request $request, $personID)
+    public function patchEmailhistoryAction(ParamFetcher $paramFetcher, Request $request, $personID)
     {
+        $this->checkAuthentication($paramFetcher);
         $em = $this->getDoctrine()->getManager();
         $person = $em->getRepository('AIESECGermany\EntityBundle\Entity\Person')->findOneById($personID);
         if (!$person) {
@@ -266,13 +274,15 @@ class PeopleController extends RESTBundleController
 
     /**
      * @REST\Delete("/people/{personID}/emailHistory")
+     * @REST\QueryParam(name="access_token", allowBlank=false)
      * @ApiDoc(
      *  resource=true,
      *  description="Delete a email history"
      * )
      */
-    public function deleteEmailhistoryAction($personID)
+    public function deleteEmailhistoryAction(ParamFetcher $paramFetcher, $personID)
     {
+        $this->checkAuthentication($paramFetcher);
         $em = $this->getDoctrine()->getManager();
         $person = $em->getRepository('AIESECGermany\EntityBundle\Entity\Person')->findOneById($personID);
         if (!$person) {
@@ -313,6 +323,7 @@ class PeopleController extends RESTBundleController
 
     /**
      * @REST\Post("/people/{personID}/applicationInformation")
+     * @REST\QueryParam(name="access_token", allowBlank=false)
      * @ApiDoc(
      *  resource=true,
      *  description="Create application information",
@@ -320,8 +331,9 @@ class PeopleController extends RESTBundleController
      *  output="RESTBundle\Form\ApplicationInformationType"
      * )
      */
-    public function postApplicationInformationAction(Request $request, $personID)
+    public function postApplicationInformationAction(ParamFetcher $paramFetcher, Request $request, $personID)
     {
+        $this->checkAuthentication($paramFetcher);
         $applicationInformation = new ApplicationInformation();
         $form = $this->createForm(new ApplicationInformationType(), $applicationInformation);
         $form->submit($request);
@@ -364,6 +376,7 @@ class PeopleController extends RESTBundleController
 
     /**
      * @REST\Patch("/people/{personID}/applicationInformation")
+     * @REST\QueryParam(name="access_token", allowBlank=false)
      * @ApiDoc(
      *  resource=true,
      *  description="Edit application information for a person",
@@ -371,8 +384,9 @@ class PeopleController extends RESTBundleController
      *  output="RESTBundle\Form\ApplicationInformationType"
      * )
      */
-    public function patchApplicationInformationAction(Request $request, $personID)
+    public function patchApplicationInformationAction(ParamFetcher $paramFetcher, Request $request, $personID)
     {
+        $this->checkAuthentication($paramFetcher);
         $em = $this->getDoctrine()->getManager();
         $person = $em->getRepository('AIESECGermany\EntityBundle\Entity\Person')->findOneById($personID);
         if (!$person) {
@@ -428,6 +442,7 @@ class PeopleController extends RESTBundleController
 
     /**
      * @REST\Post("/people/{personID}/bankAccount")
+     * @REST\QueryParam(name="access_token", allowBlank=false)
      * @ApiDoc(
      *  resource=true,
      *  description="Create a bank account",
@@ -435,8 +450,9 @@ class PeopleController extends RESTBundleController
      *  output="RESTBundle\Form\BankAccountType"
      * )
      */
-    public function postBankaccountAction(Request $request, $personID)
+    public function postBankaccountAction(ParamFetcher $paramFetcher, Request $request, $personID)
     {
+        $this->checkAuthentication($paramFetcher);
         $bankAccount = new BankAccount();
         $form = $this->createForm(new BankAccountType(), $bankAccount);
         $form->submit($request);
@@ -459,6 +475,7 @@ class PeopleController extends RESTBundleController
 
     /**
      * @REST\Patch("/people/{personID}/bankAccount")
+     * @REST\QueryParam(name="access_token", allowBlank=false)
      * @ApiDoc(
      *  resource=true,
      *  description="Edit bank account data for a person",
@@ -466,8 +483,9 @@ class PeopleController extends RESTBundleController
      *  output="RESTBundle\Form\BankAccountType"
      * )
      */
-    public function patchBankaccountAction(Request $request, $personID)
+    public function patchBankaccountAction(ParamFetcher $paramFetcher, Request $request, $personID)
     {
+        $this->checkAuthentication($paramFetcher);
         $em = $this->getDoctrine()->getManager();
         $person = $em->getRepository('AIESECGermany\EntityBundle\Entity\Person')->findOneById($personID);
         if (!$person) {
@@ -493,13 +511,15 @@ class PeopleController extends RESTBundleController
 
     /**
      * @REST\Delete("/people/{personID}/bankAccount")
+     * @REST\QueryParam(name="access_token", allowBlank=false)
      * @ApiDoc(
      *  resource=true,
      *  description="Delete a bank account"
      * )
      */
-    public function deleteBankaccountAction($personID)
+    public function deleteBankaccountAction(ParamFetcher $paramFetcher, $personID)
     {
+        $this->checkAuthentication($paramFetcher);
         $em = $this->getDoctrine()->getManager();
         $person = $em->getRepository('AIESECGermany\EntityBundle\Entity\Person')->findOneById($personID);
         if (!$person) {
@@ -573,6 +593,7 @@ class PeopleController extends RESTBundleController
     }
 
     /**
+     * @REST\QueryParam(name="access_token", allowBlank=false)
      * @ApiDoc(
      *  resource=true,
      *  description="Create an exchange",
@@ -582,7 +603,7 @@ class PeopleController extends RESTBundleController
      */
     public function postExchangesAction(ParamFetcher $paramFetcher, Request $request, $personID)
     {
-        //$this->checkAuthentication($paramFetcher);
+        $this->checkAuthentication($paramFetcher);
         $exchange = new Exchange();
         $form = $this->createForm(new ExchangeType(), $exchange);
         $form->submit($request);
@@ -609,6 +630,7 @@ class PeopleController extends RESTBundleController
 
 
     /**
+     * @REST\QueryParam(name="access_token", allowBlank=false)
      * @ApiDoc(
      *  resource=true,
      *  description="Edit an exchange",
@@ -617,9 +639,9 @@ class PeopleController extends RESTBundleController
      * )
      * @REST\Patch
      */
-    public function patchExchangeAction(Request $request, $personID, $exchangeID)
+    public function patchExchangeAction(ParamFetcher $paramFetcher, Request $request, $personID, $exchangeID)
     {
-        //$this->checkAuthentication($paramFetcher);
+        $this->checkAuthentication($paramFetcher);
         $em = $this->getDoctrine()->getManager();
         $person = $em->getRepository('AIESECGermany\EntityBundle\Entity\Person')->findOneById($personID);
         if (!$person) {
@@ -645,12 +667,13 @@ class PeopleController extends RESTBundleController
     }
 
     /**
+     * @REST\QueryParam(name="access_token", allowBlank=false)
      * @ApiDoc(
      *  resource=true,
      *  description="Delete an exchange"
      * )
      */
-    public function deleteExchangeAction($personID, $exchangeID)
+    public function deleteExchangeAction(ParamFetcher $paramFetcher, $personID, $exchangeID)
     {
         $em = $this->getDoctrine()->getManager();
         $person = $em->getRepository('AIESECGermany\EntityBundle\Entity\Person')->findOneById($personID);
@@ -700,8 +723,9 @@ class PeopleController extends RESTBundleController
      *  output="RESTBundle\Form\FinanceInformationType"
      * )
      */
-    public function patchExchangesFinanceinformationAction(Request $request, $personID, $exchangeID)
+    public function patchExchangesFinanceinformationAction(ParamFetcher $paramFetcher, Request $request, $personID, $exchangeID)
     {
+        $this->checkAuthentication($paramFetcher);
         $em = $this->getDoctrine()->getManager();
         $person = $em->getRepository('AIESECGermany\EntityBundle\Entity\Person')->findOneById($personID);
         if (!$person) {
@@ -757,6 +781,7 @@ class PeopleController extends RESTBundleController
 
     /**
      * @REST\Post("/people/{personID}/exchanges/{exchangeID}/standardsAndSatisfaction")
+     * @REST\QueryParam(name="access_token", allowBlank=false)
      * @ApiDoc(
      *  resource=true,
      *  description="Create standards and satisfaction",
@@ -764,8 +789,9 @@ class PeopleController extends RESTBundleController
      *  output="RESTBundle\Form\StandardsAndSatisfactionType"
      * )
      */
-    public function postExchangesStandardsandsatisfactionAction(Request $request, $personID, $exchangeID)
+    public function postExchangesStandardsandsatisfactionAction(ParamFetcher $paramFetcher, Request $request, $personID, $exchangeID)
     {
+        $this->checkAuthentication($paramFetcher, true);
         $logger = $this->get('logger');
         $logger->info("content:");
         $logger->info($request->getContent());
@@ -798,6 +824,7 @@ class PeopleController extends RESTBundleController
 
     /**
      * @REST\Patch("/people/{personID}/exchanges/{exchangeID}/standardsAndSatisfaction")
+     * @REST\QueryParam(name="access_token", allowBlank=false)
      * @ApiDoc(
      *  resource=true,
      *  description="Edit standards and satisfaction",
@@ -805,8 +832,9 @@ class PeopleController extends RESTBundleController
      *  output="RESTBundle\Form\StandardsAndSatisfactionType"
      * )
      */
-    public function patchExchangesStandardsandsatisfactionAction(Request $request, $personID, $exchangeID)
+    public function patchExchangesStandardsandsatisfactionAction(ParamFetcher $paramFetcher, Request $request, $personID, $exchangeID)
     {
+        $this->checkAuthentication($paramFetcher, true);
         $em = $this->getDoctrine()->getManager();
         $person = $em->getRepository('AIESECGermany\EntityBundle\Entity\Person')->findOneById($personID);
         if (!$person) {
@@ -837,13 +865,15 @@ class PeopleController extends RESTBundleController
 
     /**
      * @REST\Delete("/people/{personID}/exchanges/{exchangeID}/standardsAndSatisfaction")
+     * @REST\QueryParam(name="access_token", allowBlank=false)
      * @ApiDoc(
      *  resource=true,
      *  description="Delete standards and satisfaction"
      * )
      */
-    public function deleteExchangesStandardsandsatisfactionAction($personID)
+    public function deleteExchangesStandardsandsatisfactionAction(ParamFetcher $paramFetcher, $personID)
     {
+        $this->checkAuthentication($paramFetcher, true);
         $em = $this->getDoctrine()->getManager();
         $person = $em->getRepository('AIESECGermany\EntityBundle\Entity\Person')->findOneById($personID);
         if (!$person) {

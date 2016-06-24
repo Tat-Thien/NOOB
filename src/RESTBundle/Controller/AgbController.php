@@ -60,6 +60,7 @@ class AgbController extends RESTBundleController
     }
 
     /**
+     * @REST\QueryParam(name="access_token", allowBlank=false)
      * @ApiDoc(
      *  resource=true,
      *  description="Create an AGB",
@@ -67,8 +68,9 @@ class AgbController extends RESTBundleController
      *  output="RESTBundle\Form\AGBType"
      * )
      */
-    public function postAction(Request $request)
+    public function postAction(ParamFetcherInterface $paramFetcher, Request $request)
     {
+        $this->checkAuthentication($paramFetcher, true);
         $agb = new AGB();
         $form = $this->createForm(new AGBType(), $agb);
         $form->submit($request);
@@ -85,6 +87,7 @@ class AgbController extends RESTBundleController
 
     /**
      * @REST\Patch
+     * @REST\QueryParam(name="access_token", allowBlank=false)
      * @ApiDoc(
      *  resource=true,
      *  description="Edit an AGB",
@@ -92,8 +95,9 @@ class AgbController extends RESTBundleController
      *  output="RESTBundle\Form\AGBType"
      * )
      */
-    public function patchAction(Request $request, $agbID)
+    public function patchAction(ParamFetcherInterface $paramFetcher, Request $request, $agbID)
     {
+        $this->checkAuthentication($paramFetcher, true);
         $em = $this->getDoctrine()->getManager();
         $agb = $em->getRepository('AIESECGermany\EntityBundle\Entity\AGB')->findOneById($agbID);
         if (!$agb) {

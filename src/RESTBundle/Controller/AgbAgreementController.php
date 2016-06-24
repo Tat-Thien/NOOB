@@ -82,6 +82,7 @@ class AgbAgreementController extends RESTBundleController
      */
     public function postAction(ParamFetcher $paramFetcher, Request $request)
     {
+        $this->checkAuthentication($paramFetcher);
         $agbAgreement = new AGBAgreement();
         $form = $this->createForm(new AGBAgreementType(), $agbAgreement);
         $form->submit($request);
