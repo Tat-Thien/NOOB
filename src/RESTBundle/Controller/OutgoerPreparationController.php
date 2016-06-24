@@ -88,7 +88,8 @@ class OutgoerPreparationController extends RESTBundleController
             $em = $this->getDoctrine()->getManager();
             $em->persist($ops);
             $em->flush();
-            return $this->routeRedirectView('get_outgoerpreparation', array('outgoerPreparationID' => $ops->getId()));
+            return $this->redirectWithAccessToken('get_outgoerpreparation', array('outgoerPreparationID' => $ops->getId()),
+                $paramFetcher);
         }
         return array(
             'form' => $form
@@ -120,7 +121,8 @@ class OutgoerPreparationController extends RESTBundleController
         if ($form->isValid()) {
             $em->merge($ops);
             $em->flush();
-            return $this->routeRedirectView('get_outgoerpreparation', array('outgoerPreparationID' => $outgoerPreparationID));
+            return $this->redirectWithAccessToken('get_outgoerpreparation', array('outgoerPreparationID' => $outgoerPreparationID),
+                $paramFetcher);
         }
         return array(
             'form' => $form

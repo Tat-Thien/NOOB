@@ -126,7 +126,8 @@ class PeopleController extends RESTBundleController
             $em = $this->getDoctrine()->getManager();
             $em->persist($person);
             $em->flush();
-            return $this->routeRedirectView('get_people', array('personID' => $person->getId()));
+            return $this->redirectWithAccessToken('get_people', array('personID' => $person->getId()),
+                $paramFetcher);
         }
         return array(
             'form' => $form
@@ -158,7 +159,8 @@ class PeopleController extends RESTBundleController
         if ($form->isValid()) {
             $em->merge($person);
             $em->flush();
-            return $this->routeRedirectView('get_people', array('personID' => $person->getId()));
+            return $this->redirectWithAccessToken('get_people', array('personID' => $person->getId()),
+                $paramFetcher);
         }
         return array(
             'form' => $form
@@ -229,7 +231,8 @@ class PeopleController extends RESTBundleController
             $em->persist($person);
             $em->persist($emailHistory);
             $em->flush();
-            return $this->routeRedirectView('get_people_emailhistory', array('personID' => $personID));
+            return $this->redirectWithAccessToken('get_people_emailhistory', array('personID' => $personID),
+                $paramFetcher);
         }
         return array(
             'form' => $form
@@ -265,7 +268,8 @@ class PeopleController extends RESTBundleController
         if ($form->isValid()) {
             $em->merge($emailHistory);
             $em->flush();
-            return $this->routeRedirectView('get_people_emailhistory', array('personID' => $personID));
+            return $this->redirectWithAccessToken('get_people_emailhistory', array('personID' => $personID),
+                $paramFetcher);
         }
         return array(
             'form' => $form
@@ -366,7 +370,8 @@ class PeopleController extends RESTBundleController
                 $em->persist($person);
                 $em->persist($applicationInformation);
                 $em->flush();
-                return $this->routeRedirectView('get_people_application_information', array('personID' => $personID));
+                return $this->redirectWithAccessToken('get_people_application_information', array('personID' => $personID),
+                    $paramFetcher);
             }
         }
         return array(
@@ -409,7 +414,8 @@ class PeopleController extends RESTBundleController
         if ($form->isValid()) {
             $em->merge($applicationInformation);
             $em->flush();
-            return $this->routeRedirectView('get_people_application_information', array('personID' => $personID));
+            return $this->redirectWithAccessToken('get_people_application_information', array('personID' => $personID),
+                $paramFetcher);
         }
         return array(
             'form' => $form
@@ -466,7 +472,8 @@ class PeopleController extends RESTBundleController
             $em->persist($person);
             $em->persist($bankAccount);
             $em->flush();
-            return $this->routeRedirectView('get_people_bankaccount', array('personID' => $personID));
+            return $this->redirectWithAccessToken('get_people_bankaccount', array('personID' => $personID),
+                $paramFetcher);
         }
         return array(
             'form' => $form
@@ -502,7 +509,8 @@ class PeopleController extends RESTBundleController
         if ($form->isValid()) {
             $em->merge($bankAccount);
             $em->flush();
-            return $this->routeRedirectView('get_people_bankaccount', array('personID' => $personID));
+            return $this->redirectWithAccessToken('get_people_bankaccount', array('personID' => $personID),
+                $paramFetcher);
         }
         return array(
             'form' => $form
@@ -621,7 +629,8 @@ class PeopleController extends RESTBundleController
             $em->persist($financeInformation);
             $em->persist($exchange);
             $em->flush();
-            return $this->routeRedirectView('get_people_exchanges', array('personID' => $personID, 'exchangeID' => $exchange->getId()));
+            return $this->redirectWithAccessToken('get_people_exchanges',
+                array('personID' => $personID, 'exchangeID' => $exchange->getId()), $paramFetcher);
         }
         return array(
             'form' => $form
@@ -658,8 +667,8 @@ class PeopleController extends RESTBundleController
         if ($form->isValid()) {
             $em->merge($exchange);
             $em->flush();
-            return $this->routeRedirectView('get_people_exchanges', array(
-                'personID' => $personID, 'exchangeID' => $exchange->getId()));
+            return $this->redirectWithAccessToken('get_people_exchanges', array(
+                'personID' => $personID, 'exchangeID' => $exchange->getId()), $paramFetcher);
         }
         return array(
             'form' => $form
@@ -743,8 +752,8 @@ class PeopleController extends RESTBundleController
         if ($form->isValid()) {
             $em->merge($financeInformation);
             $em->flush();
-            return $this->routeRedirectView('get_people_exchanges_financeinformation',
-                array('personID' => $personID, 'exchangeID' => $exchangeID));
+            return $this->redirectWithAccessToken('get_people_exchanges_financeinformation',
+                array('personID' => $personID, 'exchangeID' => $exchangeID), $paramFetcher);
         }
         return array(
             'form' => $form
@@ -815,7 +824,8 @@ class PeopleController extends RESTBundleController
             $em->persist($exchange);
             $em->persist($sands);
             $em->flush();
-            return $this->routeRedirectView('get_people_exchanges_standardsandsatisfaction', array('personID' => $personID, 'exchangeID' => $exchangeID));
+            return $this->redirectWithAccessToken('get_people_exchanges_standardsandsatisfaction',
+                array('personID' => $personID, 'exchangeID' => $exchangeID), $paramFetcher);
         }
         return array(
             'form' => $form
@@ -855,8 +865,8 @@ class PeopleController extends RESTBundleController
         if ($form->isValid()) {
             $em->merge($sands);
             $em->flush();
-            return $this->routeRedirectView('get_people_exchanges_standardsandsatisfaction', array(
-                'personID' => $personID, 'exchangeID' => $exchangeID));
+            return $this->redirectWithAccessToken('get_people_exchanges_standardsandsatisfaction', array(
+                'personID' => $personID, 'exchangeID' => $exchangeID), $paramFetcher);
         }
         return array(
             'form' => $form

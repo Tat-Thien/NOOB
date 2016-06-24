@@ -7,6 +7,7 @@ use Doctrine\ORM\Query;
 use FOS\RestBundle\Controller\Annotations as REST;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Request\ParamFetcherInterface;
+use FOS\RestBundle\Util\Codes;
 use RESTBundle\Form\OutgoerPreparationType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
@@ -18,7 +19,7 @@ abstract class RESTBundleController extends FOSRestController
 
     protected function checkAuthentication(ParamFetcherInterface $paramFetcher, $advanced=false)
     {
-        $providedAccessToken = $paramFetcher->get('access_token');
+        $providedAccessToken = $this->extractAccessToken($paramFetcher);
         $validTokens = [$this->getParameter('advanced_access_token')];
         if (!$advanced) {
             array_push($validTokens, $this->getParameter('simple_access_token'));
@@ -39,6 +40,18 @@ abstract class RESTBundleController extends FOSRestController
             $limit
         );
         return $pagination;
+    }
+
+    protected function redirectWithAccessToken($route, array $parameters = array(), ParamFetcherInterface $paramFetcher)
+    {
+        $parameters['access_token'] = $this->extractAccessToken($paramFetcher);
+        return $this->routeRedirectView($route, $parameters);
+
+    }
+
+    private function extractAccessToken(ParamFetcherInterface $paramFetcher)
+    {
+        return $paramFetcher->get('access_token');
     }
 
 }

@@ -90,7 +90,8 @@ class AgbAgreementController extends RESTBundleController
             $em = $this->getDoctrine()->getManager();
             $em->persist($agbAgreement);
             $em->flush();
-            return $this->routeRedirectView('get_agbagreement', array('agbAgreementID' => $agbAgreement->getId()));
+            return $this->redirectWithAccessToken('get_agbagreement', array('agbAgreementID' => $agbAgreement->getId()),
+                $paramFetcher);
         }
         return array(
             'form' => $form

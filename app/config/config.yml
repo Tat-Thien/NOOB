@@ -78,6 +78,9 @@ fos_rest:
     format_listener: true
     view:
         view_response_listener: 'force'
+        force_redirects:
+            html: true
+            json: true
     routing_loader:
         default_format: json
         include_format: false
