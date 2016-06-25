@@ -41,10 +41,10 @@ class AgbAgreementController extends RESTBundleController
         $exchangeID = $paramFetcher->get('exchange');
         $qb->select('a')->from('AIESECGermany\EntityBundle\Entity\AGBAgreement', 'a');
         if ($agbID) {
-            $qb->andWhere('o.agb = :agbID')->setParameter('agbID', $agbID);
+            $qb->andWhere('a.agb = :agbID')->setParameter('agbID', $agbID);
         }
         if ($exchangeID) {
-            $qb->andWhere('r.exchange = :exchangeID')->setParameter('exchangeID', $exchangeID);
+            $qb->andWhere('a.exchange = :exchangeID')->setParameter('exchangeID', $exchangeID);
         }
         $query = $qb->getQuery();
         $pagination = $this->createPaginationObject($paramFetcher, $query);
