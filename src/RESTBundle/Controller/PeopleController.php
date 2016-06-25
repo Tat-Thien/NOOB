@@ -44,28 +44,6 @@ use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 class PeopleController extends RESTBundleController
 {
     
-    public function postDummyAction()
-    {
-        $person = new Person();
-        $person->setId(440715);
-        $exchange1 = new Exchange();
-        $exchange1->setFocusOfInternship("gcdp");
-        $exchange1->setFeeAmount(120);
-        $exchange1->setPerson($person);
-        $exchange2 = new Exchange();
-        $exchange2->setFocusOfInternship("gip");
-        $exchange2->setFeeAmount(420);
-        $exchange2->setPerson($person);
-        $person->addExchange($exchange1);
-        $person->addExchange($exchange2);
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($person);
-        $em->persist($exchange1);
-        $em->persist($exchange2);
-        $em->flush();
-        return new Response('', Response::HTTP_OK);
-    }
-
     /**
      * @REST\QueryParam(name="access_token", allowBlank=false)
      * @REST\QueryParam(name="page", requirements="\d+", default="1", description="Page of the overview.")
