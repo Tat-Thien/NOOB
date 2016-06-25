@@ -8,6 +8,8 @@ class LeadAssignment
 
     private $lc;
 
+    private $gisId;
+
     /**
      * @return mixed
      */
@@ -22,6 +24,22 @@ class LeadAssignment
     public function setLc($lc)
     {
         $this->lc = $lc;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getGisId()
+    {
+        return $this->gisId;
+    }
+
+    /**
+     * @param mixed $gisId
+     */
+    public function setGisId($gisId)
+    {
+        $this->gisId = $gisId;
     }
 
 }

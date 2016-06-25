@@ -26,21 +26,31 @@ class LeadassignmentController extends RESTBundleController
      */
     public function cgetAction(ParamFetcherInterface $paramFetcher)
     {
-        //$this->checkAuthentication($paramFetcher);
         $program = $paramFetcher->get('program');
         $university = $paramFetcher->get('university');
-        $document = new \DOMDocument();
-        $document->loadXml(file_get_contents(__DIR__ . '/../Resources/leadassignment/lead_assignment.xml'));
-        $xpathvar = new \Domxpath($document);
-        $filterString = "//program[@name='%s']//university[@name='%s']/../@name";
-        $filterString = sprintf($filterString, $program, $university);
-        $queryResult = $xpathvar->query($filterString);
-        if ($queryResult->length == 0) {
+        $lcMappingDocument = new \DOMDocument();
+        $lcMappingDocument->loadXml(file_get_contents(__DIR__ . '/../Resources/leadassignment/lead_assignment.xml'));
+        $lcMappingXpathvar = new \Domxpath($lcMappingDocument);
+        $lcMappingFilterString = "//program[@name='%s']//university[@name='%s']/../@name";
+        $lcMappingFilterString = sprintf($lcMappingFilterString, $program, $university);
+        $lcMappingQueryResult = $lcMappingXpathvar->query($lcMappingFilterString);
+        if ($lcMappingQueryResult->length == 0) {
             throw new NotFoundHttpException();
         }
-        $lc = $queryResult->item(0)->textContent;
+        $lc = $lcMappingQueryResult->item(0)->textContent;
+        $lcMappingDocument = new \DOMDocument();
+        $lcMappingDocument->loadXml(file_get_contents(__DIR__ . '/../Resources/leadassignment/gis_lc_mapping.xml'));
+        $lcMappingXpathvar = new \Domxpath($lcMappingDocument);
+        $lcMappingFilterString = "//lc[@name='%s']/@gis-id";
+        $lcMappingFilterString = sprintf($lcMappingFilterString, $lc);
+        $lcMappingQueryResult = $lcMappingXpathvar->query($lcMappingFilterString);
+        if ($lcMappingQueryResult->length == 0) {
+            throw new NotFoundHttpException();
+        }
+        $gisId = $lcMappingQueryResult->item(0)->textContent;
         $result = new LeadAssignment();
         $result->setLc($lc);
+        $result->setGisId($gisId);
         return $result;
     }
 
