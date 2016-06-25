@@ -725,6 +725,7 @@ class PeopleController extends RESTBundleController
 
     /**
      * @REST\Patch("/people/{personID}/exchanges/{exchangeID}/financeInformation")
+     * @REST\QueryParam(name="access_token", allowBlank=false)
      * @ApiDoc(
      *  resource=true,
      *  description="Edit finance information for an exchange",
