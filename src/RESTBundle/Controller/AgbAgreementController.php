@@ -73,6 +73,7 @@ class AgbAgreementController extends RESTBundleController
 
     /**
      * @REST\Post("/agbAgreements")
+     * @REST\QueryParam(name="access_token", allowBlank=false)
      * @ApiDoc(
      *  resource=true,
      *  description="Sign AGBs",
