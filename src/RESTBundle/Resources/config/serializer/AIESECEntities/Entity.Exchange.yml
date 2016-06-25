@@ -27,7 +27,7 @@ AIESECGermany\EntityBundle\Entity\Exchange:
             href:
                 route: get_agbagreement
                 parameters:
-                    agbAgreementID: expr(object.getId())
+                    agbAgreementID: expr(object.getAgbAgreement().getId())
             exclusion:
                 exclude_if: expr(object.getAgbAgreement() === null)
     relation_providers: [ 'RESTBundle\Controller\ExchangeReintegrationActivityParticipationRelationProvider::getRelations']
