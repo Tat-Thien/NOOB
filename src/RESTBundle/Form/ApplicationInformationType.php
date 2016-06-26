@@ -88,7 +88,7 @@ class ApplicationInformationType extends AbstractRESTFormType
             ->add('competenciesToBeImproved', TextType::class, array(
                 'mapped' => false
             ))
-            ->add('hoursToBeInvested', IntegerType::class, array(
+            ->add('hoursToBeInvested', TextType::class, array(
                 'mapped' => false))
             ->add('interestInInternship', CheckboxType::class, array(
                 'mapped' => false))
