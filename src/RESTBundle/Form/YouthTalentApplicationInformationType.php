@@ -39,9 +39,10 @@ class YouthTalentApplicationInformationType extends AbstractRESTFormType
             ->add('functionalAreaInterested')
             ->add('concretePosition')
             ->add('competenciesToBeImproved')
-            ->add('hoursToBeInvested', IntegerType::class)
+            ->add('hoursToBeInvested')
             ->add('interestInInternship', CheckboxType::class)
             ->add('timeframeInternship')
+            ->add('comments')
         ;
     }
 

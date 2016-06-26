@@ -26,6 +26,7 @@ class GlobalTalentApplicationInformationType extends AbstractRESTFormType
             ->add('studyCourse')
             ->add('graduation')
             ->add('practicalExperience')
+            ->add('comments')
         ;
     }
 
