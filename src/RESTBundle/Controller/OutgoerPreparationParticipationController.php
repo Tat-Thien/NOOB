@@ -53,7 +53,7 @@ class OutgoerPreparationParticipationController extends RESTBundleController
             $qb->andWhere('o.outgoerPreparation = :outgoerPreparationID')->setParameter('outgoerPreparationID', $outgoerPreparationID);
         }
         if ($personID) {
-            $qb->andWhere('r.person = :personID')->setParameter('personID', $personID);
+            $qb->andWhere('o.person = :personID')->setParameter('personID', $personID);
         }
         $query = $qb->getQuery();
         $pagination = $this->createPaginationObject($paramFetcher, $query);
