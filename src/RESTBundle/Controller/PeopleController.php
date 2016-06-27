@@ -515,7 +515,9 @@ class PeopleController extends RESTBundleController
         if (!$bankAccount) {
             throw new NotFoundHttpException();
         }
+        $person->setBankAccount(null);
         $em->remove($bankAccount);
+        $em->persist($person);
         $em->flush();
         return $this->view(null, 204);
     }
@@ -860,7 +862,7 @@ class PeopleController extends RESTBundleController
      *  description="Delete standards and satisfaction"
      * )
      */
-    public function deleteExchangesStandardsandsatisfactionAction(ParamFetcher $paramFetcher, $personID)
+    public function deleteExchangesStandardsandsatisfactionAction(ParamFetcher $paramFetcher, $personID, $exchangeID)
     {
         $this->checkAuthentication($paramFetcher, true);
         $em = $this->getDoctrine()->getManager();
@@ -876,7 +878,9 @@ class PeopleController extends RESTBundleController
         if (!$sands) {
             throw new NotFoundHttpException();
         }
+        $exchange->setStandardsAndSatisfaction(null);
         $em->remove($sands);
+        $em->persist($exchange);
         $em->flush();
         return $this->view(null, 204);
     }
