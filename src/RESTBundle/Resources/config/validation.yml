@@ -102,4 +102,4 @@ AIESECGermany\EntityBundle\Entity\StandardsAndSatisfaction:
         hostFacilitatedLearning:
             - NotNull: ~
         homeFacilitatedLearning:
-            - NotBlank: ~
+            - NotNull: ~
