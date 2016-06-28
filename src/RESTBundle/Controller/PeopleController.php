@@ -104,8 +104,7 @@ class PeopleController extends RESTBundleController
             $em = $this->getDoctrine()->getManager();
             $em->persist($person);
             $em->flush();
-            return $this->redirectWithAccessToken('get_people', array('personID' => $person->getId()),
-                $paramFetcher);
+            return $this->returnCreationResponse($person);
         }
         return array(
             'form' => $form
@@ -137,8 +136,7 @@ class PeopleController extends RESTBundleController
         if ($form->isValid()) {
             $em->merge($person);
             $em->flush();
-            return $this->redirectWithAccessToken('get_people', array('personID' => $person->getId()),
-                $paramFetcher);
+            return $this->returnModificationResponse();
         }
         return array(
             'form' => $form
@@ -162,7 +160,7 @@ class PeopleController extends RESTBundleController
         }
         $em->remove($person);
         $em->flush();
-        return $this->view(null, 204);
+        return $this->returnDeletionResponse();
     }
 
     /**
@@ -209,8 +207,7 @@ class PeopleController extends RESTBundleController
             $em->persist($person);
             $em->persist($emailHistory);
             $em->flush();
-            return $this->redirectWithAccessToken('get_people_emailhistory', array('personID' => $personID),
-                $paramFetcher);
+            return $this->returnCreationResponse($emailHistory);
         }
         return array(
             'form' => $form
@@ -246,8 +243,7 @@ class PeopleController extends RESTBundleController
         if ($form->isValid()) {
             $em->merge($emailHistory);
             $em->flush();
-            return $this->redirectWithAccessToken('get_people_emailhistory', array('personID' => $personID),
-                $paramFetcher);
+            return $this->returnModificationResponse();
         }
         return array(
             'form' => $form
@@ -276,7 +272,7 @@ class PeopleController extends RESTBundleController
         }
         $em->remove($emailHistory);
         $em->flush();
-        return $this->view(null, 204);
+        return $this->returnDeletionResponse();
     }
 
     /**
@@ -348,8 +344,7 @@ class PeopleController extends RESTBundleController
                 $em->persist($person);
                 $em->persist($applicationInformation);
                 $em->flush();
-                return $this->redirectWithAccessToken('get_people_application_information', array('personID' => $personID),
-                    $paramFetcher);
+                return $this->returnCreationResponse($applicationInformation);
             }
         }
         return array(
@@ -392,8 +387,7 @@ class PeopleController extends RESTBundleController
         if ($form->isValid()) {
             $em->merge($applicationInformation);
             $em->flush();
-            return $this->redirectWithAccessToken('get_people_application_information', array('personID' => $personID),
-                $paramFetcher);
+            return $this->returnModificationResponse();
         }
         return array(
             'form' => $form
@@ -450,8 +444,7 @@ class PeopleController extends RESTBundleController
             $em->persist($person);
             $em->persist($bankAccount);
             $em->flush();
-            return $this->redirectWithAccessToken('get_people_bankaccount', array('personID' => $personID),
-                $paramFetcher);
+            return $this->returnCreationResponse($bankAccount);
         }
         return array(
             'form' => $form
@@ -487,8 +480,7 @@ class PeopleController extends RESTBundleController
         if ($form->isValid()) {
             $em->merge($bankAccount);
             $em->flush();
-            return $this->redirectWithAccessToken('get_people_bankaccount', array('personID' => $personID),
-                $paramFetcher);
+            return $this->returnModificationResponse();
         }
         return array(
             'form' => $form
@@ -519,7 +511,7 @@ class PeopleController extends RESTBundleController
         $em->remove($bankAccount);
         $em->persist($person);
         $em->flush();
-        return $this->view(null, 204);
+        return $this->returnDeletionResponse();
     }
 
     /**
@@ -609,8 +601,7 @@ class PeopleController extends RESTBundleController
             $em->persist($financeInformation);
             $em->persist($exchange);
             $em->flush();
-            return $this->redirectWithAccessToken('get_people_exchanges',
-                array('personID' => $personID, 'exchangeID' => $exchange->getId()), $paramFetcher);
+            return $this->returnCreationResponse($exchange);
         }
         return array(
             'form' => $form
@@ -647,8 +638,7 @@ class PeopleController extends RESTBundleController
         if ($form->isValid()) {
             $em->merge($exchange);
             $em->flush();
-            return $this->redirectWithAccessToken('get_people_exchanges', array(
-                'personID' => $personID, 'exchangeID' => $exchange->getId()), $paramFetcher);
+            return $this->returnModificationResponse();
         }
         return array(
             'form' => $form
@@ -664,6 +654,7 @@ class PeopleController extends RESTBundleController
      */
     public function deleteExchangeAction(ParamFetcher $paramFetcher, $personID, $exchangeID)
     {
+        $this->checkAuthentication($paramFetcher);
         $em = $this->getDoctrine()->getManager();
         $person = $em->getRepository('AIESECGermany\EntityBundle\Entity\Person')->findOneById($personID);
         if (!$person) {
@@ -675,7 +666,7 @@ class PeopleController extends RESTBundleController
         }
         $em->remove($exchange);
         $em->flush();
-        return $this->view(null, 204);
+        return $this->returnDeletionResponse();
     }
 
     /**
@@ -733,8 +724,7 @@ class PeopleController extends RESTBundleController
         if ($form->isValid()) {
             $em->merge($financeInformation);
             $em->flush();
-            return $this->redirectWithAccessToken('get_people_exchanges_financeinformation',
-                array('personID' => $personID, 'exchangeID' => $exchangeID), $paramFetcher);
+            return $this->returnModificationResponse();
         }
         return array(
             'form' => $form
@@ -805,8 +795,7 @@ class PeopleController extends RESTBundleController
             $em->persist($exchange);
             $em->persist($sands);
             $em->flush();
-            return $this->redirectWithAccessToken('get_people_exchanges_standardsandsatisfaction',
-                array('personID' => $personID, 'exchangeID' => $exchangeID), $paramFetcher);
+            return $this->returnCreationResponse($sands);
         }
         return array(
             'form' => $form
@@ -846,8 +835,7 @@ class PeopleController extends RESTBundleController
         if ($form->isValid()) {
             $em->merge($sands);
             $em->flush();
-            return $this->redirectWithAccessToken('get_people_exchanges_standardsandsatisfaction', array(
-                'personID' => $personID, 'exchangeID' => $exchangeID), $paramFetcher);
+            return $this->returnModificationResponse();
         }
         return array(
             'form' => $form
@@ -882,6 +870,6 @@ class PeopleController extends RESTBundleController
         $em->remove($sands);
         $em->persist($exchange);
         $em->flush();
-        return $this->view(null, 204);
+        return $this->returnDeletionResponse();
     }
 }

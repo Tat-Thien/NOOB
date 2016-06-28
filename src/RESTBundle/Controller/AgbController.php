@@ -78,8 +78,7 @@ class AgbController extends RESTBundleController
             $em = $this->getDoctrine()->getManager();
             $em->persist($agb);
             $em->flush();
-            return $this->redirectWithAccessToken('get_agb', array('agbID' => $agb->getId()),
-                $paramFetcher);
+            return $this->returnCreationResponse($agb);
         }
         return array(
             'form' => $form
@@ -111,8 +110,7 @@ class AgbController extends RESTBundleController
         if ($form->isValid()) {
             $em->merge($agb);
             $em->flush();
-            return $this->redirectWithAccessToken('get_agb', array('personID' => $agbID),
-                $paramFetcher);
+            return $this->returnModificationResponse();
         }
         return array(
             'form' => $form

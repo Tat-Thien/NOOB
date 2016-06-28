@@ -101,9 +101,7 @@ class ReintegrationActivityParticipationController extends RESTBundleController
             $em = $this->getDoctrine()->getManager();
             $em->persist($reintegrationActivityParticipation);
             $em->flush();
-            return $this->redirectWithAccessToken('get_reintegrationactivityparticipation',
-                array('participationID' => $reintegrationActivityParticipation->getId()),
-                $paramFetcher);
+            return $this->returnCreationResponse($reintegrationActivityParticipation);
         }
         return array(
             'form' => $form

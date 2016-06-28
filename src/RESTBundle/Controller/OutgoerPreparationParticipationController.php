@@ -101,9 +101,7 @@ class OutgoerPreparationParticipationController extends RESTBundleController
             $em = $this->getDoctrine()->getManager();
             $em->persist($outgoerPreparationParticipation);
             $em->flush();
-            return $this->redirectWithAccessToken('get_outgoerpreparationparticipations',
-                array('participationID' => $outgoerPreparationParticipation->getId()),
-                $paramFetcher);
+            return $this->returnCreationResponse($outgoerPreparationParticipation);
         }
         return array(
             'form' => $form

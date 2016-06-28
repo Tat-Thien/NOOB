@@ -113,8 +113,7 @@ class ReintegrationActivityController extends RESTBundleController
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($activity);
                 $em->flush();
-                return $this->redirectWithAccessToken('get_reintegrationactivity',
-                    array('reintegrationActivityID' => $activity->getId()), $paramFetcher);
+                return $this->returnCreationResponse($activity);
             }
         }
         return array(
@@ -149,8 +148,7 @@ class ReintegrationActivityController extends RESTBundleController
         if ($form->isValid()) {
             $em->merge($reintegrationActivity);
             $em->flush();
-            return $this->redirectWithAccessToken('get_reintegrationactivity', array('reintegrationActivityID' => $reintegrationActivityID),
-                $paramFetcher);
+            return $this->returnModificationResponse($reintegrationActivity);
         }
         return array(
             'form' => $form
@@ -175,6 +173,6 @@ class ReintegrationActivityController extends RESTBundleController
         }
         $em->remove($whs);
         $em->flush();
-        return $this->view(null, 204);
+        return $this->returnDeletionResponse();
     }
 }
