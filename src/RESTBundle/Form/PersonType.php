@@ -28,6 +28,8 @@ class PersonType extends AbstractRESTFormType
             ->add('rejected', CheckboxType::class)
             ->add('gtUp', CheckboxType::class)
             ->add('newsletterPermitted', CheckboxType::class)
+            ->add('salesforceID')
+
         ;
     }
 
