@@ -14,12 +14,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AIESECGermany/EntityBundle.git",
-                "reference": "56348b48b9ccb41ba8e58d10325c9b4662966e35"
+                "reference": "0814b436e7d0c6e0c3c7ebb3ace1ab723235efc6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AIESECGermany/EntityBundle/zipball/56348b48b9ccb41ba8e58d10325c9b4662966e35",
-                "reference": "56348b48b9ccb41ba8e58d10325c9b4662966e35",
+                "url": "https://api.github.com/repos/AIESECGermany/EntityBundle/zipball/0814b436e7d0c6e0c3c7ebb3ace1ab723235efc6",
+                "reference": "0814b436e7d0c6e0c3c7ebb3ace1ab723235efc6",
                 "shasum": ""
             },
             "require": {
@@ -54,7 +54,7 @@
                 "source": "https://github.com/AIESECGermany/EntityBundle/tree/master",
                 "issues": "https://github.com/AIESECGermany/EntityBundle/issues"
             },
-            "time": "2016-06-16 12:09:17"
+            "time": "2016-06-26 18:50:02"
         },
         {
             "name": "doctrine/annotations",
@@ -1873,16 +1873,16 @@
         },
         {
             "name": "sensio/distribution-bundle",
-            "version": "v5.0.6",
+            "version": "v5.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioDistributionBundle.git",
-                "reference": "ffe306d09c1f2bad721237f63b2169d1b78253d0"
+                "reference": "a9c4723cbdbc6cf7fbfdfde3c639cb1943f0293a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/ffe306d09c1f2bad721237f63b2169d1b78253d0",
-                "reference": "ffe306d09c1f2bad721237f63b2169d1b78253d0",
+                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/a9c4723cbdbc6cf7fbfdfde3c639cb1943f0293a",
+                "reference": "a9c4723cbdbc6cf7fbfdfde3c639cb1943f0293a",
                 "shasum": ""
             },
             "require": {
@@ -1921,7 +1921,7 @@
                 "configuration",
                 "distribution"
             ],
-            "time": "2016-04-25 20:50:31"
+            "time": "2016-06-23 16:11:33"
         },
         {
             "name": "sensio/framework-extra-bundle",
@@ -3116,16 +3116,16 @@
     "packages-dev": [
         {
             "name": "sensio/generator-bundle",
-            "version": "v3.0.6",
+            "version": "v3.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioGeneratorBundle.git",
-                "reference": "ac91535054d025937d897d78ebb5fc2da5e955a4"
+                "reference": "d1be460925376703a470a3ac6ec034eb7eab3892"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioGeneratorBundle/zipball/ac91535054d025937d897d78ebb5fc2da5e955a4",
-                "reference": "ac91535054d025937d897d78ebb5fc2da5e955a4",
+                "url": "https://api.github.com/repos/sensiolabs/SensioGeneratorBundle/zipball/d1be460925376703a470a3ac6ec034eb7eab3892",
+                "reference": "d1be460925376703a470a3ac6ec034eb7eab3892",
                 "shasum": ""
             },
             "require": {
@@ -3164,7 +3164,7 @@
                 }
             ],
             "description": "This bundle generates code for you",
-            "time": "2016-02-26 04:36:01"
+            "time": "2016-06-20 05:58:05"
         },
         {
             "name": "symfony/phpunit-bridge",
