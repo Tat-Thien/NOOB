@@ -43,7 +43,7 @@ use Nelmio\ApiDocBundle\Annotation\ApiDoc;
  */
 class PeopleController extends RESTBundleController
 {
-    
+
     /**
      * @REST\QueryParam(name="access_token", allowBlank=false)
      * @REST\QueryParam(name="page", requirements="\d+", default="1", description="Page of the overview.")
@@ -177,6 +177,9 @@ class PeopleController extends RESTBundleController
         $this->checkAuthentication($paramFetcher);
         $em = $this->getDoctrine()->getManager();
         $person = $em->getRepository('AIESECGermany\EntityBundle\Entity\Person')->findOneById($personID);
+        if (!$person) {
+            throw new NotFoundHttpException();
+        }
         return $person->getEmailHistory();
     }
 
@@ -299,13 +302,14 @@ class PeopleController extends RESTBundleController
             $type = $applicationInformation->getType();
             if ($type != 'globalCitizenApplicationInformation' &&
                 $type != 'globalTalentApplicationInformation' &&
-                $type != 'youthTalentApplicationInformation') {
+                $type != 'youthTalentApplicationInformation'
+            ) {
                 throw new BadRequestHttpException();
             }
             $informationEntityMapper =
                 ['globalCitizenApplicationInformation' => new GlobalCitizenApplicationInformation(),
-                'globalTalentApplicationInformation' => new GlobalTalentApplicationInformation(),
-                'youthTalentApplicationInformation' => new YouthTalentApplicationInformation()];
+                    'globalTalentApplicationInformation' => new GlobalTalentApplicationInformation(),
+                    'youthTalentApplicationInformation' => new YouthTalentApplicationInformation()];
             $informationTypeMapper =
                 ['globalCitizenApplicationInformation' => new GlobalCitizenApplicationInformationType(),
                     'globalTalentApplicationInformation' => new GlobalTalentApplicationInformationType(),
@@ -511,6 +515,7 @@ class PeopleController extends RESTBundleController
         }
         return $exchange;
     }
+
     /**
      * @REST\QueryParam(name="access_token", allowBlank=false)
      * @REST\QueryParam(name="salesforceID", description="Salesforce ID")
