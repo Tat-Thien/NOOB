@@ -108,4 +108,25 @@ class OutgoerPreparationParticipationController extends RESTBundleController
         );
     }
 
+    /**
+     * @REST\Delete("/outgoerPreparationParticipations/{participationID}")
+     * @REST\QueryParam(name="access_token", allowBlank=false)
+     * @ApiDoc(
+     *  resource=true,
+     *  description="Delete an outgoer preparation participation"
+     * )
+     */
+    public function deleteAction(ParamFetcherInterface $paramFetcher, Request $request, $participationID)
+    {
+        $this->checkAuthentication($paramFetcher, true);
+        $em = $this->getDoctrine()->getManager();
+        $outgoerPreparationParticipation = $em->getRepository('AIESECGermany\EntityBundle\Entity\OutgoerPreparationParticipation')->findOneById($participationID);
+        if (!$outgoerPreparationParticipation) {
+            throw new NotFoundHttpException();
+        }
+        $em->remove($outgoerPreparationParticipation);
+        $em->flush();
+        return $this->returnDeletionResponse();
+    }
+
 }

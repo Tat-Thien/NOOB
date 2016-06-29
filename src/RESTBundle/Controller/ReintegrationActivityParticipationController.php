@@ -108,4 +108,25 @@ class ReintegrationActivityParticipationController extends RESTBundleController
         );
     }
 
+    /**
+     * @REST\Delete("/reintegrationActivityParticipations/{participationID}")
+     * @REST\QueryParam(name="access_token", allowBlank=false)
+     * @ApiDoc(
+     *  resource=true,
+     *  description="Delete a reintegration activity participation"
+     * )
+     */
+    public function deleteAction(ParamFetcherInterface $paramFetcher, Request $request, $participationID)
+    {
+        $this->checkAuthentication($paramFetcher, true);
+        $em = $this->getDoctrine()->getManager();
+        $reintegrationActivityParticipation = $em->getRepository('AIESECGermany\EntityBundle\Entity\ReintegrationActivityParticipation')->findOneById($participationID);
+        if (!$reintegrationActivityParticipation) {
+            throw new NotFoundHttpException();
+        }
+        $em->remove($reintegrationActivityParticipation);
+        $em->flush();
+        return $this->returnDeletionResponse();
+    }
+
 }
