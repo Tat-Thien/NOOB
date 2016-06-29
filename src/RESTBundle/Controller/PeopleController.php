@@ -251,31 +251,6 @@ class PeopleController extends RESTBundleController
     }
 
     /**
-     * @REST\Delete("/people/{personID}/emailHistory")
-     * @REST\QueryParam(name="access_token", allowBlank=false)
-     * @ApiDoc(
-     *  resource=true,
-     *  description="Delete a email history"
-     * )
-     */
-    public function deleteEmailhistoryAction(ParamFetcher $paramFetcher, $personID)
-    {
-        $this->checkAuthentication($paramFetcher);
-        $em = $this->getDoctrine()->getManager();
-        $person = $em->getRepository('AIESECGermany\EntityBundle\Entity\Person')->findOneById($personID);
-        if (!$person) {
-            throw new NotFoundHttpException();
-        }
-        $emailHistory = $person->getEmailHistory();
-        if (!$emailHistory) {
-            throw new NotFoundHttpException();
-        }
-        $em->remove($emailHistory);
-        $em->flush();
-        return $this->returnDeletionResponse();
-    }
-
-    /**
      * @REST\Get("/people/{personID}/applicationInformation")
      * @REST\QueryParam(name="access_token", allowBlank=false)
      * @ApiDoc(
