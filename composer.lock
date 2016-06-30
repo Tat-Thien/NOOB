@@ -14,12 +14,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/AIESECGermany/EntityBundle.git",
-                "reference": "e38b884ea65f8ea6f3f4a3faa76258ddf5a3725a"
+                "reference": "613fd28035bb9b56ccf62d3a246d486f21cab9b0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AIESECGermany/EntityBundle/zipball/e38b884ea65f8ea6f3f4a3faa76258ddf5a3725a",
-                "reference": "e38b884ea65f8ea6f3f4a3faa76258ddf5a3725a",
+                "url": "https://api.github.com/repos/AIESECGermany/EntityBundle/zipball/613fd28035bb9b56ccf62d3a246d486f21cab9b0",
+                "reference": "613fd28035bb9b56ccf62d3a246d486f21cab9b0",
                 "shasum": ""
             },
             "require": {
@@ -54,7 +54,7 @@
                 "source": "https://github.com/AIESECGermany/EntityBundle/tree/master",
                 "issues": "https://github.com/AIESECGermany/EntityBundle/issues"
             },
-            "time": "2016-06-30 00:50:54"
+            "time": "2016-06-30 13:23:31"
         },
         {
             "name": "doctrine/annotations",
