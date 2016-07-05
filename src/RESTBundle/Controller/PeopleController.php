@@ -46,6 +46,7 @@ class PeopleController extends RESTBundleController
 
     /**
      * @REST\QueryParam(name="access_token", allowBlank=false)
+     * @REST\QueryParam(name="email", description="Email")
      * @REST\QueryParam(name="page", requirements="\d+", default="1", description="Page of the overview.")
      * @REST\QueryParam(name="limit", requirements="\d+", default="10", description="Entities per page.")
      * @ApiDoc(
@@ -59,7 +60,11 @@ class PeopleController extends RESTBundleController
         $this->checkAuthentication($paramFetcher);
         $em = $this->getDoctrine()->getManager();
         $qb = $em->createQueryBuilder();
+        $email = $paramFetcher->get('email');
         $qb->select('p')->from('AIESECGermany\EntityBundle\Entity\Person', 'p');
+        if ($email) {
+            $qb->andWhere('p.email = :email')->setParameter('email', $email);
+        }
         $query = $qb->getQuery();
         $pagination = $this->createPaginationObject($paramFetcher, $query);
         return $pagination;
