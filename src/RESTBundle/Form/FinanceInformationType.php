@@ -47,6 +47,9 @@ class FinanceInformationType extends AbstractRESTFormType
             ->add('reasonForRetention')
             ->add('otherReasonsForRetention')
             ->add('calculatedBalance', NumberType::class)
+            ->add('whsBookingDate', DateType::class, array(
+                'widget' => 'single_text'
+            ))
         ;
     }
 
