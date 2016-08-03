@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<programs>
+    <program name="oGCDP">
+        <lc name="">
+            <university name=""/>
+        </lc>
+    </program>
+    <program name="oGIP">
+        <lc name="">
+            <university name=""/>
+        </lc>
+    </program>
+    <program name="TMP">
+        <lc name="">
+            <university name=""/>
+        </lc>
+    </program>
+</programs>
