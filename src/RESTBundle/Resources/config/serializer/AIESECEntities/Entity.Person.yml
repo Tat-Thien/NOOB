@@ -16,7 +16,7 @@ AIESECGermany\EntityBundle\Entity\Person:
             href:
                 route: get_outgoerpreparationparticipation
                 parameters:
-                    opsID: expr(object.getOutgoerPreparationParticipation().getId())
+                    participationID: expr(object.getOutgoerPreparationParticipation().getId())
             exclusion:
                 exclude_if: expr(object.getOutgoerPreparationParticipation() === null)
         -
