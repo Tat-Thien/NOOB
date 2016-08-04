@@ -18,6 +18,14 @@ AIESECGermany\EntityBundle\Entity\OutgoerPreparationParticipation:
             - NotBlank: ~
         outgoerPreparation:
             - NotBlank: ~
+AIESECGermany\EntityBundle\Entity\OnlineOutgoerPreparationParticipation:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: person
+    properties:
+        confirmed:
+            - NotNull: ~
+        person:
+            - NotBlank: ~
 AIESECGermany\EntityBundle\Entity\Person:
     constraints:
         - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: id
@@ -26,8 +34,6 @@ AIESECGermany\EntityBundle\Entity\Person:
             - NotBlank: ~
         email:
             - NotBlank: ~
-        opsOnline:
-            - NotNull: ~
 AIESECGermany\EntityBundle\Entity\Exchange:
     constraints:
         - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: salesforceID

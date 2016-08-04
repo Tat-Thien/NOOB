@@ -4,6 +4,8 @@ AIESECGermany\EntityBundle\Entity\Person:
             exclude: true
         outgoerPreparationParticipation:
             exclude: true
+        onlineOutgoerPreparationParticipation:
+            exclude: true
         emailHistory:
             exclude: true
         bankAccount:
@@ -19,6 +21,14 @@ AIESECGermany\EntityBundle\Entity\Person:
                     participationID: expr(object.getOutgoerPreparationParticipation().getId())
             exclusion:
                 exclude_if: expr(object.getOutgoerPreparationParticipation() === null)
+        -
+            rel: onlineOutgoerPreparationParticipation
+            href:
+                route: get_onlineoutgoerpreparationparticipation
+                parameters:
+                    participationID: expr(object.getOnlineOutgoerPreparationParticipation().getId())
+            exclusion:
+                exclude_if: expr(object.getOnlineOutgoerPreparationParticipation() === null)
         -
             rel: emailHistory
             href:
