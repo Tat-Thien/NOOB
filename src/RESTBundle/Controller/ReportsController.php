@@ -30,7 +30,7 @@ class ReportsController extends RESTBundleController
 
         $sql = " 
         SELECT fin.date_of_inpayment, x.id exchangeId, x.person_id personId,
-        person.ops_online opsOnline, person.ops_online_booking_date opsOnlineBookingDate,
+        person.ops_online_booking_date opsOnlineBookingDate,
         op.type opType, op.lc opLc, op.start_date opStartDate, op.end_date opEndDate,
         agb.implementation_date agbImplementationDate, agb.pdf_url agbUrl,
         fin.amount_of_iccfee amountOfIccFee, fin.icc_fee_booked iccFeeBooked,
