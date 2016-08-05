@@ -24,7 +24,6 @@ class PersonType extends AbstractRESTFormType
             ->add('email', EmailType::class, array(
                 'required' => true
             ))
-            ->add('opsOnline', CheckboxType::class)
             ->add('leadSource')
             ->add('rejected', CheckboxType::class)
             ->add('gtUp', CheckboxType::class)

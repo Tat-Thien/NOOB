@@ -18,6 +18,10 @@ outgoer_preparation_participation:
     type:     rest
     resource: RESTBundle:OutgoerPreparationParticipation
 
+online_outgoer_preparation_participation:
+    type:     rest
+    resource: RESTBundle:OnlineOutgoerPreparationParticipation
+
 reintegration_activity:
     type:     rest
     resource: RESTBundle:ReintegrationActivity

@@ -1,0 +1,13 @@
+AIESECGermany\EntityBundle\Entity\OnlineOutgoerPreparationParticipation:
+    relations:
+        -
+            rel: person
+            href:
+                route: get_people
+                parameters:
+                    personID: expr(object.getPerson().getId())
+            exclusion:
+                exclude_if: expr(object.getPerson() === null)
+    properties:
+        person:
+            exclude: true
