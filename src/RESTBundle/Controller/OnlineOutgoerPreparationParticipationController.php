@@ -93,6 +93,38 @@ class OnlineOutgoerPreparationParticipationController extends RESTBundleControll
     }
 
     /**
+     * @REST\Patch("/onlineOutgoerPreparationParticipations/{participationID}")
+     * @REST\QueryParam(name="access_token", allowBlank=false)
+     * @ApiDoc(
+     *  resource=true,
+     *  description="Edit an online outgoer preparation participation",
+     *  input="RESTBundle\Form\OnlineOutgoerPreparationParticipationType",
+     *  output="RESTBundle\Form\OnlineOutgoerPreparationParticipationType"
+     * )
+     */
+    public function patchAction(ParamFetcherInterface $paramFetcher, Request $request, $participationID)
+    {
+        $this->checkAuthentication($paramFetcher, true);
+        $em = $this->getDoctrine()->getManager();
+        $onlineOutgoerPreparationParticipation = $em->getRepository('AIESECGermany\EntityBundle\Entity\OnlineOutgoerPreparationParticipation')->findOneById($participationID);
+        if (!$onlineOutgoerPreparationParticipation) {
+            throw new NotFoundHttpException();
+        }
+        $form = $this->createForm(new OnlineOutgoerPreparationParticipationType(), $onlineOutgoerPreparationParticipation, [
+            'method' => 'PATCH'
+        ]);
+        $form->handleRequest($request);
+        if ($form->isValid()) {
+            $em->merge($onlineOutgoerPreparationParticipation);
+            $em->flush();
+            return $this->returnModificationResponse($onlineOutgoerPreparationParticipation);
+        }
+        return array(
+            'form' => $form
+        );
+    }
+
+    /**
      * @REST\Delete("/onlineOutgoerPreparationParticipations/{participationID}")
      * @REST\QueryParam(name="access_token", allowBlank=false)
      * @ApiDoc(

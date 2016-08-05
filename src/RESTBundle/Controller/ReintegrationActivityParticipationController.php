@@ -109,6 +109,38 @@ class ReintegrationActivityParticipationController extends RESTBundleController
     }
 
     /**
+     * @REST\Patch("/reintegrationActivityParticipations/{participationID}")
+     * @REST\QueryParam(name="access_token", allowBlank=false)
+     * @ApiDoc(
+     *  resource=true,
+     *  description="Edit a reintegration activity participation",
+     *  input="RESTBundle\Form\ReintegrationActivityParticipationType",
+     *  output="RESTBundle\Form\ReintegrationActivityParticipationType"
+     * )
+     */
+    public function patchAction(ParamFetcherInterface $paramFetcher, Request $request, $participationID)
+    {
+        $this->checkAuthentication($paramFetcher, true);
+        $em = $this->getDoctrine()->getManager();
+        $reintegrationActivityParticipation = $em->getRepository('AIESECGermany\EntityBundle\Entity\ReintegrationActivityParticipation')->findOneById($participationID);
+        if (!$reintegrationActivityParticipation) {
+            throw new NotFoundHttpException();
+        }
+        $form = $this->createForm(new ReintegrationActivityParticipationType(), $reintegrationActivityParticipation, [
+            'method' => 'PATCH'
+        ]);
+        $form->handleRequest($request);
+        if ($form->isValid()) {
+            $em->merge($reintegrationActivityParticipation);
+            $em->flush();
+            return $this->returnModificationResponse($reintegrationActivityParticipation);
+        }
+        return array(
+            'form' => $form
+        );
+    }
+
+    /**
      * @REST\Delete("/reintegrationActivityParticipations/{participationID}")
      * @REST\QueryParam(name="access_token", allowBlank=false)
      * @ApiDoc(
