@@ -3,7 +3,6 @@
 namespace RESTBundle\Controller;
 
 use AIESECGermany\EntityBundle\Entity\AGBAgreement;
-use Doctrine\ORM\Query;
 use FOS\RestBundle\Request\ParamFetcher;
 use FOS\RestBundle\Request\ParamFetcherInterface;
 use RESTBundle\Form\AGBAgreementType;

@@ -2,11 +2,9 @@
 
 namespace RESTBundle\Controller;
 use AIESECGermany\EntityBundle\Entity\AGB;
-use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Request\ParamFetcherInterface;
 use RESTBundle\Form\AGBType;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use FOS\RestBundle\Controller\Annotations as REST;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
