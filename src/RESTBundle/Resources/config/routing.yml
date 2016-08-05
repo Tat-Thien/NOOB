@@ -33,3 +33,7 @@ reintegration_activity_participation:
 lead_assignment:
     type:     rest
     resource: RESTBundle:Leadassignment
+
+reports:
+    type:     rest
+    resource: RESTBundle:Reports
