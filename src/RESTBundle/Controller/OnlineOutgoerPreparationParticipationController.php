@@ -45,7 +45,7 @@ class OnlineOutgoerPreparationParticipationController extends RESTBundleControll
     }
 
     /**
-     * @REST\Get("/onlineOutgoerPreparationParticipation/{participationID}")
+     * @REST\Get("/onlineOutgoerPreparationParticipations/{participationID}")
      * @REST\QueryParam(name="access_token", allowBlank=false)
      * @ApiDoc(
      *  resource=true,
