@@ -95,6 +95,9 @@ class ApplicationInformationType extends AbstractRESTFormType
             ->add('timeframeInternship', TextType::class, array(
                 'mapped' => false
             ))
+            ->add('university', TextType::class, array(
+                'mapped' => false
+            ))
         ;
     }
 

@@ -18,6 +18,7 @@ class GlobalCitizenApplicationInformationType extends AbstractRESTFormType
             ->add('fieldOfStudy')
             ->add('howHeard')
             ->add('comments')
+            ->add('university')
         ;
     }
 

@@ -43,6 +43,7 @@ class YouthTalentApplicationInformationType extends AbstractRESTFormType
             ->add('interestInInternship', CheckboxType::class)
             ->add('timeframeInternship')
             ->add('comments')
+            ->add('university')
         ;
     }
 
