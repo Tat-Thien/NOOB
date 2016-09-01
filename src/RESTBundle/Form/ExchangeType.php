@@ -3,7 +3,7 @@
 namespace RESTBundle\Form;
 
 use AIESECGermany\EntityBundle\Entity\Exchange;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\FormBuilderInterface;
 
@@ -18,7 +18,7 @@ class ExchangeType extends AbstractRESTFormType
             ->add('focusOfInternship')
             ->add('salesforceID')
             ->add('internshipNumber', IntegerType::class)
-            ->add('matchBreak', ChoiceType::class)
+            ->add('matchBreak', CheckboxType::class)
         ;
     }
 
