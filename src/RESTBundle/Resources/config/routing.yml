@@ -10,6 +10,10 @@ agb_agreement:
     type:     rest
     resource: RESTBundle:AgbAgreement
 
+exchanges:
+    type:     rest
+    resource: RESTBundle:Exchange
+
 outgoer_preparation:
     type:     rest
     resource: RESTBundle:OutgoerPreparation
