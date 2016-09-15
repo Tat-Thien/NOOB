@@ -104,3 +104,5 @@ fabric.properties
 .idea
 
 **/lead_assignment.xml
+
+.DS_Store
