@@ -126,6 +126,30 @@ class ReportsController extends RESTBundleController
         return $this->getReport($whereClause);
     }
 
+    /**
+     * @REST\Get("/reports/auditAccounts")
+     * @REST\QueryParam(name="access_token", allowBlank=false)
+     * @REST\QueryParam(name="year", requirements="\d+", default="2016", allowBlank=false, description="year from which to get active accounts")
+     * @ApiDoc(
+     *  description="Get Audit/EP Info for a specific year"
+     * )
+     */
+    public function getAuditAccountsAction(ParamFetcher $paramFetcher)
+    {
+        $this->checkAuthentication($paramFetcher);
+
+        $year = intval($paramFetcher->get('year'));
+
+        $whereClause = "
+        WHERE fin.exact_epaccount_number LIKE '%" . $year ."%'
+        || fin.date_of_inpayment LIKE '%" . $year ."%' 
+        || fin.exact_ep_account_in_balance = FALSE
+        || fin.updated_at LIKE '%" . $year ."%'
+    ";
+
+        return $this->getReport($whereClause);
+    }
+
 
     function getReport($whereClause) {
         $sql = " 
@@ -133,6 +157,7 @@ class ReportsController extends RESTBundleController
         person.ops_online_booking_date opsOnlineBookingDate,
         op.type opType, op.lc opLc, op.start_date opStartDate, op.end_date opEndDate,
         agb.implementation_date agbImplementationDate, agb.pdf_url agbUrl,
+        fin.id as finId, fin.exact_epaccount_number,
         fin.amount_of_iccfee amountOfIccFee, fin.icc_fee_booked iccFeeBooked,
         fin.amount_of_matching_fee amountOfMatchingFee, fin.matching_fee_booked matchingFeeBooked,
         fin.whs_fee whsFee, fin.peds_fee_booked whsFeeBooked,  fin.whs_booking_date whsBookingDate,
