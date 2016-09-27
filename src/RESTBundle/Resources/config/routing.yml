@@ -38,6 +38,10 @@ lead_assignment:
     type:     rest
     resource: RESTBundle:Leadassignment
 
+jds:
+    type:     rest
+    resource: RESTBundle:Jd
+
 reports:
     type:     rest
     resource: RESTBundle:Reports
