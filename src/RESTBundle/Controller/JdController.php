@@ -20,9 +20,12 @@ class JdController extends RESTBundleController
      * @REST\QueryParam(name="access_token", allowBlank=false)
      * @REST\QueryParam(name="page", requirements="\d+", default="1", description="Page of the overview.")
      * @REST\QueryParam(name="limit", requirements="\d+", default="10", description="Entities per page.")
+     * @REST\QueryParam(name="committeeId", requirements="\d+", description="Entities per page.")
+     * @REST\QueryParam(name="ids", array=true, requirements="\d+", description="List of ids")
+     * @REST\QueryParam(name="sort", description="Sort by a column")
      * @ApiDoc(
      *  resource=true,
-     *  description="Return all JDs",
+     *  description="Return JDs",
      *  output={"class"="RESTBundle\Form\JdType", "collection"=true}
      * )
      */
@@ -32,11 +35,20 @@ class JdController extends RESTBundleController
         $em = $this->getDoctrine()->getManager();
         $qb = $em->createQueryBuilder();
         $qb->select('j')->from('AIESECGermany\EntityBundle\Entity\JD', 'j');
-        // if ($email) {
-        //     $qb->andWhere('p.email = :email')->setParameter('email', $email);
-        // }
+        
+        $committeeId = $paramFetcher->get('committeeId');
+        if ($committeeId) $qb->andWhere('j.committee_id = :id')->setParameter('id', $committeeId);
+        
+        $ids = $paramFetcher->get('ids');
+        if (is_array($ids) && count($ids)) $qb->andWhere('j.id IN (:ids)')->setParameter('ids', $ids);
+
+        //!!! sort is bound in pagination, just need to add the entity parameter
+        $sort = $paramFetcher->get('sort');
+        if ($sort) $_GET['sort'] = 'j.'.$sort;
+
         $query = $qb->getQuery();
         $pagination = $this->createPaginationObject($paramFetcher, $query);
+        // var_export($pagination);die();
         return $pagination;
     }
 
