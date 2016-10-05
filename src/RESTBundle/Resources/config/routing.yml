@@ -34,6 +34,10 @@ reintegration_activity_participation:
     type:     rest
     resource: RESTBundle:ReintegrationActivityParticipation
 
+standards_and_satisfaction:
+    type: rest
+    resource: RESTBundle:StandardsAndSatisfaction
+
 lead_assignment:
     type:     rest
     resource: RESTBundle:Leadassignment
