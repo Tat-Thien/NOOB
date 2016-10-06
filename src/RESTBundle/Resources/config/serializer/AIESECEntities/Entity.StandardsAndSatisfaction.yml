@@ -1,4 +1,2 @@
 AIESECGermany\EntityBundle\Entity\StandardsAndSatisfaction:
     properties:
-        id:
-            exclude: true
