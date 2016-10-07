@@ -50,6 +50,8 @@ class PeopleController extends RESTBundleController
      * @REST\QueryParam(name="page", requirements="\d+", default="1", description="Page of the overview.")
      * @REST\QueryParam(name="limit", requirements="\d+", default="10", description="Entities per page.")
      * @REST\QueryParam(name="ids", array=true, requirements="\d+", description="List of ids")
+     * @REST\QueryParam(name="sort", description="Sort by a column")
+     * @REST\QueryParam(name="direction", requirements="(asc|desc)", default="asc", description="Sort direction")
      * @ApiDoc(
      *  resource=true,
      *  description="Return all people",
@@ -68,6 +70,10 @@ class PeopleController extends RESTBundleController
 
         $ids = $paramFetcher->get('ids');
         if (is_array($ids) && count($ids)) $qb->andWhere('p.id IN (:ids)')->setParameter('ids', $ids);
+
+        //!!! sort is bound in pagination, just need to add the entity parameter
+        $sort = $paramFetcher->get('sort');
+        if ($sort) $_GET['sort'] = 'p.'.$sort;
 
         $query = $qb->getQuery();
         $pagination = $this->createPaginationObject($paramFetcher, $query);
