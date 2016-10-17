@@ -20,9 +20,10 @@ class JdController extends RESTBundleController
      * @REST\QueryParam(name="access_token", allowBlank=false)
      * @REST\QueryParam(name="page", requirements="\d+", default="1", description="Page of the overview.")
      * @REST\QueryParam(name="limit", requirements="\d+", default="10", description="Entities per page.")
-     * @REST\QueryParam(name="committeeId", requirements="\d+", description="Entities per page.")
      * @REST\QueryParam(name="ids", array=true, requirements="\d+", description="List of ids")
+     * @REST\QueryParam(name="committeeIds", array=true, requirements="\d+", description="List of committee IDs")
      * @REST\QueryParam(name="sort", description="Sort by a column")
+     * @REST\QueryParam(name="direction", requirements="(asc|desc)", default="asc", description="Sort direction")
      * @ApiDoc(
      *  resource=true,
      *  description="Return JDs",
@@ -36,11 +37,12 @@ class JdController extends RESTBundleController
         $qb = $em->createQueryBuilder();
         $qb->select('j')->from('AIESECGermany\EntityBundle\Entity\JD', 'j');
         
-        $committeeId = $paramFetcher->get('committeeId');
-        if ($committeeId) $qb->andWhere('j.committee_id = :id')->setParameter('id', $committeeId);
-        
         $ids = $paramFetcher->get('ids');
         if (is_array($ids) && count($ids)) $qb->andWhere('j.id IN (:ids)')->setParameter('ids', $ids);
+
+        $committeeIds = $paramFetcher->get('committeeIds');
+        if (is_array($committeeIds) && count($committeeIds)) 
+            $qb->andWhere('j.committeeId IN (:committeeIds)')->setParameter('committeeIds', $committeeIds);
 
         //!!! sort is bound in pagination, just need to add the entity parameter
         $sort = $paramFetcher->get('sort');
@@ -93,6 +95,37 @@ class JdController extends RESTBundleController
             $em->persist($jd);
             $em->flush();
             return $this->returnCreationResponse($jd);
+        }
+        return array(
+            'form' => $form
+        );
+    }
+
+    /**
+     * @REST\QueryParam(name="access_token", allowBlank=false)
+     * @ApiDoc(
+     *  resource=true,
+     *  description="Edit a JD",
+     *  input="RESTBundle\Form\JdType",
+     *  output="RESTBundle\Form\JdType"
+     * )
+     */
+    public function patchAction(ParamFetcherInterface $paramFetcher, Request $request, $jdID)
+    {
+        $this->checkAuthentication($paramFetcher);
+        $em = $this->getDoctrine()->getManager();
+        $jd = $em->getRepository('AIESECGermany\EntityBundle\Entity\JD')->findOneById($jdID);
+        if (!$jd) {
+            throw new NotFoundHttpException();
+        }
+        $form = $this->createForm(new JdType(), $jd, [
+            'method' => 'PATCH'
+        ]);
+        $form->handleRequest($request);
+        if ($form->isValid()) {
+            $em->merge($jd);
+            $em->flush();
+            return $this->returnModificationResponse();
         }
         return array(
             'form' => $form
