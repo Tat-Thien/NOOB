@@ -30,7 +30,7 @@ abstract class RESTBundleController extends FOSRestController
         }
     }
 
-    protected function createPaginationObject(ParamFetcherInterface $paramFetcher, Query $query)
+    protected function createPaginationObject(ParamFetcherInterface $paramFetcher, Query $query, $wrapQueries = false)
     {
         $page = $paramFetcher->get('page');
         $limit = $paramFetcher->get('limit');
@@ -38,7 +38,8 @@ abstract class RESTBundleController extends FOSRestController
         $pagination = $paginator->paginate(
             $query,
             $page,
-            $limit
+            $limit,
+            array('wrap-queries'=> $wrapQueries)
         );
         return $pagination;
     }
