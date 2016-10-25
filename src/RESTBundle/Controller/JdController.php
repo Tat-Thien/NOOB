@@ -115,8 +115,17 @@ class JdController extends RESTBundleController
         $form = $this->createForm(new JdType(), $jd);
         $form->submit($request);
         if ($form->isValid()) {
-
             $em = $this->getDoctrine()->getManager();
+
+            $predecessor = $em->getRepository('AIESECGermany\EntityBundle\Entity\JD')->findOneBy(
+                array('memberId' => $jd->getMemberId(), 'successorJd' => NULL)
+            );
+            
+            if($predecessor) {
+                $predecessor->setSuccessorJd($jd);
+                $em->persist($predecessor);
+            }
+
             $em->persist($jd);
             $em->flush();
             return $this->returnCreationResponse($jd);

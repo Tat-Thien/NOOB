@@ -1,2 +1,11 @@
 AIESECGermany\EntityBundle\Entity\StandardsAndSatisfaction:
     properties:
+      exchange:
+        exclude: true
+    virtual_properties:
+        getExchangeId:
+            serialized_name: exchangeId
+            type: integer
+        getPersonId:
+            serialized_name: personId
+            type: integer
