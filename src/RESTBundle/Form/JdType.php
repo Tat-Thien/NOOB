@@ -47,6 +47,7 @@ class JdType extends AbstractRESTFormType
                 'allow_delete' => true,
             ))
             ->add('reasonForLeaving')
+            ->add('team')
         ;
     }
 
