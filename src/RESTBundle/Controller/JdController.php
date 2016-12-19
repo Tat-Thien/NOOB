@@ -25,6 +25,8 @@ class JdController extends RESTBundleController
      * @REST\QueryParam(name="newies", requirements="(true|false)", default="false", description="restrict returned JDs to Newies, meaning people that have only ever had one JD")
      * @REST\QueryParam(name="startDateFrom", description="return JDs with startDate > startDateFrom")
      * @REST\QueryParam(name="startDateTo", description="return JDs with startDate < startDateTo")
+     * @REST\QueryParam(name="endDateFrom", description="return JDs with endDate > endDateFrom")
+     * @REST\QueryParam(name="endDateTo", description="return JDs with endDate < endDateTo")
      * @REST\QueryParam(name="sort", description="Sort by a column")
      * @REST\QueryParam(name="direction", requirements="(asc|desc)", default="asc", description="Sort direction")
      * @ApiDoc(
@@ -59,6 +61,20 @@ class JdController extends RESTBundleController
             try {
                 $startDateTo = new \DateTime($paramFetcher->get('startDateTo'));
                 $qb->andWhere('j.startDate < :startDateTo')->setParameter('startDateTo', $startDateTo);
+            } catch (Exception $e) {}
+        }
+
+        if($paramFetcher->get('endDateFrom')) {
+            try {
+                $endDateFrom = new \DateTime($paramFetcher->get('endDateFrom'));
+                $qb->andWhere('j.endDate > :endDateFrom')->setParameter('endDateFrom', $endDateFrom);
+            } catch (Exception $e) {}
+        }
+
+        if($paramFetcher->get('endDateTo')) {
+            try {
+                $endDateTo = new \DateTime($paramFetcher->get('endDateTo'));
+                $qb->andWhere('j.endDate < :endDateTo')->setParameter('endDateTo', $endDateTo);
             } catch (Exception $e) {}
         }
 
