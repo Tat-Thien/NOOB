@@ -15,6 +15,81 @@ class ReportsController extends RESTBundleController
 {
 
     /**
+     * @REST\Get("/ixp/planned")
+     * @REST\QueryParam(name="access_token", allowBlank=false)
+     * @REST\QueryParam(name="lcId", requirements="\d+", allowBlank=true, description="ID of lc for which to display the data.")
+     * @ApiDoc(
+     *  description="Get a report of planned IXP"
+     * )
+     */
+    public function getIxpPlannedAction(ParamFetcher $paramFetcher) {
+        $this->checkAuthentication($paramFetcher);
+
+        $em = $this->getDoctrine()->getManager();
+
+        $sql = "
+        SELECT DISTINCT jd.member_id as memberId, jd.committee_id as committeeId, yt.timeframe_internship as timeframeInternship
+        FROM jd
+        JOIN person p ON jd.member_id = p.id
+        JOIN youth_talent_application_information yt ON yt.id = p.application_information_id
+        ";
+
+        $lcId = $paramFetcher->get('lcId');
+        if ($lcId) $sql .= "WHERE jd.committee_id = " . $lcId;
+
+        $em = $this->getDoctrine()->getManager();
+        $stmt = $em->getConnection()->prepare($sql);
+
+        $stmt->execute();
+        $data = $stmt->fetchAll();
+
+        if (!$data) {
+            return [];
+        }
+
+        return $data;
+
+    }
+
+
+    /**
+     * @REST\Get("/ixp/realized")
+     * @REST\QueryParam(name="access_token", allowBlank=false)
+     * @REST\QueryParam(name="lcId", requirements="\d+", allowBlank=true, description="ID of lc for which to display the data.")
+     * @ApiDoc(
+     *  description="Get a report of realized IXP"
+     * )
+     */
+    public function getIxpRealizedAction(ParamFetcher $paramFetcher) {
+        $this->checkAuthentication($paramFetcher);
+
+        $em = $this->getDoctrine()->getManager();
+
+        $sql = "
+        SELECT DISTINCT e.id AS exchangeId, jd.member_id as memberId, jd.committee_id as committeeId
+        FROM jd
+        JOIN exchange e ON jd.member_id = e.person_id
+        JOIN reintegration_activity_participation rap ON e.id = rap.exchange_id
+        ";
+
+        $lcId = $paramFetcher->get('lcId');
+        if ($lcId) $sql .= "WHERE jd.committee_id = " . $lcId;
+
+        $em = $this->getDoctrine()->getManager();
+        $stmt = $em->getConnection()->prepare($sql);
+
+        $stmt->execute();
+        $data = $stmt->fetchAll();
+
+        if (!$data) {
+            return [];
+        }
+
+        return $data;
+
+    }
+
+    /**
      * @REST\Get("/reports/{lcId}/fobo")
      * @REST\QueryParam(name="access_token", allowBlank=false)
      * @ApiDoc(
