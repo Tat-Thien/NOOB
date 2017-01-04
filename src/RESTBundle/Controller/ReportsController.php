@@ -15,6 +15,47 @@ class ReportsController extends RESTBundleController
 {
 
     /**
+     * @REST\Get("/reports/{lcId}/fobo")
+     * @REST\QueryParam(name="access_token", allowBlank=false)
+     * @ApiDoc(
+     *  description="Get a report of FOBO for an LC."
+     * )
+     */
+    public function getFoboAction(ParamFetcher $paramFetcher, $lcId) {
+        $this->checkAuthentication($paramFetcher);
+
+        $sql = "
+        SELECT
+        COUNT(CASE WHEN team = 'oGV' THEN 1 ELSE NULL END) AS oGV,
+        COUNT(CASE WHEN team = 'oGT' THEN 1 ELSE NULL END) AS oGT,
+        COUNT(CASE WHEN team = 'iGT' THEN 1 ELSE NULL END) AS iGT,
+        COUNT(CASE WHEN team = 'REC' THEN 1 ELSE NULL END) AS REC,
+        COUNT(CASE WHEN team = 'FIN' THEN 1 ELSE NULL END) AS FIN,
+        COUNT(CASE WHEN team = 'TM' THEN 1 ELSE NULL END) AS TM,
+        COUNT(CASE WHEN team = 'iGV' THEN 1 ELSE NULL END) AS iGV,
+        COUNT(*) AS AllTeams
+        FROM jd
+        WHERE end_date > NOW() AND start_date < NOW()
+        AND committee_id = :lcId
+        ";
+
+        $em = $this->getDoctrine()->getManager();
+        $stmt = $em->getConnection()->prepare($sql);
+
+        $stmt->bindParam(':lcId', $lcId);
+
+        $stmt->execute();
+        $data = $stmt->fetchAll();
+
+        if (!$data) {
+            return [];
+        }
+
+        return $data;
+    }
+
+
+    /**
      * @REST\Get("/reports/unbookedOps")
      * @REST\QueryParam(name="access_token", allowBlank=false)
      * @REST\QueryParam(array=true, name="ids", requirements="\d+", allowBlank=false, description="IDs of persons for which to display the data.")
