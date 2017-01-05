@@ -21,6 +21,7 @@ class JdController extends RESTBundleController
      * @REST\QueryParam(name="page", requirements="\d+", default="1", description="Page of the overview.")
      * @REST\QueryParam(name="limit", requirements="\d+", default="10", description="Entities per page.")
      * @REST\QueryParam(name="ids", array=true, requirements="\d+", description="List of ids")
+     * @REST\QueryParam(name="team", description="A team for which to return JDs.")
      * @REST\QueryParam(name="committeeIds", array=true, requirements="\d+", description="List of committee IDs")
      * @REST\QueryParam(name="newies", requirements="(true|false)", default="false", description="restrict returned JDs to Newies, meaning people that have only ever had one JD")
      * @REST\QueryParam(name="startDateFrom", description="return JDs with startDate > startDateFrom")
@@ -49,6 +50,10 @@ class JdController extends RESTBundleController
         $committeeIds = $paramFetcher->get('committeeIds');
         if (is_array($committeeIds) && count($committeeIds))
             $qb->andWhere('j.committeeId IN (:committeeIds)')->setParameter('committeeIds', $committeeIds);
+
+        $team = $paramFetcher->get('team');
+        if ($team)
+            $qb->andWhere('j.team = :team')->setParameter('team', $team);
 
         if($paramFetcher->get('startDateFrom')) {
             try {
