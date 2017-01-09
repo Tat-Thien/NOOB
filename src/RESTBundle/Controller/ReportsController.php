@@ -101,6 +101,7 @@ class ReportsController extends RESTBundleController
 
         $sql = "
         SELECT
+        committee_id as committeeId,
         COUNT(CASE WHEN team = 'oGV' THEN 1 ELSE NULL END) AS oGV,
         COUNT(CASE WHEN team = 'oGT' THEN 1 ELSE NULL END) AS oGT,
         COUNT(CASE WHEN team = 'iGT' THEN 1 ELSE NULL END) AS iGT,
@@ -111,13 +112,16 @@ class ReportsController extends RESTBundleController
         COUNT(*) AS AllTeams
         FROM jd
         WHERE end_date > NOW() AND start_date < NOW()
-        AND committee_id = :lcId
         ";
 
+        if($lcId != 'all'){
+            $sql .= ' AND committee_id = ' . $lcId;
+        } else {
+            $sql .= ' GROUP BY committee_id';
+        }
+    
         $em = $this->getDoctrine()->getManager();
-        $stmt = $em->getConnection()->prepare($sql);
-
-        $stmt->bindParam(':lcId', $lcId);
+        $stmt = $em->getConnection()->prepare($sql);        
 
         $stmt->execute();
         $data = $stmt->fetchAll();
