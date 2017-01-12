@@ -17,7 +17,7 @@ class LeadassignmentController extends RESTBundleController
 
     /**
      * @REST\Get("/leadAssignment")
-     * @REST\QueryParam(name="university", allowBlank=false)
+     * @REST\QueryParam(name="city", allowBlank=false)
      * @REST\QueryParam(name="program", allowBlank=false)
      * @ApiDoc(
      *  resource=true,
@@ -27,12 +27,12 @@ class LeadassignmentController extends RESTBundleController
     public function cgetAction(ParamFetcherInterface $paramFetcher)
     {
         $program = $paramFetcher->get('program');
-        $university = $paramFetcher->get('university');
+        $city = $paramFetcher->get('city');
         $lcMappingDocument = new \DOMDocument();
         $lcMappingDocument->loadXml(file_get_contents(__DIR__ . '/../Resources/leadassignment/lead_assignment.xml'));
         $lcMappingXpathvar = new \Domxpath($lcMappingDocument);
-        $lcMappingFilterString = "//program[@name='%s']//university[@name='%s']/../@name";
-        $lcMappingFilterString = sprintf($lcMappingFilterString, $program, $university);
+        $lcMappingFilterString = "//program[@name='%s']//city[@name='%s']/../@name";
+        $lcMappingFilterString = sprintf($lcMappingFilterString, $program, $city);
         $lcMappingQueryResult = $lcMappingXpathvar->query($lcMappingFilterString);
         if ($lcMappingQueryResult->length == 0) {
             throw new NotFoundHttpException();
