@@ -116,6 +116,8 @@ class PeopleController extends RESTBundleController
         $form = $this->createForm(new PersonType(), $person);
         $form->submit($request);
         if ($form->isValid()) {
+            $this->sendNotificationEmail($person);
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($person);
             $em->flush();
@@ -124,6 +126,30 @@ class PeopleController extends RESTBundleController
         return array(
             'form' => $form
         );
+    }
+
+    private function sendNotificationEmail(Person $person) {
+        $message = \Swift_Message::newInstance()
+        ->setSubject('[' . $person->getLeadSource() . '] New EP Registration')
+        ->setFrom('nist@aiesec.de')
+        ->setTo('lukas.ehnle@aiesec.de')
+        ->setBody(
+            $this->renderView(
+                // app/Resources/views/emails/registration.html.twig
+                'emails/registration.html.twig',
+                array(
+                    'program' => $person->getLeadSource(),
+                    'email' => $person->getEmail()
+                )
+            ),
+            'text/html'
+        );
+
+        if ($person->getLeadSource() == "Youth Talent") { //Mail to the TM-NST
+            $message ->setBcc('matthias.hanschke@aiesec.de');
+        }
+
+        $this->get('mailer')->send($message);
     }
 
     /**

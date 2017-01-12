@@ -10,6 +10,9 @@ use Symfony\Component\Form\FormBuilderInterface;
 
 class GlobalTalentApplicationInformationType extends AbstractRESTFormType
 {
+    protected function allowExtraFields() {
+        return true;
+    }
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
