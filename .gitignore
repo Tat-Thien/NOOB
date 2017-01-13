@@ -106,3 +106,4 @@ fabric.properties
 **/lead_assignment.xml
 
 .DS_Store
+/src/RESTBundle/Resources/leadassignment/lead_assignment_new.xml
