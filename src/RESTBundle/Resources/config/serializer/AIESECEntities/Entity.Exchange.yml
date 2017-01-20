@@ -30,4 +30,14 @@ AIESECGermany\EntityBundle\Entity\Exchange:
                     agbAgreementID: expr(object.getAgbAgreement().getId())
             exclusion:
                 exclude_if: expr(object.getAgbAgreement() === null)
+        -
+            rel: standardsAndSatisfaction
+            href:
+                route: get_people_exchanges_standardsandsatisfaction
+                parameters:
+                    personID: expr(object.getPerson().getId())
+                    exchangeID: expr(object.getId())
+                    standardsAndSatisfactionID: expr(object.getStandardsAndSatisfaction().getId())
+            exclusion:
+                exclude_if: expr(object.getStandardsAndSatisfaction() === null)
     relation_providers: [ 'RESTBundle\Controller\ExchangeReintegrationActivityParticipationRelationProvider::getRelations']
