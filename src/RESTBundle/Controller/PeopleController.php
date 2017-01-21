@@ -792,7 +792,7 @@ class PeopleController extends RESTBundleController
      */
     public function postExchangesStandardsandsatisfactionAction(ParamFetcher $paramFetcher, Request $request, $personID, $exchangeID)
     {
-        $this->checkAuthentication($paramFetcher, true);
+        $this->checkAuthentication($paramFetcher);
         $logger = $this->get('logger');
         $logger->info("content:");
         $logger->info($request->getContent());
@@ -835,7 +835,7 @@ class PeopleController extends RESTBundleController
      */
     public function patchExchangesStandardsandsatisfactionAction(ParamFetcher $paramFetcher, Request $request, $personID, $exchangeID)
     {
-        $this->checkAuthentication($paramFetcher, true);
+        $this->checkAuthentication($paramFetcher);
         $em = $this->getDoctrine()->getManager();
         $person = $em->getRepository('AIESECGermany\EntityBundle\Entity\Person')->findOneById($personID);
         if (!$person) {
