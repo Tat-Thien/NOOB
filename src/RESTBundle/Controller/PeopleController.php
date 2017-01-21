@@ -813,6 +813,7 @@ class PeopleController extends RESTBundleController
         $form->submit($request);
         if ($form->isValid()) {
             $exchange->setStandardsAndSatisfaction($sands);
+            $sands->setExchange($exchange);
             $em->persist($exchange);
             $em->persist($sands);
             $em->flush();
