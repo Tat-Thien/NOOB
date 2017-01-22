@@ -2,7 +2,6 @@
 
 namespace RESTBundle\Security;
 
-use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 class ExpaUser implements UserInterface, \Serializable
@@ -15,10 +14,6 @@ class ExpaUser implements UserInterface, \Serializable
 	private $roles;
 
 	private $authenticated;
-
-	private $session;
-
-	private $container;
 
 	public function __construct($username)
     {
