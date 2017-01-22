@@ -1,4 +1,12 @@
 services:
+  rest.expa_user_provider:
+    class: RESTBundle\Security\ExpaUserProvider
+    arguments: ["@session"]
+
+  rest.expa_authenticator:
+        class: RESTBundle\Security\ExpaAuthenticator
+        arguments: ["@session", %simple_access_token%, %advanced_access_token%]
+
 #    rest.example:
 #        class: RESTBundle\Example
 #        arguments: ["@service_id", "plain_value", %parameter%]

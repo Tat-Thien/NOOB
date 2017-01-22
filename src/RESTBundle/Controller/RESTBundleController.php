@@ -19,13 +19,9 @@ abstract class RESTBundleController extends FOSRestController
 {
 
     protected function checkAuthentication(ParamFetcherInterface $paramFetcher, $advanced=false)
-    {
-        $providedAccessToken = $this->extractAccessToken($paramFetcher);
-        $validTokens = [$this->getParameter('advanced_access_token')];
-        if (!$advanced) {
-            array_push($validTokens, $this->getParameter('simple_access_token'));
-        }
-        if (!in_array($providedAccessToken, $validTokens)) {
+    {   
+        $authenticated = $this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY');
+        if (!$authenticated) {
             throw new AccessDeniedHttpException();
         }
     }
