@@ -36,12 +36,7 @@ class ExpaAuthenticator extends AbstractGuardAuthenticator
     {   
         $this->request = $request;
         $token = $request->query->get('access_token');
-        
-        if (!$token) {
-            throw new BadCredentialsException();
-            // no token? Return null and no other methods will be called
-            return;
-        }
+    
         // What you return here will be passed to getUser() as $credentials
         return array(
             'token' => $token
@@ -70,7 +65,7 @@ class ExpaAuthenticator extends AbstractGuardAuthenticator
             $this->session->set($user->getUsername(), $user->serialize());
             return true;
         } else {
-            throw new BadCredentialsException();
+            return true; //anonymous user;
         }
     }
 

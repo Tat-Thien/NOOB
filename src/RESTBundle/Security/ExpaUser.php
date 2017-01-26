@@ -17,9 +17,14 @@ class ExpaUser implements UserInterface, \Serializable
 
 	public function __construct($username)
     {
-        $this->username = $username;
+        if($username){
+        	$this->username = $username;
+        	$this->authenticated = false;
+        } else {
+        	$this->username = "anonymous";
+        	$this->authenticated = true;
+        }
         $this->roles = ['ROLE_USER'];
-        $this->authenticated = false;
     }
 	
 	public function getUsername()
@@ -71,7 +76,7 @@ class ExpaUser implements UserInterface, \Serializable
 		if($expaUser){
 			$this->id = $expaUser['id'];
 			$this->authenticated = true;
-			array_push($this->roles, 'ROLE_EXPA');
+			array_push($this->roles, 'ROLE_SIMPLE_TOKEN');
 		} else {
 			$this->authenticated = false;
 		}

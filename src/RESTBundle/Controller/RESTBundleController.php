@@ -20,10 +20,12 @@ abstract class RESTBundleController extends FOSRestController
 
     protected function checkAuthentication(ParamFetcherInterface $paramFetcher, $advanced=false)
     {   
-        $authenticated = $this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY');
-        if (!$authenticated) {
-            throw new AccessDeniedHttpException();
+        if ($advanced && $this->get('security.context')->isGranted('ROLE_ADVANCED_TOKEN')) {
+            return;
+        } else if($this->get('security.context')->isGranted('ROLE_SIMPLE_TOKEN')) {
+            return;
         }
+        throw new AccessDeniedHttpException();
     }
 
     protected function createPaginationObject(ParamFetcherInterface $paramFetcher, Query $query, $wrapQueries = false)
