@@ -132,7 +132,7 @@ class PeopleController extends RESTBundleController
         $message = \Swift_Message::newInstance()
         ->setSubject('[' . $person->getLeadSource() . '] New EP Registration')
         ->setFrom('nist@aiesec.de')
-        ->setTo('lukas.ehnle@aiesec.de')
+        ->setBcc('lukas.ehnle@aiesec.de')
         ->setBody(
             $this->renderView(
                 // app/Resources/views/emails/registration.html.twig
@@ -144,6 +144,12 @@ class PeopleController extends RESTBundleController
             ),
             'text/html'
         );
+        
+        if (isset($_POST['lc'])) {
+            $message->setTo('lc.' . $_POST['lc'] . '@aiesec.de');
+        } else {
+            $message->setTo('nist@aiesec.de');
+        }
 
         if ($person->getLeadSource() == "Youth Talent") { //Mail to the TM-NST
             $message ->setBcc('matthias.hanschke@aiesec.de');

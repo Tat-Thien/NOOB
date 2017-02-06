@@ -11,6 +11,10 @@ use Symfony\Component\Form\FormBuilderInterface;
 
 class PersonType extends AbstractRESTFormType
 {
+    protected function allowExtraFields() {
+        return true;
+    }
+    
     /**
      * @param FormBuilderInterface $builder
      * @param array $options
