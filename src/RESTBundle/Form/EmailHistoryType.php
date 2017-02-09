@@ -18,6 +18,7 @@ class EmailHistoryType extends AbstractRESTFormType
             ->add('iSOSFirstMailSent', CheckboxType::class)
             ->add('iSOSSecondMailSent', CheckboxType::class)
             ->add('sAndSMailSent', CheckboxType::class)
+            ->add('getResponse')
         ;
     }
 
