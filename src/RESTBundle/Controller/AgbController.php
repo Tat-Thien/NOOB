@@ -49,7 +49,16 @@ class AgbController extends RESTBundleController
     {
         $this->checkAuthentication($paramFetcher);
         $em = $this->getDoctrine()->getManager();
-        $entity = $em->getRepository('AIESECGermany\EntityBundle\Entity\AGB')->findOneById($agbID);
+
+        if($agbID == "latest"){
+            $entity = $em->getRepository('AIESECGermany\EntityBundle\Entity\AGB')->findOneBy(
+                array(),
+                array('id' => 'DESC')
+            );
+        } else {
+            $entity = $em->getRepository('AIESECGermany\EntityBundle\Entity\AGB')->findOneById($agbID);    
+        }
+        
         if ($entity) {
             return $entity;
         } else {
