@@ -2,8 +2,8 @@
 
 namespace RESTBundle\Form;
 
+use RESTBundle\Entity\AGBAgreementData;
 use AIESECGermany\EntityBundle\Entity\AGB;
-use AIESECGermany\EntityBundle\Entity\AGBAgreement;
 use AIESECGermany\EntityBundle\Entity\Exchange;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -29,6 +29,6 @@ class AGBAgreementType extends AbstractRESTFormType
 
     protected function getDataClass()
     {
-        return AGBAgreement::class;
+        return AGBAgreementData::class;
     }
 }

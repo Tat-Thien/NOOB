@@ -2,10 +2,9 @@
 
 namespace RESTBundle\Controller;
 
-use AIESECGermany\EntityBundle\Entity\AGBAgreement;
-use FOS\RestBundle\Request\ParamFetcher;
 use FOS\RestBundle\Request\ParamFetcherInterface;
 use RESTBundle\Form\AGBAgreementType;
+use RESTBundle\Entity\AGBAgreementData;
 use FOS\RestBundle\Controller\Annotations as REST;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -27,26 +26,27 @@ class AgbAgreementController extends RESTBundleController
      * @ApiDoc(
      *  resource=true,
      *  description="Get all AGB agreements",
-     *  output={"class"="RESTBundle\Form\OutgoerPreparationParticipationType", "collection"=true}
+     *  output={"class"="RESTBundle\Form\agbAgreementType", "collection"=true}
      * )
      */
 
     public function cgetAction(ParamFetcherInterface $paramFetcher)
-    {
+    {   
         $this->checkAuthentication($paramFetcher);
         $em = $this->getDoctrine()->getManager();
         $qb = $em->createQueryBuilder();
         $agbID = $paramFetcher->get('agb');
         $exchangeID = $paramFetcher->get('exchange');
-        $qb->select('a')->from('AIESECGermany\EntityBundle\Entity\AGBAgreement', 'a');
+        $qb->select('e')->from('AIESECGermany\EntityBundle\Entity\Exchange', 'e')
+            ->andWhere('e.agbSignDate IS NOT NULL');
         if ($agbID) {
-            $qb->andWhere('a.agb = :agbID')->setParameter('agbID', $agbID);
+            $qb->andWhere('e.agb = :agbID')->setParameter('agbID', $agbID);
         }
         if ($exchangeID) {
-            $qb->andWhere('a.exchange = :exchangeID')->setParameter('exchangeID', $exchangeID);
+            $qb->andWhere('e.id = :exchangeID')->setParameter('exchangeID', $exchangeID);
         }
         $query = $qb->getQuery();
-        $pagination = $this->createPaginationObject($paramFetcher, $query);
+        $pagination = $this->createPaginationObject($paramFetcher, $query, 'AGBAgreementData');
         return $pagination;
     }
 
@@ -59,15 +59,15 @@ class AgbAgreementController extends RESTBundleController
      *  output={"class"="RESTBundle\Form\AGBAgreementType", "collection"=true}
      * )
      */
-    public function getAction(ParamFetcher $paramFetcher, $agbAgreementID)
+    public function getAction(ParamFetcherInterface $paramFetcher, $agbAgreementID)
     {
         $this->checkAuthentication($paramFetcher);
         $em = $this->getDoctrine()->getManager();
-        $agbAgreement = $em->getRepository('AIESECGermany\EntityBundle\Entity\AGBAgreement')->findOneById($agbAgreementID);
-        if (!$agbAgreement) {
+        $exchange = $em->getRepository('AIESECGermany\EntityBundle\Entity\Exchange')->findOneByAgb($agbAgreementID);
+        if (!$exchange) {
             throw new NotFoundHttpException();
         }
-        return $agbAgreement;
+        return new AGBAgreementData($exchange);
     }
 
     /**
@@ -80,15 +80,22 @@ class AgbAgreementController extends RESTBundleController
      *  output="RESTBundle\Form\AGBAgreementType"
      * )
      */
-    public function postAction(ParamFetcher $paramFetcher, Request $request)
+    public function postAction(ParamFetcherInterface $paramFetcher, Request $request)
     {
         $this->checkAuthentication($paramFetcher);
-        $agbAgreement = new AGBAgreement();
+        $em = $this->getDoctrine()->getManager();
+        $agb = $em->getRepository('AIESECGermany\EntityBundle\Entity\AGB')->findOneBy(
+            array(),
+            array('id'=>'ASC')
+        );
+        $agbAgreement = new AGBAgreementData($agb);
         $form = $this->createForm(new AGBAgreementType(), $agbAgreement);
         $form->submit($request);
         if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($agbAgreement);
+            $exchange = $agbAgreement->getExchange();
+            $exchange->setAgb($agbAgreement->getAgb());
+            $exchange->setAgbSignDate($agbAgreement->getDateSigned());
+            $em->persist($exchange);
             $em->flush();
             return $this->returnCreationResponse($agbAgreement);
         }
