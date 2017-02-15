@@ -3,7 +3,7 @@
 namespace RESTBundle\Entity;
 
 
-class LeadAssignment
+class LeadAssignmentData
 {
 
     private $lc;

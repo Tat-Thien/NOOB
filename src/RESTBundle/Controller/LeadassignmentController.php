@@ -3,14 +3,14 @@
 namespace RESTBundle\Controller;
 
 use FOS\RestBundle\Request\ParamFetcherInterface;
-use RESTBundle\Entity\LeadAssignment;
+use RESTBundle\Entity\LeadAssignmentData;
 use Symfony\Component\DomCrawler\Crawler;
 use FOS\RestBundle\Controller\Annotations as REST;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
- * @REST\RouteResource("LeadAssignment")
+ * @REST\RouteResource("LeadAssignmentData")
  */
 class LeadassignmentController extends RESTBundleController
 {
@@ -48,7 +48,7 @@ class LeadassignmentController extends RESTBundleController
             throw new NotFoundHttpException();
         }
         $gisId = $lcMappingQueryResult->item(0)->textContent;
-        $result = new LeadAssignment();
+        $result = new LeadAssignmentData();
         $result->setLc($lc);
         $result->setGisId($gisId);
         return $result;
