@@ -28,7 +28,7 @@ abstract class RESTBundleController extends FOSRestController
         throw new AccessDeniedHttpException();
     }
 
-    protected function createPaginationObject(ParamFetcherInterface $paramFetcher, Query $query, $wrapQueries = false)
+    protected function createPaginationObject(ParamFetcherInterface $paramFetcher, Query $query, String $class = '')
     {
         $page = $paramFetcher->get('page');
         $limit = $paramFetcher->get('limit');
@@ -37,8 +37,18 @@ abstract class RESTBundleController extends FOSRestController
             $query,
             $page,
             $limit,
-            array('wrap-queries'=> $wrapQueries)
+            array()
         );
+
+        if($class != ''){
+            $items = array();
+            $class = '\RESTBundle\Entity\\' . $class;
+            foreach($pagination->getItems() as $item){
+                $items[] = new $class($item);
+            }
+            $pagination->setItems($items);
+        }
+
         return $pagination;
     }
 
