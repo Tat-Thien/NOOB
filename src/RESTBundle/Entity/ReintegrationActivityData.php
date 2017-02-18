@@ -3,7 +3,7 @@
 namespace RESTBundle\Entity;
 
 
-class ApplicationInformation
+class ReintegrationActivityData
 {
 
     private $type;
