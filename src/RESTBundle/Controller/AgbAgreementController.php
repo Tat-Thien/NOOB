@@ -86,7 +86,7 @@ class AgbAgreementController extends RESTBundleController
         $em = $this->getDoctrine()->getManager();
         $agb = $em->getRepository('AIESECGermany\EntityBundle\Entity\AGB')->findOneBy(
             array(),
-            array('id'=>'ASC')
+            array('id'=>'DESC')
         );
         $agbAgreement = new AGBAgreementData($agb);
         $form = $this->createForm(new AGBAgreementType(), $agbAgreement);
