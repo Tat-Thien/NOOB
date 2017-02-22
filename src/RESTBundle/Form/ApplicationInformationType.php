@@ -18,89 +18,35 @@ class ApplicationInformationType extends AbstractRESTFormType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('type', ChoiceType::class, array(
-                'choices'  => [
-                    'globalCitizenApplicationInformation',
-                    'globalTalentApplicationInformation',
-                    'youthTalentApplicationInformation'],
-                'choices_as_values' => true))
-            ->add('fieldOfStudy', TextType::class, array(
-                'mapped' => false
-            ))
-            ->add('howHeard', TextType::class, array(
-                'mapped' => false
-            ))
-            ->add('comments', TextType::class, array(
-                'mapped' => false
-            ))
-            ->add('degree', TextType::class, array(
-                'mapped' => false
-            ))
-            ->add('semester', IntegerType::class, array(
-                'mapped' => false))
-            ->add('enrolled', CheckboxType::class, array(
-                'mapped' => false))
-            ->add('focusOfInternship', TextType::class, array(
-                'mapped' => false
-            ))
-            ->add('studyCourse', TextType::class, array(
-                'mapped' => false
-            ))
-            ->add('graduation', TextType::class, array(
-                'mapped' => false
-            ))
-            ->add('practicalExperience', TextType::class, array(
-                'mapped' => false
-            ))
-            ->add('intendedSemesterAbroad', CheckboxType::class, array(
-                'mapped' => false))
-            ->add('timeframeSemesterAbroad', TextType::class, array(
-                'mapped' => false
-            ))
-            ->add('consecutiveSemestersPossible', CheckboxType::class, array(
-                'mapped' => false))
-            ->add('englishLevel', TextType::class, array(
-                'mapped' => false
-            ))
-            ->add('nativeLanguage', TextType::class, array(
-                'mapped' => false
-            ))
-            ->add('areasOfExperience', TextType::class, array(
-                'mapped' => false
-            ))
-            ->add('detailsAreasOfExperience', TextType::class, array(
-                'mapped' => false
-            ))
-            ->add('computerLiteracy', CheckboxType::class, array(
-                'mapped' => false))
-            ->add('detailsComputerLiteracy', TextType::class, array(
-                'mapped' => false
-            ))
-            ->add('applicationMotivation', TextType::class, array(
-                'mapped' => false
-            ))
-            ->add('linkLinkedInOrCV', TextType::class, array(
-                'mapped' => false
-            ))
-            ->add('competenciesToBeLearned', TextType::class, array(
-                'mapped' => false
-            ))
-            ->add('functionalAreaInterested', TextType::class, array(
-                'mapped' => false
-            ))
-            ->add('competenciesToBeImproved', TextType::class, array(
-                'mapped' => false
-            ))
-            ->add('hoursToBeInvested', TextType::class, array(
-                'mapped' => false))
-            ->add('interestInInternship', CheckboxType::class, array(
-                'mapped' => false))
-            ->add('timeframeInternship', TextType::class, array(
-                'mapped' => false
-            ))
-            ->add('university', TextType::class, array(
-                'mapped' => false
-            ))
+            ->add('type', ChoiceType::class)
+            ->add('fieldOfStudy', TextType::class)
+            ->add('howHeard', TextType::class)
+            ->add('comments', TextType::class)
+            ->add('degree', TextType::class)
+            ->add('semester', IntegerType::class)
+            ->add('enrolled', CheckboxType::class)
+            ->add('focusOfInternship', TextType::class)
+            ->add('studyCourse', TextType::class)
+            ->add('graduation', TextType::class)
+            ->add('practicalExperience', TextType::class)
+            ->add('intendedSemesterAbroad', CheckboxType::class)
+            ->add('timeframeSemesterAbroad', TextType::class)
+            ->add('consecutiveSemestersPossible', CheckboxType::class)
+            ->add('englishLevel', TextType::class)
+            ->add('nativeLanguage', TextType::class)
+            ->add('areasOfExperience', TextType::class)
+            ->add('detailsAreasOfExperience', TextType::class)
+            ->add('computerLiteracy', CheckboxType::class)
+            ->add('detailsComputerLiteracy', TextType::class)
+            ->add('applicationMotivation', TextType::class)
+            ->add('linkLinkedInOrCV', TextType::class)
+            ->add('competenciesToBeLearned', TextType::class)
+            ->add('functionalAreaInterested', TextType::class)
+            ->add('competenciesToBeImproved', TextType::class)
+            ->add('hoursToBeInvested', TextType::class)
+            ->add('interestInInternship', CheckboxType::class)
+            ->add('timeframeInternship', TextType::class)
+            ->add('university', TextType::class)
         ;
     }
 
