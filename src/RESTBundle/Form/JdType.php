@@ -48,6 +48,7 @@ class JdType extends AbstractRESTFormType
             ))
             ->add('reasonForLeaving')
             ->add('team')
+            ->add('orphaned', CheckboxType::class)
             ->add('dataSecuritySigned', CheckboxType::class)
         ;
     }
