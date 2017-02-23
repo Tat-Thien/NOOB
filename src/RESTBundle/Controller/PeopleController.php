@@ -129,6 +129,7 @@ class PeopleController extends RESTBundleController
     }
 
     private function sendNotificationEmail(Person $person, Request $request) {
+        if($person->getLeadSource() == 'ops') return;
         $message = \Swift_Message::newInstance()
         ->setSubject('[' . $person->getLeadSource() . '] New EP Registration')
         ->setFrom('nist@aiesec.de')
