@@ -2,7 +2,7 @@
 
 namespace RESTBundle\Form;
 
-use AIESECGermany\EntityBundle\Entity\BankAccount;
+use AIESECGermany\EntityBundle\Entity\DataObjects\BankAccount;
 use Symfony\Component\Form\FormBuilderInterface;
 
 class BankAccountType extends AbstractRESTFormType

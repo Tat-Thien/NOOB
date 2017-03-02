@@ -179,7 +179,7 @@ class JdController extends RESTBundleController
         ]);
         $form->handleRequest($request);
         if ($form->isValid()) {
-            $em->merge($jd);
+            $em->persist($jd);
             $em->flush();
             return $this->returnModificationResponse();
         }

@@ -18,7 +18,7 @@ class AppKernel extends Kernel
             new JMS\SerializerBundle\JMSSerializerBundle(),
             new FOS\RestBundle\FOSRestBundle(),
             new RESTBundle\RESTBundle(),
-            new Bazinga\Bundle\HateoasBundle\BazingaHateoasBundle(),
+            // new Bazinga\Bundle\HateoasBundle\BazingaHateoasBundle(),
             new AIESECGermany\EntityBundle\AIESECGermanyEntityBundle(),
             new Nelmio\ApiDocBundle\NelmioApiDocBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
