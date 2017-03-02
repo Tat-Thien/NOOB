@@ -21,7 +21,6 @@ use RESTBundle\Entity\ApplicationInformation;
 use RESTBundle\Form\AGBType;
 use RESTBundle\Form\ApplicationInformationType;
 use RESTBundle\Form\BankAccountType;
-use RESTBundle\Form\EmailHistoryType;
 use RESTBundle\Form\ExchangeType;
 use FOS\RestBundle\Controller\Annotations as REST;
 use RESTBundle\Form\FinanceInformationType;
@@ -241,63 +240,31 @@ class PeopleController extends RESTBundleController
      *  output="RESTBundle\Form\EmailHistoryType"
      * )
      */
-    public function postEmailhistoryAction(ParamFetcher $paramFetcher, Request $request, $personID)
+    public function postEmailHistoryAction(ParamFetcher $paramFetcher, Request $request, $personID)
     {
         $this->checkAuthentication($paramFetcher);
-        $emailHistory = new EmailHistory();
-        $form = $this->createForm(new EmailHistoryType(), $emailHistory);
-        $form->submit($request);
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $person = $em->getRepository('AIESECGermany\EntityBundle\Entity\Person')->findOneById($personID);
-            if (!$person) {
-                throw new HttpException(404);
-            }
-            $person->setEmailHistory($emailHistory);
-            $em->persist($person);
-            $em->persist($emailHistory);
-            $em->flush();
-            return $this->returnCreationResponse($emailHistory);
+        
+        $content = $this->get("request")->getContent();
+        if (empty($content)) //no content
+        {
+            throw new BadRequestHttpException();
         }
-        return array(
-            'form' => $form
-        );
-    }
+        $history = json_decode($content, true); // 2nd param to get as array
+        if(!$history) //no valid json
+        {
+            throw new BadRequestHttpException();
+        }
 
-    /**
-     * @REST\Patch("/people/{personID}/emailHistory")
-     * @REST\QueryParam(name="access_token", allowBlank=false)
-     * @ApiDoc(
-     *  resource=true,
-     *  description="Edit email history for a person",
-     *  input="RESTBundle\Form\EmailHistoryType",
-     *  output="RESTBundle\Form\EmailHistoryType"
-     * )
-     */
-    public function patchEmailhistoryAction(ParamFetcher $paramFetcher, Request $request, $personID)
-    {
-        $this->checkAuthentication($paramFetcher);
         $em = $this->getDoctrine()->getManager();
         $person = $em->getRepository('AIESECGermany\EntityBundle\Entity\Person')->findOneById($personID);
         if (!$person) {
-            throw new NotFoundHttpException();
+            throw new HttpException(404);
         }
-        $emailHistory = $person->getEmailHistory();
-        if (!$emailHistory) {
-            throw new NotFoundHttpException();
-        }
-        $form = $this->createForm(new EmailHistoryType(), $emailHistory, [
-            'method' => 'PATCH'
-        ]);
-        $form->handleRequest($request);
-        if ($form->isValid()) {
-            $em->merge($emailHistory);
-            $em->flush();
-            return $this->returnModificationResponse();
-        }
-        return array(
-            'form' => $form
-        );
+        $person->addEmailHistory($history);
+        $em->persist($person);
+        $em->flush();
+
+        return $this->returnCreationResponse();
     }
 
     /**
@@ -758,146 +725,5 @@ class PeopleController extends RESTBundleController
         );
     }
 
-    /**
-     * @REST\Get("/people/{personID}/exchanges/{exchangeID}/standardsAndSatisfaction")
-     * @REST\QueryParam(name="access_token", allowBlank=false)
-     * @ApiDoc(
-     *  resource=true,
-     *  description="Get standards and satisfaction",
-     *  output="RESTBundle\Form\StandardsAndSatisfactionType"
-     * )
-     */
-    public function getExchangesStandardsandsatisfactionAction(ParamFetcherInterface $paramFetcher, $personID, $exchangeID)
-    {
-        $this->checkAuthentication($paramFetcher);
-        $em = $this->getDoctrine()->getManager();
-        $person = $em->getRepository('AIESECGermany\EntityBundle\Entity\Person')->findOneById($personID);
-        if (!$person) {
-            throw new NotFoundHttpException();
-        }
-        $exchange = $em->getRepository('AIESECGermany\EntityBundle\Entity\Exchange')->findOneById($exchangeID);
-        if (!$exchange) {
-            throw new NotFoundHttpException();
-        }
-        $sands = $exchange->getStandardsAndSatisfaction();
-        if (!$sands) {
-            throw new NotFoundHttpException();
-        }
-        return $sands;
-    }
 
-    /**
-     * @REST\Post("/people/{personID}/exchanges/{exchangeID}/standardsAndSatisfaction")
-     * @REST\QueryParam(name="access_token", allowBlank=false)
-     * @ApiDoc(
-     *  resource=true,
-     *  description="Create standards and satisfaction",
-     *  input="RESTBundle\Form\StandardsAndSatisfactionType",
-     *  output="RESTBundle\Form\StandardsAndSatisfactionType"
-     * )
-     */
-    public function postExchangesStandardsandsatisfactionAction(ParamFetcher $paramFetcher, Request $request, $personID, $exchangeID)
-    {
-        $this->checkAuthentication($paramFetcher);
-        $logger = $this->get('logger');
-        $logger->info("content:");
-        $logger->info($request->getContent());
-        $em = $this->getDoctrine()->getManager();
-        $person = $em->getRepository('AIESECGermany\EntityBundle\Entity\Person')->findOneById($personID);
-        if (!$person) {
-            throw new HttpException(404);
-        }
-        $exchange = $em->getRepository('AIESECGermany\EntityBundle\Entity\Exchange')->findOneById($exchangeID);
-        if (!$exchange) {
-            throw new HttpException(404);
-        }
-        $sands = new StandardsAndSatisfaction();
-        if ($exchange->getStandardsAndSatisfaction()) {
-            $sands = $exchange->getStandardsAndSatisfaction();
-        }
-        $form = $this->createForm(new StandardsAndSatisfactionType(), $sands);
-        $form->submit($request);
-        if ($form->isValid()) {
-            $exchange->setStandardsAndSatisfaction($sands);
-            $sands->setExchange($exchange);
-            $em->persist($exchange);
-            $em->persist($sands);
-            $em->flush();
-            return $this->returnCreationResponse($sands);
-        }
-        return array(
-            'form' => $form
-        );
-    }
-
-    /**
-     * @REST\Patch("/people/{personID}/exchanges/{exchangeID}/standardsAndSatisfaction")
-     * @REST\QueryParam(name="access_token", allowBlank=false)
-     * @ApiDoc(
-     *  resource=true,
-     *  description="Edit standards and satisfaction",
-     *  input="RESTBundle\Form\StandardsAndSatisfactionType",
-     *  output="RESTBundle\Form\StandardsAndSatisfactionType"
-     * )
-     */
-    public function patchExchangesStandardsandsatisfactionAction(ParamFetcher $paramFetcher, Request $request, $personID, $exchangeID)
-    {
-        $this->checkAuthentication($paramFetcher);
-        $em = $this->getDoctrine()->getManager();
-        $person = $em->getRepository('AIESECGermany\EntityBundle\Entity\Person')->findOneById($personID);
-        if (!$person) {
-            throw new NotFoundHttpException();
-        }
-        $exchange = $em->getRepository('AIESECGermany\EntityBundle\Entity\Exchange')->findOneById($exchangeID);
-        if (!$exchange) {
-            throw new NotFoundHttpException();
-        }
-        $sands = $exchange->getStandardsAndSatisfaction();
-        if (!$sands) {
-            throw new NotFoundHttpException();
-        }
-        $form = $this->createForm(new StandardsAndSatisfactionType(), $sands, [
-            'method' => 'PATCH'
-        ]);
-        $form->handleRequest($request);
-        if ($form->isValid()) {
-            $em->merge($sands);
-            $em->flush();
-            return $this->returnModificationResponse();
-        }
-        return array(
-            'form' => $form
-        );
-    }
-
-    /**
-     * @REST\Delete("/people/{personID}/exchanges/{exchangeID}/standardsAndSatisfaction")
-     * @REST\QueryParam(name="access_token", allowBlank=false)
-     * @ApiDoc(
-     *  resource=true,
-     *  description="Delete standards and satisfaction"
-     * )
-     */
-    public function deleteExchangesStandardsandsatisfactionAction(ParamFetcher $paramFetcher, $personID, $exchangeID)
-    {
-        $this->checkAuthentication($paramFetcher, true);
-        $em = $this->getDoctrine()->getManager();
-        $person = $em->getRepository('AIESECGermany\EntityBundle\Entity\Person')->findOneById($personID);
-        if (!$person) {
-            throw new NotFoundHttpException();
-        }
-        $exchange = $em->getRepository('AIESECGermany\EntityBundle\Entity\Exchange')->findOneById($exchangeID);
-        if (!$exchange) {
-            throw new NotFoundHttpException();
-        }
-        $sands = $exchange->getStandardsAndSatisfaction();
-        if (!$sands) {
-            throw new NotFoundHttpException();
-        }
-        $exchange->setStandardsAndSatisfaction(null);
-        $em->remove($sands);
-        $em->persist($exchange);
-        $em->flush();
-        return $this->returnDeletionResponse();
-    }
 }

@@ -2,7 +2,7 @@
 
 namespace RESTBundle\Form;
 
-use AIESECGermany\EntityBundle\Entity\FinanceInformation;
+use AIESECGermany\EntityBundle\Entity\TN;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -55,6 +55,6 @@ class FinanceInformationType extends AbstractRESTFormType
 
     protected function getDataClass()
     {
-        return FinanceInformation::class;
+        return TN::class;
     }
 }
