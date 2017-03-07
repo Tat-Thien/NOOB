@@ -3,7 +3,6 @@
 namespace RESTBundle\Controller;
 
 use AIESECGermany\EntityBundle\Entity\AGBAgreement;
-use FOS\RestBundle\Request\ParamFetcher;
 use FOS\RestBundle\Request\ParamFetcherInterface;
 use RESTBundle\Form\AGBAgreementType;
 use FOS\RestBundle\Controller\Annotations as REST;
@@ -59,7 +58,7 @@ class AgbAgreementController extends RESTBundleController
      *  output={"class"="RESTBundle\Form\AGBAgreementType", "collection"=true}
      * )
      */
-    public function getAction(ParamFetcher $paramFetcher, $agbAgreementID)
+    public function getAction(ParamFetcherInterface $paramFetcher, $agbAgreementID)
     {
         $this->checkAuthentication($paramFetcher);
         $em = $this->getDoctrine()->getManager();
@@ -80,11 +79,14 @@ class AgbAgreementController extends RESTBundleController
      *  output="RESTBundle\Form\AGBAgreementType"
      * )
      */
-    public function postAction(ParamFetcher $paramFetcher, Request $request)
+    public function postAction(ParamFetcherInterface $paramFetcher, Request $request)
     {
         $this->checkAuthentication($paramFetcher);
         $agbAgreement = new AGBAgreement();
         $form = $this->createForm(new AGBAgreementType(), $agbAgreement);
+        if(!$request->request->get('agb')){
+            $request->request->set('agb', 1); //set standard agb, if not set
+        }
         $form->submit($request);
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();

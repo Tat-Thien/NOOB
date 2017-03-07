@@ -24,6 +24,7 @@ class AGBAgreementType extends AbstractRESTFormType
             ->add('exchange', EntityType::class, array(
                 'class' => Exchange::class
             ))
+            ->add('contractPdfUrl')
         ;
     }
 
