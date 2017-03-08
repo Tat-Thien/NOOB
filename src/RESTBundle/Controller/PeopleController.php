@@ -15,7 +15,6 @@ use AIESECGermany\EntityBundle\Entity\StandardsAndSatisfaction;
 use AIESECGermany\EntityBundle\Entity\YouthTalentApplicationInformation;
 use Doctrine\ORM\Query;
 use FOS\RestBundle\Controller\FOSRestController;
-use FOS\RestBundle\Request\ParamFetcher;
 use FOS\RestBundle\Request\ParamFetcherInterface;
 use RESTBundle\Entity\ApplicationInformation;
 use RESTBundle\Form\AGBType;
@@ -218,7 +217,7 @@ class PeopleController extends RESTBundleController
      *  output={"class"="RESTBundle\Form\EmailHistoryType", "collection"=true}
      * )
      */
-    public function getEmailhistoryAction(ParamFetcher $paramFetcher, $personID)
+    public function getEmailhistoryAction(ParamFetcherInterface $paramFetcher, $personID)
     {
         $this->checkAuthentication($paramFetcher);
         $em = $this->getDoctrine()->getManager();
@@ -240,7 +239,7 @@ class PeopleController extends RESTBundleController
      *  output="RESTBundle\Form\EmailHistoryType"
      * )
      */
-    public function postEmailHistoryAction(ParamFetcher $paramFetcher, Request $request, $personID)
+    public function postEmailHistoryAction(ParamFetcherInterface $paramFetcher, Request $request, $personID)
     {
         $this->checkAuthentication($paramFetcher);
         
@@ -276,7 +275,7 @@ class PeopleController extends RESTBundleController
      *  output="RESTBundle\Form\ApplicationInformationType"
      * )
      */
-    public function getApplicationInformationAction(ParamFetcher $paramFetcher, $personID)
+    public function getApplicationInformationAction(ParamFetcherInterface $paramFetcher, $personID)
     {
         $this->checkAuthentication($paramFetcher);
         $em = $this->getDoctrine()->getManager();
@@ -301,7 +300,7 @@ class PeopleController extends RESTBundleController
      *  output="RESTBundle\Form\ApplicationInformationType"
      * )
      */
-    public function postApplicationInformationAction(ParamFetcher $paramFetcher, Request $request, $personID)
+    public function postApplicationInformationAction(ParamFetcherInterface $paramFetcher, Request $request, $personID)
     {
         $this->checkAuthentication($paramFetcher);
         $applicationInformation = new ApplicationInformation();
@@ -355,7 +354,7 @@ class PeopleController extends RESTBundleController
      *  output="RESTBundle\Form\ApplicationInformationType"
      * )
      */
-    public function patchApplicationInformationAction(ParamFetcher $paramFetcher, Request $request, $personID)
+    public function patchApplicationInformationAction(ParamFetcherInterface $paramFetcher, Request $request, $personID)
     {
         $this->checkAuthentication($paramFetcher);
         $em = $this->getDoctrine()->getManager();
@@ -396,7 +395,7 @@ class PeopleController extends RESTBundleController
      *  output="RESTBundle\Form\BankAccountType"
      * )
      */
-    public function getBankaccountAction(ParamFetcher $paramFetcher, $personID)
+    public function getBankaccountAction(ParamFetcherInterface $paramFetcher, $personID)
     {
         $this->checkAuthentication($paramFetcher);
         $em = $this->getDoctrine()->getManager();
@@ -421,7 +420,7 @@ class PeopleController extends RESTBundleController
      *  output="RESTBundle\Form\BankAccountType"
      * )
      */
-    public function postBankaccountAction(ParamFetcher $paramFetcher, Request $request, $personID)
+    public function postBankaccountAction(ParamFetcherInterface $paramFetcher, Request $request, $personID)
     {
         $this->checkAuthentication($paramFetcher);
         $bankAccount = new BankAccount();
@@ -454,7 +453,7 @@ class PeopleController extends RESTBundleController
      *  output="RESTBundle\Form\BankAccountType"
      * )
      */
-    public function patchBankaccountAction(ParamFetcher $paramFetcher, Request $request, $personID)
+    public function patchBankaccountAction(ParamFetcherInterface $paramFetcher, Request $request, $personID)
     {
         $this->checkAuthentication($paramFetcher);
         $em = $this->getDoctrine()->getManager();
@@ -488,7 +487,7 @@ class PeopleController extends RESTBundleController
      *  description="Delete a bank account"
      * )
      */
-    public function deleteBankaccountAction(ParamFetcher $paramFetcher, $personID)
+    public function deleteBankaccountAction(ParamFetcherInterface $paramFetcher, $personID)
     {
         $this->checkAuthentication($paramFetcher);
         $em = $this->getDoctrine()->getManager();
@@ -542,7 +541,7 @@ class PeopleController extends RESTBundleController
      *  output={"class"="RESTBundle\Form\ExchangeType", "collection"=true}
      * )
      */
-    public function cgetExchangesAction(ParamFetcher $paramFetcher, $personID)
+    public function cgetExchangesAction(ParamFetcherInterface $paramFetcher, $personID)
     {
         $this->checkAuthentication($paramFetcher);
         $em = $this->getDoctrine()->getManager();
@@ -575,7 +574,7 @@ class PeopleController extends RESTBundleController
      *  output="RESTBundle\Form\ExchangeType"
      * )
      */
-    public function postExchangesAction(ParamFetcher $paramFetcher, Request $request, $personID)
+    public function postExchangesAction(ParamFetcherInterface $paramFetcher, Request $request, $personID)
     {
         $this->checkAuthentication($paramFetcher);
         $exchange = new Exchange();
@@ -613,7 +612,7 @@ class PeopleController extends RESTBundleController
      * )
      * @REST\Patch
      */
-    public function patchExchangeAction(ParamFetcher $paramFetcher, Request $request, $personID, $exchangeID)
+    public function patchExchangeAction(ParamFetcherInterface $paramFetcher, Request $request, $personID, $exchangeID)
     {
         $this->checkAuthentication($paramFetcher);
         $em = $this->getDoctrine()->getManager();
@@ -646,7 +645,7 @@ class PeopleController extends RESTBundleController
      *  description="Delete an exchange"
      * )
      */
-    public function deleteExchangeAction(ParamFetcher $paramFetcher, $personID, $exchangeID)
+    public function deleteExchangeAction(ParamFetcherInterface $paramFetcher, $personID, $exchangeID)
     {
         $this->checkAuthentication($paramFetcher);
         $em = $this->getDoctrine()->getManager();
@@ -672,7 +671,7 @@ class PeopleController extends RESTBundleController
      *  output="RESTBundle\Form\FinanceInformationType"
      * )
      */
-    public function getExchangesFinanceinformationAction(ParamFetcher $paramFetcher, $personID, $exchangeID)
+    public function getExchangesFinanceinformationAction(ParamFetcherInterface $paramFetcher, $personID, $exchangeID)
     {
         $this->checkAuthentication($paramFetcher);
         $em = $this->getDoctrine()->getManager();
@@ -698,7 +697,7 @@ class PeopleController extends RESTBundleController
      *  output="RESTBundle\Form\FinanceInformationType"
      * )
      */
-    public function patchExchangesFinanceinformationAction(ParamFetcher $paramFetcher, Request $request, $personID, $exchangeID)
+    public function patchExchangesFinanceinformationAction(ParamFetcherInterface $paramFetcher, Request $request, $personID, $exchangeID)
     {
         $this->checkAuthentication($paramFetcher);
         $em = $this->getDoctrine()->getManager();
@@ -725,5 +724,56 @@ class PeopleController extends RESTBundleController
         );
     }
 
+    /**
+     * @REST\Post("/people/{personID}/manager")
+     * @REST\QueryParam(name="access_token", allowBlank=false)
+     * @REST\QueryParam(name="manager", requirements="\d+", description="ID of the Manager to add.", allowBlank=false)
+     * @ApiDoc(
+     *  resource=true,
+     *  description="Adds a manager for this EP",
+     *  output="RESTBundle\Form\PersonType"
+     * )
+     */
+    public function postManagerAction(ParamFetcherInterface $paramFetcher, $personID)
+    {
+        $this->checkAuthentication($paramFetcher);
+        $em = $this->getDoctrine()->getManager();
+        $ep = $em->getRepository('AIESECGermany\EntityBundle\Entity\Person')->findOneById($personID);
+        $managerId = $paramFetcher->get('manager');
+        $manager = $em->getRepository('AIESECGermany\EntityBundle\Entity\Person')->findOneById($managerId);
+        if(!$ep || !$manager) {
+            throw new HttpException(404);
+        }
+        $manager->addManagedEp($ep);
+        $em->persist($manager);
+        $em->flush();
+        return $this->returnCreationResponse();
+    }
+
+    /**
+     * @REST\Delete("/people/{personID}/manager")
+     * @REST\QueryParam(name="access_token", allowBlank=false)
+     * @REST\QueryParam(name="manager", requirements="\d+", description="ID of the Manager to add.", allowBlank=false)
+     * @ApiDoc(
+     *  resource=true,
+     *  description="Removes a manager for this EP",
+     *  output="RESTBundle\Form\PersonType"
+     * )
+     */
+    public function deleteManagerAction(ParamFetcherInterface $paramFetcher, $personID)
+    {
+        $this->checkAuthentication($paramFetcher);
+        $em = $this->getDoctrine()->getManager();
+        $ep = $em->getRepository('AIESECGermany\EntityBundle\Entity\Person')->findOneById($personID);
+        $managerId = $paramFetcher->get('manager');
+        $manager = $em->getRepository('AIESECGermany\EntityBundle\Entity\Person')->findOneById($managerId);
+        if(!$ep || !$manager) {
+            throw new HttpException(404);
+        }
+        $manager->removeManagedEp($ep);
+        $em->persist($manager);
+        $em->flush();
+        return $this->returnDeletionResponse();
+    }
 
 }
