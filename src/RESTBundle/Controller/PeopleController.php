@@ -133,7 +133,6 @@ class PeopleController extends RESTBundleController
         $message = \Swift_Message::newInstance()
         ->setSubject('[' . $person->getLeadSource() . '] New EP Registration')
         ->setFrom('nist@aiesec.de')
-        ->setBcc('lukas.ehnle@aiesec.de')
         ->setBody(
             $this->renderView(
                 // app/Resources/views/emails/registration.html.twig
