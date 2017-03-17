@@ -908,7 +908,7 @@ class PeopleController extends RESTBundleController
      * @ApiDoc(
      *  resource=true,
      *  description="Get agbAgreements",
-     *  output="RESTBundle\Form\StandardsAndSatisfactionType"
+     *  output="RESTBundle\Form\AgbAgreement"
      * )
      */
     public function getAgbAgreementsAction(ParamFetcherInterface $paramFetcher, $personID)

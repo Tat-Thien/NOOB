@@ -7,6 +7,7 @@ use AIESECGermany\EntityBundle\Entity\AGBAgreement;
 use AIESECGermany\EntityBundle\Entity\Exchange;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 class AGBAgreementType extends AbstractRESTFormType
@@ -25,6 +26,9 @@ class AGBAgreementType extends AbstractRESTFormType
                 'class' => Exchange::class
             ))
             ->add('contractPdfUrl')
+            ->add('applicationID', TextType::class, array(
+                'mapped' => false
+            ))
         ;
     }
 

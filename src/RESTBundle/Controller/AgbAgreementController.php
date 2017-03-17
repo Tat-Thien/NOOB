@@ -82,14 +82,22 @@ class AgbAgreementController extends RESTBundleController
     public function postAction(ParamFetcherInterface $paramFetcher, Request $request)
     {
         $this->checkAuthentication($paramFetcher);
-        $agbAgreement = new AGBAgreement();
-        $form = $this->createForm(new AGBAgreementType(), $agbAgreement);
         if(!$request->request->get('agb')){
             $request->request->set('agb', 1); //set standard agb, if not set
         }
+        $em = $this->getDoctrine()->getManager();
+        $applicationID = $request->request->get('applicationID');
+
+        if(!$request->request->get('exchange') && $applicationID){
+            $exchange = $em->getRepository('AIESECGermany\EntityBundle\Entity\Exchange')->findOneByApplicationID($applicationID);
+            if ($exchange) {
+                $request->request->set('exchange', $exchange->getId());
+            }
+        }
+        $agbAgreement = new AGBAgreement();
+        $form = $this->createForm(new AGBAgreementType(), $agbAgreement);
         $form->submit($request);
         if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
             $em->persist($agbAgreement);
             $em->flush();
             return $this->returnCreationResponse($agbAgreement);
