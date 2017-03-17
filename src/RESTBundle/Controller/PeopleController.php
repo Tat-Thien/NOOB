@@ -900,4 +900,34 @@ class PeopleController extends RESTBundleController
         $em->flush();
         return $this->returnDeletionResponse();
     }
+
+    /**
+     * @REST\Get("/people/{personID}/agbAgreements")
+     * @REST\QueryParam(name="access_token", allowBlank=false)
+     * @REST\QueryParam(name="applicationID", requirements="\d+", description="ApplicationID for which to retrieve AgbAgreement", allowBlank=false)
+     * @ApiDoc(
+     *  resource=true,
+     *  description="Get agbAgreements",
+     *  output="RESTBundle\Form\StandardsAndSatisfactionType"
+     * )
+     */
+    public function getAgbAgreementsAction(ParamFetcherInterface $paramFetcher, $personID)
+    {
+        $this->checkAuthentication($paramFetcher);
+        $em = $this->getDoctrine()->getManager();
+        $person = $em->getRepository('AIESECGermany\EntityBundle\Entity\Person')->findOneById($personID);
+        if (!$person) {
+            throw new NotFoundHttpException();
+        }
+        $applicationID = $paramFetcher->get('applicationID');
+        $exchange = $em->getRepository('AIESECGermany\EntityBundle\Entity\Exchange')->findOneByApplicationID($applicationID);
+        if (!$exchange) {
+            throw new NotFoundHttpException();
+        }
+        $agbAgreement = $exchange->getAgbAgreement();
+        if (!$agbAgreement) {
+            throw new NotFoundHttpException();
+        }
+        return $agbAgreement;
+    }
 }
