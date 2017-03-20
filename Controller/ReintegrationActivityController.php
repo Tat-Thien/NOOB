@@ -97,7 +97,7 @@ class ReintegrationActivityController extends NoobBundleController
 	{
 		$this->checkAuthentication($paramFetcher, true);
 		$reintegrationActivity = new ReintegrationActivity();
-		$form = $this->createForm(new ReintegrationActivityType(), $reintegrationActivity);
+		$form = $this->createForm(ReintegrationActivityType::class, $reintegrationActivity);
 		$form->submit($request);
 		if ($form->isValid()) {
 			$type = $reintegrationActivity->getType();

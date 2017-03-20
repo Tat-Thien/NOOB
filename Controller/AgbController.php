@@ -79,7 +79,7 @@ class AgbController extends NoobBundleController
 	{
 		$this->checkAuthentication($paramFetcher, true);
 		$agb = new AGB();
-		$form = $this->createForm(new AGBType(), $agb);
+		$form = $this->createForm(AGBType::class, $agb);
 		$form->submit($request);
 		if ($form->isValid()) {
 			$em = $this->getDoctrine()->getManager();
@@ -110,7 +110,7 @@ class AgbController extends NoobBundleController
 		if (!$agb) {
 			throw new NotFoundHttpException();
 		}
-		$form = $this->createForm(new AGBType(), $agb, [
+		$form = $this->createForm(AGBType::class, $agb, [
 			'method' => 'PATCH'
 		]);
 		$form->handleRequest($request);

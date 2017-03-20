@@ -113,7 +113,7 @@ class PeopleController extends NoobBundleController
 	{
 		$this->checkAuthentication($paramFetcher);
 		$person = new Person();
-		$form = $this->createForm(new PersonType(), $person);
+		$form = $this->createForm(PersonType::class, $person);
 		$form->submit($request);
 		if ($form->isValid()) {
 			$this->sendNotificationEmail($person, $request);
@@ -176,7 +176,7 @@ class PeopleController extends NoobBundleController
 		if (!$person) {
 			throw new NotFoundHttpException();
 		}
-		$form = $this->createForm(new PersonType(), $person, [
+		$form = $this->createForm(PersonType::class, $person, [
 			'method' => 'PATCH'
 		]);
 		$form->handleRequest($request);
@@ -245,7 +245,7 @@ class PeopleController extends NoobBundleController
 	{
 		$this->checkAuthentication($paramFetcher);
 		$emailHistory = new EmailHistory();
-		$form = $this->createForm(new EmailHistoryType(), $emailHistory);
+		$form = $this->createForm(EmailHistoryType::class, $emailHistory);
 		$form->submit($request);
 		if ($form->isValid()) {
 			$em = $this->getDoctrine()->getManager();
@@ -286,7 +286,7 @@ class PeopleController extends NoobBundleController
 		if (!$emailHistory) {
 			throw new NotFoundHttpException();
 		}
-		$form = $this->createForm(new EmailHistoryType(), $emailHistory, [
+		$form = $this->createForm(EmailHistoryType::class, $emailHistory, [
 			'method' => 'PATCH'
 		]);
 		$form->handleRequest($request);
@@ -338,7 +338,7 @@ class PeopleController extends NoobBundleController
 	{
 		$this->checkAuthentication($paramFetcher);
 		$applicationInformation = new ApplicationInformation();
-		$form = $this->createForm(new ApplicationInformationType(), $applicationInformation);
+		$form = $this->createForm(ApplicationInformationType::class, $applicationInformation);
 		$form->submit($request);
 		if ($form->isValid()) {
 			$em = $this->getDoctrine()->getManager();
@@ -458,7 +458,7 @@ class PeopleController extends NoobBundleController
 	{
 		$this->checkAuthentication($paramFetcher);
 		$bankAccount = new BankAccount();
-		$form = $this->createForm(new BankAccountType(), $bankAccount);
+		$form = $this->createForm(BankAccountType::class, $bankAccount);
 		$form->submit($request);
 		if ($form->isValid()) {
 			$em = $this->getDoctrine()->getManager();
@@ -499,7 +499,7 @@ class PeopleController extends NoobBundleController
 		if (!$bankAccount) {
 			throw new NotFoundHttpException();
 		}
-		$form = $this->createForm(new BankAccountType(), $bankAccount, [
+		$form = $this->createForm(BankAccountType::class, $bankAccount, [
 			'method' => 'PATCH'
 		]);
 		$form->handleRequest($request);
@@ -612,7 +612,7 @@ class PeopleController extends NoobBundleController
 	{
 		$this->checkAuthentication($paramFetcher);
 		$exchange = new Exchange();
-		$form = $this->createForm(new ExchangeType(), $exchange);
+		$form = $this->createForm(ExchangeType::class, $exchange);
 		$form->submit($request);
 		if ($form->isValid()) {
 			$em = $this->getDoctrine()->getManager();
@@ -658,7 +658,7 @@ class PeopleController extends NoobBundleController
 		if (!$exchange) {
 			throw new NotFoundHttpException();
 		}
-		$form = $this->createForm(new ExchangeType(), $exchange, [
+		$form = $this->createForm(ExchangeType::class, $exchange, [
 			'method' => 'PATCH'
 		]);
 		$form->handleRequest($request);
@@ -744,7 +744,7 @@ class PeopleController extends NoobBundleController
 			throw new NotFoundHttpException();
 		}
 		$financeInformation = $exchange->getFinanceInformation();
-		$form = $this->createForm(new FinanceInformationType(), $financeInformation, [
+		$form = $this->createForm(FinanceInformationType::class, $financeInformation, [
 			'method' => 'PATCH'
 		]);
 		$form->handleRequest($request);
@@ -815,7 +815,7 @@ class PeopleController extends NoobBundleController
 		if ($exchange->getStandardsAndSatisfaction()) {
 			$sands = $exchange->getStandardsAndSatisfaction();
 		}
-		$form = $this->createForm(new StandardsAndSatisfactionType(), $sands);
+		$form = $this->createForm(StandardsAndSatisfactionType::class, $sands);
 		$form->submit($request);
 		if ($form->isValid()) {
 			$exchange->setStandardsAndSatisfaction($sands);
@@ -856,7 +856,7 @@ class PeopleController extends NoobBundleController
 		if (!$sands) {
 			throw new NotFoundHttpException();
 		}
-		$form = $this->createForm(new StandardsAndSatisfactionType(), $sands, [
+		$form = $this->createForm(StandardsAndSatisfactionType::class, $sands, [
 			'method' => 'PATCH'
 		]);
 		$form->handleRequest($request);

@@ -134,7 +134,7 @@ class JdController extends NoobBundleController
 	{
 		$this->checkAuthentication($paramFetcher);
 		$jd = new JD();
-		$form = $this->createForm(new JdType(), $jd);
+		$form = $this->createForm(JdType::class, $jd);
 		$form->submit($request);
 		if ($form->isValid()) {
 			$em = $this->getDoctrine()->getManager();
@@ -174,7 +174,7 @@ class JdController extends NoobBundleController
 		if (!$jd) {
 			throw new NotFoundHttpException();
 		}
-		$form = $this->createForm(new JdType(), $jd, [
+		$form = $this->createForm(JdType::class, $jd, [
 			'method' => 'PATCH'
 		]);
 		$form->handleRequest($request);

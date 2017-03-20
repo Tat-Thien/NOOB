@@ -1,56 +1,56 @@
 EntityBundle\Entity\Person:
-	properties:
-		exchanges:
-			exclude: true
-		outgoerPreparationParticipation:
-			exclude: true
-		onlineOutgoerPreparationParticipation:
-			exclude: true
-		emailHistory:
-			exclude: true
-		bankAccount:
-			exclude: true
-		applicationInformation:
-			exclude: true
-	relations:
-		-
-			rel: outgoerPreparationParticipation
-			href:
-				route: get_outgoerpreparationparticipation
-				parameters:
-					participationID: expr(object.getOutgoerPreparationParticipation().getId())
-			exclusion:
-				exclude_if: expr(object.getOutgoerPreparationParticipation() === null)
-		-
-			rel: onlineOutgoerPreparationParticipation
-			href:
-				route: get_onlineoutgoerpreparationparticipation
-				parameters:
-					participationID: expr(object.getOnlineOutgoerPreparationParticipation().getId())
-			exclusion:
-				exclude_if: expr(object.getOnlineOutgoerPreparationParticipation() === null)
-		-
-			rel: emailHistory
-			href:
-				route: get_people_emailhistory
-				parameters:
-					personID: expr(object.getId())
-			exclusion:
-				exclude_if: expr(object.getEmailHistory() === null)
-		-
-			rel: bankAccount
-			href:
-				route: get_people_bankaccount
-				parameters:
-					personID: expr(object.getId())
-			exclusion:
-				exclude_if: expr(object.getBankAccount() === null)
-		-
-			rel: applicationInformation
-			href:
-				route: get_people_application_information
-				parameters:
-					personID: expr(object.getId())
-			exclusion:
-				exclude_if: expr(object.getApplicationInformation() === null)
-	relation_providers: [ 'RESTBundle\Controller\PersonExchangeRelationProvider::getRelations']
+  properties:
+    exchanges:
+      exclude: true
+    outgoerPreparationParticipation:
+      exclude: true
+    onlineOutgoerPreparationParticipation:
+      exclude: true
+    emailHistory:
+      exclude: true
+    bankAccount:
+      exclude: true
+    applicationInformation:
+      exclude: true
+  relations:
+    -
+      rel: outgoerPreparationParticipation
+      href:
+        route: get_outgoerpreparationparticipation
+        parameters:
+          participationID: expr(object.getOutgoerPreparationParticipation().getId())
+      exclusion:
+        exclude_if: expr(object.getOutgoerPreparationParticipation() === null)
+    -
+      rel: onlineOutgoerPreparationParticipation
+      href:
+        route: get_onlineoutgoerpreparationparticipation
+        parameters:
+          participationID: expr(object.getOnlineOutgoerPreparationParticipation().getId())
+      exclusion:
+        exclude_if: expr(object.getOnlineOutgoerPreparationParticipation() === null)
+    -
+      rel: emailHistory
+      href:
+        route: get_people_emailhistory
+        parameters:
+          personID: expr(object.getId())
+      exclusion:
+        exclude_if: expr(object.getEmailHistory() === null)
+    -
+      rel: bankAccount
+      href:
+        route: get_people_bankaccount
+        parameters:
+          personID: expr(object.getId())
+      exclusion:
+        exclude_if: expr(object.getBankAccount() === null)
+    -
+      rel: applicationInformation
+      href:
+        route: get_people_application_information
+        parameters:
+          personID: expr(object.getId())
+      exclusion:
+        exclude_if: expr(object.getApplicationInformation() === null)
+  relation_providers: [ 'RESTBundle\Controller\PersonExchangeRelationProvider::getRelations']

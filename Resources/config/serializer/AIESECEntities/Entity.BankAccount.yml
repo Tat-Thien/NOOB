@@ -1,6 +1,6 @@
 EntityBundle\Entity\BankAccount:
-		properties:
-				id:
-						exclude: true
-				exchange:
-						exclude: true
+    properties:
+        id:
+            exclude: true
+        exchange:
+            exclude: true

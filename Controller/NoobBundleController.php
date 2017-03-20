@@ -20,9 +20,9 @@ abstract class NoobBundleController extends FOSRestController
 
 	protected function checkAuthentication(ParamFetcherInterface $paramFetcher, $advanced=false)
 	{
-		if ($advanced && $this->get('security.context')->isGranted('ROLE_ADVANCED_TOKEN')) {
+		if ($advanced && $this->get('security.authorization_checker')->isGranted('ROLE_ADVANCED_TOKEN')) {
 			return;
-		} else if($this->get('security.context')->isGranted('ROLE_SIMPLE_TOKEN')) {
+		} else if($this->get('security.authorization_checker')->isGranted('ROLE_SIMPLE_TOKEN')) {
 			return;
 		}
 		throw new AccessDeniedHttpException();

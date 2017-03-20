@@ -95,7 +95,7 @@ class ReintegrationActivityParticipationController extends NoobBundleController
 	{
 		$this->checkAuthentication($paramFetcher, true);
 		$reintegrationActivityParticipation = new ReintegrationActivityParticipation();
-		$form = $this->createForm(new ReintegrationActivityParticipationType(), $reintegrationActivityParticipation);
+		$form = $this->createForm(ReintegrationActivityParticipationType::class, $reintegrationActivityParticipation);
 		$form->submit($request);
 		if ($form->isValid()) {
 			$em = $this->getDoctrine()->getManager();
@@ -126,7 +126,7 @@ class ReintegrationActivityParticipationController extends NoobBundleController
 		if (!$reintegrationActivityParticipation) {
 			throw new NotFoundHttpException();
 		}
-		$form = $this->createForm(new ReintegrationActivityParticipationType(), $reintegrationActivityParticipation, [
+		$form = $this->createForm(ReintegrationActivityParticipationType::class, $reintegrationActivityParticipation, [
 			'method' => 'PATCH'
 		]);
 		$form->handleRequest($request);

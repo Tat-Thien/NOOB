@@ -95,7 +95,7 @@ class OutgoerPreparationParticipationController extends NoobBundleController
 	{
 		$this->checkAuthentication($paramFetcher, true);
 		$outgoerPreparationParticipation = new OutgoerPreparationParticipation();
-		$form = $this->createForm(new OutgoerPreparationParticipationType(), $outgoerPreparationParticipation);
+		$form = $this->createForm(OutgoerPreparationParticipationType::class, $outgoerPreparationParticipation);
 		$form->submit($request);
 		if ($form->isValid()) {
 			$em = $this->getDoctrine()->getManager();
@@ -126,7 +126,7 @@ class OutgoerPreparationParticipationController extends NoobBundleController
 		if (!$outgoerPreparationParticipation) {
 			throw new NotFoundHttpException();
 		}
-		$form = $this->createForm(new OutgoerPreparationParticipationType(), $outgoerPreparationParticipation, [
+		$form = $this->createForm(OutgoerPreparationParticipationType::class, $outgoerPreparationParticipation, [
 			'method' => 'PATCH'
 		]);
 		$form->handleRequest($request);
