@@ -40,4 +40,4 @@ EntityBundle\Entity\Exchange:
           standardsAndSatisfactionID: expr(object.getStandardsAndSatisfaction().getId())
       exclusion:
         exclude_if: expr(object.getStandardsAndSatisfaction() === null)
-  relation_providers: [ 'RESTBundle\Controller\ExchangeReintegrationActivityParticipationRelationProvider::getRelations']
+  relation_providers: [ 'NoobBundle\Controller\ExchangeReintegrationActivityParticipationRelationProvider::getRelations']

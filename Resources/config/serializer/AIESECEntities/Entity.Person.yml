@@ -53,4 +53,4 @@ EntityBundle\Entity\Person:
           personID: expr(object.getId())
       exclusion:
         exclude_if: expr(object.getApplicationInformation() === null)
-  relation_providers: [ 'RESTBundle\Controller\PersonExchangeRelationProvider::getRelations']
+  relation_providers: [ 'NoobBundle\Controller\PersonExchangeRelationProvider::getRelations']
