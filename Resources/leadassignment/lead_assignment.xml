@@ -1,0 +1,820 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<programs>
+    <program name="oGV">
+        <lc name="Aachen">
+            <city name="Aachen"/>
+            <city name="Düren"/>
+        </lc>
+        <lc name="Augsburg">
+            <city name="Augsburg"/>
+        </lc>
+        <lc name="Bayreuth">
+            <city name="Bamberg"/>
+            <city name="Bayreuth"/>
+        </lc>
+        <lc name="Berlin HU">
+            <city name="Berlin"/>
+            <city name="Frankfurt Oder"/>
+            <city name="Potsdamm"/>
+        </lc>
+        <lc name="Bielefeld">
+            <city name="Bielefeld" />
+            <city name="Gütersloh"/>
+            <city name="Minden"/>
+        </lc>
+        <lc name="Bochum">
+            <city name="Bochum"/>
+            <city name="Bottrop"/>
+            <city name="Dortmund"/>
+            <city name="Duisburg"/>
+            <city name="Düsseldorf"/>
+            <city name="Essen"/>
+            <city name="Gelsenkirchen"/>
+            <city name="Hagen"/>
+            <city name="Herne"/>
+            <city name="Iserlohn"/>
+            <city name="Krefeld"/>
+            <city name="Lünen"/>
+            <city name="Marl"/>
+            <city name="Moers"/>
+            <city name="Mönchengladbach"/>
+            <city name="Müllheim an der Ruhr"/>
+            <city name="Neuss"/>
+            <city name="Oberhausen"/>
+            <city name="Ratingen"/>
+            <city name="Recklinghausen"/>
+            <city name="Remscheid"/>
+            <city name="Solingen"/>
+            <city name="Velbert"/>
+            <city name="Wuppertal"/>
+        </lc>
+        <lc name="Bonn">
+            <city name="Bonn"/>
+            <city name="Brühl"/>
+            <city name="Koblenz"/>
+        </lc>
+        <lc name="Braunschweig">
+            <city name="Braunschweig"/>
+        </lc>
+        <lc name="Bremen">
+            <city name="Bremen"/>
+            <city name="Bremerhaven"/>
+            <city name="Oldenburg"/>
+
+        </lc>
+        <lc name="Dresden">
+            <city name="Chemnitz"/>
+            <city name="Cottbus"/>
+            <city name="Dresden"/>
+            <city name="Görlitz"/>
+            <city name="Zwickau"/>
+        </lc>
+        <lc name="Frankfurt">
+            <city name="Aschaffenburg"/>
+            <city name="Frankfurt"/>
+            <city name="Fulda"/>
+            <city name="Hanau"/>
+            <city name="Offenbach am Main"/>
+
+        </lc>
+        <lc name="Gießen">
+            <city name="Gießen"/>
+            <city name="Marburg"/>
+            <city name="Siegen"/>
+            <city name="Wetzlar"/>
+        </lc>
+        <lc name="Göttingen">
+            <city name="Göttingen"/>
+            <city name="Kassel"/>
+        </lc>
+        <lc name="Halle">
+            <city name="Halle"/>
+            <city name="Witten"/>
+        </lc>
+        <lc name="Hamburg">
+            <city name="Hamburg"/>
+            <city name="Lübeck"/>
+            <city name="Rostock"/>
+            <city name="Schwerin"/>
+        </lc>
+        <lc name="Hannover">
+            <city name="Hameln"/>
+            <city name="Hannover"/>
+            <city name="Hildesheim"/>
+        </lc>
+        <lc name="Heidelberg">
+            <city name="Heidelberg"/>
+            <city name="Speyer"/>
+        </lc>
+        <lc name="Jena">
+            <city name="Erfurt"/>
+            <city name="Gera"/>
+            <city name="Jena"/>
+            <city name="Weimar"/>
+        </lc>
+        <lc name="Kaiserslautern">
+            <city name="Kaiserslautern"/>
+            <city name="Saarbeücken"/>
+            <city name="Saarlouis"/>
+            <city name="Trier"/>
+        </lc>
+        <lc name="Karlsruhe">
+            <city name="Baden-Baden"/>
+            <city name="Freiburg im Breisgau"/>
+            <city name="Karlsruhe"/>
+            <city name="Offenburg"/>
+        </lc>
+        <lc name="Kiel">
+            <city name="Flensburg"/>
+            <city name="Kiel"/>
+        </lc>
+        <lc name="Kleve">
+            <city name="Kleve"/>
+        </lc>
+        <lc name="Köln">
+            <city name="Köln"/>
+            <city name="Bergisch Gladbach"/>
+            <city name="Leverkusen"/>
+        </lc>
+        <lc name="Leipzig">
+            <city name="Leipzig"/>
+            <city name="Wittenberg"/>
+        </lc>
+        <lc name="Lüneburg">
+            <city name="Lüneburg"/>
+            <city name="Salzgitter"/>
+            <city name="Wolfsburg"/>
+        </lc>
+        <lc name="Magdeburg">
+            <city name="Magdeburg"/>
+            <city name="Dessau"/>
+        </lc>
+        <lc name="Mainz">
+            <city name="Mainz"/>
+            <city name="Darmstadt"/>
+            <city name="Wiesbaden"/>
+        </lc>
+        <lc name="Mannheim">
+            <city name="Mannheim"/>
+            <city name="Worms"/>
+            <city name="Ludwigshafen"/>
+        </lc>
+        <lc name="München">
+            <city name="München"/>
+        </lc>
+        <lc name="Münster">
+            <city name="Münster"/>
+            <city name="Osnabrück"/>
+        </lc>
+        <lc name="Nürnberg">
+            <city name="Amberg"/>
+            <city name="Ansbach"/>
+            <city name="Erlangen"/>
+            <city name="Fürth"/>
+            <city name="Nürnberg"/>
+            <city name="Weiden"/>
+        </lc>
+        <lc name="Paderborn">
+            <city name="Paderborn"/>
+            <city name="Hamm"/>
+        </lc>
+        <lc name="Passau">
+            <city name="Passau"/>
+        </lc>
+        <lc name="Regensburg">
+            <city name="Regensburg"/>
+            <city name="Ingolstadt"/>
+        </lc>
+        <lc name="Stuttgart">
+            <city name="Stuttgart"/>
+            <city name="Ulm"/>
+            <city name="Heilbronn"/>
+            <city name="Pforzheim"/>
+            <city name="Reutlingen"/>
+            <city name="Ludwigsburg"/>
+            <city name="Esslingen am Neckar"/>
+            <city name="Tübingen"/>
+            <city name="Villingen-Schwenningen"/>
+            <city name="Konstanz"/>
+            <city name="Aalen"/>
+            <city name="Neu-Ulm"/>
+            <city name="Ravensburg"/>
+            <city name="Singen"/>
+            <city name="Nürtingen"/>
+        </lc>
+        <lc name="Würzburg">
+            <city name="Schweinfurt"/>
+            <city name="Würzburg"/>
+        </lc>
+    </program>
+    <program name="oGT">
+        <lc name="Berlin TU">
+            <city name="Berlin"/>
+            <city name="Potsdamm"/>
+            <city name="Frankfurt Oder"/>
+        </lc>
+        <lc name="Bielefeld">
+            <city name="Bielefeld" />
+            <city name="Gütersloh"/>
+            <city name="Minden"/>
+        </lc>
+        <lc name="Bochum">
+            <city name="Dortmund"/>
+            <city name="Essen"/>
+            <city name="Duisburg"/>
+            <city name="Bochum"/>
+            <city name="Wuppertal"/>
+            <city name="Gelsenkirchen"/>
+            <city name="Mönchengladbach"/>
+            <city name="Krefeld"/>
+            <city name="Oberhausen"/>
+            <city name="Hagen"/>
+            <city name="Müllheim an der Ruhr"/>
+            <city name="Solingen"/>
+            <city name="Herne"/>
+            <city name="Neuss"/>
+            <city name="Bottrop"/>
+            <city name="Recklinghausen"/>
+            <city name="Remscheid"/>
+            <city name="Moers"/>
+            <city name="Iserlohn"/>
+            <city name="Ratingen"/>
+            <city name="Lünen"/>
+            <city name="Marl"/>
+            <city name="Velbert"/>
+            <city name="Bonn"/>
+            <city name="Koblenz"/>
+            <city name="Brühl"/>
+        </lc>
+        <lc name="Darmstadt">
+            <city name="Darmstadt"/>
+            <city name="Aachen"/>
+            <city name="Wiesbaden"/>
+            <city name="Mainz"/>
+            <city name="Düren"/>
+        </lc>
+        <lc name="Dresden">
+            <city name="Dresden"/>
+            <city name="Chemnitz"/>
+            <city name="Zwickau"/>
+            <city name="Cottbus"/>
+            <city name="Görlitz"/>
+        </lc>
+        <lc name="Frankfurt">
+            <city name="Frankfurt"/>
+            <city name="Offenbach am Main"/>
+            <city name="Hanau"/>
+            <city name="Aschaffenburg"/>
+            <city name="Fulda"/>
+
+        </lc>
+        <lc name="Gießen">
+            <city name="Siegen"/>
+            <city name="Gießen"/>
+            <city name="Marburg"/>
+            <city name="Wetzlar"/>
+        </lc>
+        <lc name="Halle">
+            <city name="Halle"/>
+            <city name="Witten"/>
+            <city name="Leipzig"/>
+            <city name="Wittenberg"/>
+            <city name="Magdeburg"/>
+            <city name="Dessau"/>
+        </lc>
+        <lc name="Hamburg">
+            <city name="Hamburg"/>
+            <city name="Lübeck"/>
+            <city name="Rostock"/>
+            <city name="Schwerin"/>
+            <city name="Braunschweig"/>
+            <city name="Oldenburg"/>
+            <city name="Bremen"/>
+            <city name="Bremerhaven"/>
+            <city name="Hannover"/>
+            <city name="Hildesheim"/>
+            <city name="Hameln"/>
+            <city name="Kiel"/>
+            <city name="Flensburg"/>
+            <city name="Wolfsburg"/>
+            <city name="Salzgitter"/>
+            <city name="Lüneburg"/>
+        </lc>
+        <lc name="Jena">
+            <city name="Jena"/>
+            <city name="Erfurt"/>
+            <city name="Gera"/>
+            <city name="Weimar"/>
+            <city name="Kassel"/>
+            <city name="Göttingen"/>
+        </lc>
+        <lc name="Kaiserslautern">
+            <city name="Saarbeücken"/>
+            <city name="Trier"/>
+            <city name="Kaiserslautern"/>
+            <city name="Saarlouis"/>
+        </lc>
+        <lc name="Karlsruhe">
+            <city name="Karlsruhe"/>
+            <city name="Freiburg im Breisgau"/>
+            <city name="Offenburg"/>
+            <city name="Baden-Baden"/>
+            <city name="Mannheim"/>
+            <city name="Worms"/>
+            <city name="Ludwigshafen"/>
+        </lc>
+        <lc name="Kleve">
+            <city name="Kleve"/>
+        </lc>
+        <lc name="München">
+            <city name="München"/>
+            <city name="Augsburg"/>
+        </lc>
+        <lc name="Münster">
+            <city name="Münster"/>
+            <city name="Osnabrück"/>
+            <city name="Düsseldorf"/>
+            <city name="Köln"/>
+            <city name="Leverkusen"/>
+            <city name="Bergisch Gladbach"/>
+            <city name="Paderborn"/>
+            <city name="Hamm"/>
+        </lc>
+        <lc name="Nürnberg">
+            <city name="Amberg"/>
+            <city name="Ansbach"/>
+            <city name="Bamberg"/>
+            <city name="Bayreuth"/>
+            <city name="Erlangen"/>
+            <city name="Fürth"/>
+            <city name="Nürnberg"/>
+            <city name="Weiden"/>
+        </lc>
+        <lc name="Passau">
+            <city name="Passau"/>
+        </lc>
+        <lc name="Regensburg">
+            <city name="Regensburg"/>
+            <city name="Ingolstadt"/>
+        </lc>
+        <lc name="Stuttgart">
+            <city name="Stuttgart"/>
+            <city name="Ulm"/>
+            <city name="Heilbronn"/>
+            <city name="Pforzheim"/>
+            <city name="Reutlingen"/>
+            <city name="Ludwigsburg"/>
+            <city name="Esslingen am Neckar"/>
+            <city name="Tübingen"/>
+            <city name="Villingen-Schwenningen"/>
+            <city name="Konstanz"/>
+            <city name="Aalen"/>
+            <city name="Neu-Ulm"/>
+            <city name="Ravensburg"/>
+            <city name="Singen"/>
+            <city name="Nürtingen"/>
+            <city name="Heidelberg"/>
+            <city name="Speyer"/>
+        </lc>
+        <lc name="Würzburg">
+            <city name="Schweinfurt"/>
+            <city name="Würzburg"/>
+        </lc>
+    </program>
+    <program name="oGE">
+        <lc name="Berlin TU">
+            <city name="Berlin"/>
+            <city name="Potsdamm"/>
+            <city name="Frankfurt Oder"/>
+        </lc>
+        <lc name="Bielefeld">
+            <city name="Bielefeld" />
+            <city name="Gütersloh"/>
+            <city name="Minden"/>
+        </lc>
+        <lc name="Bochum">
+            <city name="Dortmund"/>
+            <city name="Essen"/>
+            <city name="Duisburg"/>
+            <city name="Bochum"/>
+            <city name="Wuppertal"/>
+            <city name="Gelsenkirchen"/>
+            <city name="Mönchengladbach"/>
+            <city name="Krefeld"/>
+            <city name="Oberhausen"/>
+            <city name="Hagen"/>
+            <city name="Müllheim an der Ruhr"/>
+            <city name="Solingen"/>
+            <city name="Herne"/>
+            <city name="Neuss"/>
+            <city name="Bottrop"/>
+            <city name="Recklinghausen"/>
+            <city name="Remscheid"/>
+            <city name="Moers"/>
+            <city name="Iserlohn"/>
+            <city name="Ratingen"/>
+            <city name="Lünen"/>
+            <city name="Marl"/>
+            <city name="Velbert"/>
+            <city name="Bonn"/>
+            <city name="Koblenz"/>
+            <city name="Brühl"/>
+        </lc>
+        <lc name="Darmstadt">
+            <city name="Darmstadt"/>
+            <city name="Aachen"/>
+            <city name="Wiesbaden"/>
+            <city name="Mainz"/>
+            <city name="Düren"/>
+        </lc>
+        <lc name="Dresden">
+            <city name="Dresden"/>
+            <city name="Chemnitz"/>
+            <city name="Zwickau"/>
+            <city name="Cottbus"/>
+            <city name="Görlitz"/>
+        </lc>
+        <lc name="Frankfurt">
+            <city name="Frankfurt"/>
+            <city name="Offenbach am Main"/>
+            <city name="Hanau"/>
+            <city name="Aschaffenburg"/>
+            <city name="Fulda"/>
+
+        </lc>
+        <lc name="Gießen">
+            <city name="Siegen"/>
+            <city name="Gießen"/>
+            <city name="Marburg"/>
+            <city name="Wetzlar"/>
+        </lc>
+        <lc name="Halle">
+            <city name="Halle"/>
+            <city name="Witten"/>
+            <city name="Leipzig"/>
+            <city name="Wittenberg"/>
+            <city name="Magdeburg"/>
+            <city name="Dessau"/>
+        </lc>
+        <lc name="Hamburg">
+            <city name="Hamburg"/>
+            <city name="Lübeck"/>
+            <city name="Rostock"/>
+            <city name="Schwerin"/>
+            <city name="Braunschweig"/>
+            <city name="Oldenburg"/>
+            <city name="Bremen"/>
+            <city name="Bremerhaven"/>
+            <city name="Hannover"/>
+            <city name="Hildesheim"/>
+            <city name="Hameln"/>
+            <city name="Kiel"/>
+            <city name="Flensburg"/>
+            <city name="Wolfsburg"/>
+            <city name="Salzgitter"/>
+            <city name="Lüneburg"/>
+        </lc>
+        <lc name="Jena">
+            <city name="Jena"/>
+            <city name="Erfurt"/>
+            <city name="Gera"/>
+            <city name="Weimar"/>
+            <city name="Kassel"/>
+            <city name="Göttingen"/>
+        </lc>
+        <lc name="Kaiserslautern">
+            <city name="Saarbeücken"/>
+            <city name="Trier"/>
+            <city name="Kaiserslautern"/>
+            <city name="Saarlouis"/>
+        </lc>
+        <lc name="Karlsruhe">
+            <city name="Karlsruhe"/>
+            <city name="Freiburg im Breisgau"/>
+            <city name="Offenburg"/>
+            <city name="Baden-Baden"/>
+            <city name="Mannheim"/>
+            <city name="Worms"/>
+            <city name="Ludwigshafen"/>
+        </lc>
+        <lc name="Kleve">
+            <city name="Kleve"/>
+        </lc>
+        <lc name="München">
+            <city name="München"/>
+            <city name="Augsburg"/>
+        </lc>
+        <lc name="Münster">
+            <city name="Münster"/>
+            <city name="Osnabrück"/>
+            <city name="Düsseldorf"/>
+            <city name="Köln"/>
+            <city name="Leverkusen"/>
+            <city name="Bergisch Gladbach"/>
+            <city name="Paderborn"/>
+            <city name="Hamm"/>
+        </lc>
+        <lc name="Nürnberg">
+            <city name="Amberg"/>
+            <city name="Ansbach"/>
+            <city name="Bamberg"/>
+            <city name="Bayreuth"/>
+            <city name="Erlangen"/>
+            <city name="Fürth"/>
+            <city name="Nürnberg"/>
+            <city name="Weiden"/>
+        </lc>
+        <lc name="Passau">
+            <city name="Passau"/>
+        </lc>
+        <lc name="Regensburg">
+            <city name="Regensburg"/>
+            <city name="Ingolstadt"/>
+        </lc>
+        <lc name="Stuttgart">
+            <city name="Stuttgart"/>
+            <city name="Ulm"/>
+            <city name="Heilbronn"/>
+            <city name="Pforzheim"/>
+            <city name="Reutlingen"/>
+            <city name="Ludwigsburg"/>
+            <city name="Esslingen am Neckar"/>
+            <city name="Tübingen"/>
+            <city name="Villingen-Schwenningen"/>
+            <city name="Konstanz"/>
+            <city name="Aalen"/>
+            <city name="Neu-Ulm"/>
+            <city name="Ravensburg"/>
+            <city name="Singen"/>
+            <city name="Nürtingen"/>
+            <city name="Heidelberg"/>
+            <city name="Speyer"/>
+        </lc>
+        <lc name="Würzburg">
+            <city name="Schweinfurt"/>
+            <city name="Würzburg"/>
+        </lc>
+    </program>
+    <program name="YT">
+        <lc name="Aachen">
+            <city name="FH Aachen"/>
+            <city name="RWTH Aachen"/>
+        </lc>
+        <lc name="Augsburg">
+            <city name="Hochschule Augsburg"/>
+            <city name="Uni Augsburg"/>
+        </lc>
+        <lc name="Bayreuth">
+            <city name="Hochschule für angewandte Wissenschaften Coburg"/>
+            <city name="Otto-Friedrich-Uni Bamberg"/>
+            <city name="Uni Bayreuth"/>
+        </lc>
+        <lc name="Berlin HU">
+            <city name="Charité - Universitätsmedizin Berlin"/>
+            <city name="ESCP-EAP European School of Management"/>
+            <city name="Europa-Uni Viadrina"/>
+            <city name="Fachhochschule Brandenburg"/>
+            <city name="Freie Uni Berlin"/>
+            <city name="Humboldt-Uni zu Berlin"/>
+            <city name="Katholische Hochschule für Sozialwesen Berlin"/>
+            <city name="Wildau"/>
+        </lc>
+        <lc name="Berlin TU">
+            <city name="Beuth Hochschule für Technik Berlin"/>
+            <city name="Brandenburgische Technische Uni"/>
+            <city name="European School of Management and Technology"/>
+            <city name="Hochschule für Technik und Wirtschaft Berlin"/>
+            <city name="Hochschule für Wirtschaft und Recht Berlin"/>
+            <city name="Technische Uni Berlin"/>
+            <city name="Uni der Künste Berlin"/>
+            <city name="Uni Potsdam"/>
+        </lc>
+        <lc name="Bielefeld">
+            <city name="Fachhochschule des Mittelstands (Bielefeld)"/>
+            <city name="FH Bielefeld"/>
+            <city name="Hochschule für Musik Detmold"/>
+            <city name="Hochschule Ostwestfalen-Lippe"/>
+            <city name="Uni Bielefeld"/>
+        </lc>
+        <lc name="Bochum">
+            <city name="Evangelische FH Bochum"/>
+            <city name="FH Dortmund"/>
+            <city name="Hochschule Bochum"/>
+            <city name="Hochschule Niederrhein"/>
+            <city name="hsg Hochschule für Gesundheit Bochum"/>
+            <city name="Ruhr-Uni Bochum"/>
+            <city name="Technische Uni Dortmund"/>
+            <city name="Uni Duisburg-Essen"/>
+            <city name="Westfälische Hochschule Gelsenkirchen Bocholt Recklinghausen"/>
+        </lc>
+        <lc name="Bonn">
+            <city name="Alanus Hochschule für Kunst und Gesellschaft"/>
+            <city name="FH für Rechtspflege Nordrhein-Westfalen"/>
+            <city name="FOM Hochschule Bonn"/>
+            <city name="Hochschule Bonn-Rhein-Sieg"/>
+            <city name="Hochschule der Sparkassen-Finanzgruppe"/>
+            <city name="Hochschule Koblenz"/>
+            <city name="Internationale Hochschule Bad Honnef - Bonn"/>
+            <city name="Philosophisch-Theologische Hochschule SVD St. Augustin"/>
+            <city name="Philosophisch-Theologische Hochschule Vallendar"/>
+            <city name="Rheinische Friedrich-Wilhelms-Uni Bonn"/>
+            <city name="Uni Koblenz-Landau - Campus Koblenz"/>
+            <city name="WHU – Otto Beisheim School of Management"/>
+        </lc>
+        <lc name="Braunschweig">
+            <city name="Technische Uni Braunschweig"/>
+        </lc>
+        <lc name="Bremen">
+            <city name="Hochschule Bremen"/>
+            <city name="Jacobs city Bremen"/>
+            <city name="Uni Bremen"/>
+        </lc>
+        <lc name="Darmstadt">
+            <city name="Hochschule Darmstadt"/>
+            <city name="Technische Uni Darmstadt"/>
+        </lc>
+        <lc name="Dresden">
+            <city name="Hochschule für Technik und Wirtschaft Dresden"/>
+            <city name="Technische Uni Dresden"/>
+        </lc>
+        <lc name="Düsseldorf">
+            <city name="FH Düsseldorf"/>
+            <city name="Fliedner Fachhochschule Düsseldorf"/>
+            <city name="FOM Hochschule Düsseldorf"/>
+            <city name="Heinrich-Heine-Uni Düsseldorf"/>
+            <city name="Hochschule Niederrhein"/>
+            <city name="Mediadesign Hochschule Düsseldorf"/>
+            <city name="Robert-Schumann-Hochschule Düsseldorf"/>
+        </lc>
+        <lc name="Frankfurt">
+            <city name="accadis Hochschule Bad Homburg"/>
+            <city name="FH Frankfurt am Main"/>
+            <city name="Hochschule Aschaffenburg"/>
+            <city name="Hochschule Fresenius (Idstein)"/>
+            <city name="Hochschule Fulda"/>
+            <city name="Johann Wolfgang Goethe-Uni Frankfurt am Main"/>
+        </lc>
+        <lc name="Freiburg">
+            <city name="Albert-Ludwigs-Uni Freiburg"/>
+            <city name="Angell Akademie Freiburg"/>
+            <city name="Pädagogische Hochschule Freiburg"/>
+            <city name="City College Freiburg"/>
+        </lc>
+        <lc name="Gießen">
+            <city name="Justus-Liebig-Uni Gießen"/>
+            <city name="Philipps-Uni Marburg"/>
+            <city name="Technische Hochschule Mittelhessen"/>
+            <city name="Universität Siegen"/>
+        </lc>
+        <lc name="Göttingen">
+            <city name="FH Nordhausen"/>
+            <city name="FOM Hochschule Kassel"/>
+            <city name="Georg-August-Uni Göttingen"/>
+            <city name="Kunsthochschule Kassel"/>
+            <city name="PFH Private Hochschule Göttingen"/>
+            <city name="Technische Uni Clausthal"/>
+            <city name="Uni Kassel"/>
+        </lc>
+        <lc name="Halle">
+            <city name="Hochschule Anhalt"/>
+            <city name="Hochschule Merseburg"/>
+            <city name="Martin-Luther-Uni Halle-Wittenberg"/>
+        </lc>
+        <lc name="Hamburg">
+            <city name="Bucerius Law School"/>
+            <city name="EBC Euro Business College Hamburg"/>
+            <city name="Fachhochschule Stralsund"/>
+            <city name="Hamburg School of Business Administration"/>
+            <city name="Hochschule Fresenius (Idstein)"/>
+            <city name="Hochschule für Angewandte Wissenschaften Hamburg"/>
+            <city name="Technische Uni Hamburg-Harburg"/>
+            <city name="Uni Hamburg"/>
+        </lc>
+        <lc name="Hannover">
+            <city name="Gottfried Wilhelm Leibniz Uni Hannover"/>
+            <city name="HAWK Hochschule Hildesheim/Holzminden/Göttingen"/>
+            <city name="Hochschule Hannover"/>
+            <city name="Uni Hildesheim"/>
+        </lc>
+        <lc name="Heidelberg">
+            <city name=" Sprach- und Kulturwissenschaft Germersheim&quot;"/>
+            <city name="&quot;Johannes Gutenberg-Uni Mainz Fachbereich Translations-"/>
+            <city name="Pädagogische Hochschule Heidelberg"/>
+            <city name="Ruprecht-Karls-Uni Heidelberg"/>
+            <city name="SRH Hochschule Heidelberg"/>
+        </lc>
+        <lc name="Jena">
+            <city name="Adam-Ries-FH"/>
+            <city name="Bauhaus-Uni Weimar"/>
+            <city name="Ernst-Abbe-Fachhochschule Jena"/>
+            <city name="FH Erfurt"/>
+            <city name="FH KUNST Arnstadt"/>
+            <city name="FH Schmalkalden"/>
+            <city name="Friedrich-Schiller-Uni Jena"/>
+            <city name="Hochschule für Musik Franz Liszt Weimar"/>
+            <city name="SRH FH für Gesundheit Gera"/>
+            <city name="Technische Uni Ilmenau"/>
+            <city name="Thüringer FH für öffentliche Verwaltung"/>
+            <city name="Uni Erfurt"/>
+        </lc>
+        <lc name="Kaiserslautern">
+            <city name="FH Kaiserslautern"/>
+            <city name="Technische Uni Kaiserslautern"/>
+            <city name="Uni Saarbrücken"/>
+            <city name="Uni Trier"/>
+        </lc>
+        <lc name="Karlsruhe">
+            <city name="Duale Hochschule Baden Württemberg Karlsruhe"/>
+            <city name="Hochschule Karlsruhe – Technik und Wirtschaft"/>
+            <city name="Hochschule Pforzheim"/>
+            <city name="Karlshochschule International City"/>
+            <city name="KIT - Karlsruher Institut für Technologie"/>
+            <city name="Pädagogische Hochschule Karlsruhe"/>
+        </lc>
+        <lc name="Kiel">
+            <city name="Christian-Albrechts-Uni zu Kiel"/>
+            <city name="FH Kiel"/>
+        </lc>
+        <lc name="Köln">
+            <city name="FH Köln"/>
+            <city name="Uni zu Köln"/>
+        </lc>
+        <lc name="Leipzig">
+            <city name="Hochschule für Technik Wirtschaft und Kultur Leipzig"/>
+            <city name="Uni Leipzig"/>
+        </lc>
+        <lc name="Lüneburg">
+            <city name="Leuphana Uni Lüneburg"/>
+        </lc>
+        <lc name="Magdeburg">
+            <city name="Hochschule Magdeburg-Stendal"/>
+            <city name="Otto-von-Guericke-Uni Magdeburg"/>
+        </lc>
+        <lc name="Mainz">
+            <city name="FH Mainz"/>
+            <city name="Hochschule Wiesbaden"/>
+            <city name="Johannes Gutenberg-Uni Mainz"/>
+        </lc>
+        <lc name="Mannheim">
+            <city name="Duale Hochschule Baden Württemberg Mannheim"/>
+            <city name="FH Worms"/>
+            <city name="Hochschule der Bundesagentur für Arbeit"/>
+            <city name="Hochschule der Wirtschaft für Management (HdWM)"/>
+            <city name="Hochschule Ludwigshafen am Rhein"/>
+            <city name="Hochschule Mannheim"/>
+            <city name="Popakademie Baden-Württemberg"/>
+            <city name="Uni Mannheim"/>
+        </lc>
+        <lc name="München">
+            <city name="FOM Hochschule München"/>
+            <city name="Hochschule München"/>
+            <city name="Ludwig-Maximilians-Uni München"/>
+            <city name="Macromedia Hochschule für Medien und Kommunikation"/>
+            <city name="Technische Uni München"/>
+            <city name="Zeppelin Universität Friedrichshafen"/>
+        </lc>
+        <lc name="Münster">
+            <city name="FH Münster"/>
+            <city name="FH Osnabrück"/>
+            <city name="Uni Osnabrück"/>
+            <city name="WWU Münster"/>
+        </lc>
+        <lc name="Nürnberg">
+            <city name="Evangelische Hochschule Nürnberg"/>
+            <city name="Friedrich-Alexander-Uni Erlangen-Nürnberg Standort Erlangen"/>
+            <city name="Friedrich-Alexander-Uni Erlangen-Nürnberg Standort Nürnberg"/>
+            <city name="Georg-Simon-Ohm-Hochschule für angewandte Wissenschaften – FH Nürnberg"/>
+        </lc>
+        <lc name="Paderborn">
+            <city name="FH der Wirtschaft"/>
+            <city name="FHDW Paderborn"/>
+            <city name="Hochschule Hamm-Lippstadt"/>
+            <city name="Uni Paderborn"/>
+        </lc>
+        <lc name="Passau">
+            <city name="FH Deggendorf"/>
+            <city name="Uni Passau"/>
+        </lc>
+        <lc name="Regensburg">
+            <city name="Ostbayerische Technische Hochschule Regensburg"/>
+            <city name="Uni Regensburg"/>
+        </lc>
+        <lc name="Stuttgart">
+            <city name="Duale Hochschule Baden Württemberg Stuttgart"/>
+            <city name="Eberhard Karls Universität Tübingen"/>
+            <city name="ESB Reutlingen"/>
+            <city name="Hochschule der Medien"/>
+            <city name="Hochschule Esslingen"/>
+            <city name="Hochschule für Technik Stuttgart"/>
+            <city name="Hochschule Heilbronn"/>
+            <city name="ISM Stuttgart"/>
+            <city name="Pädagogische Hochschule Ludwigsburg"/>
+            <city name="Uni Hohenheim"/>
+            <city name="Uni Stuttgart"/>
+        </lc>
+        <lc name="Würzburg">
+            <city name="Hochschule für angewandte Wissenschaften Würzburg-Schweinfurt"/>
+            <city name="Julius-Maximilians-Uni Würzburg"/>
+        </lc>
+    </program>
+</programs>

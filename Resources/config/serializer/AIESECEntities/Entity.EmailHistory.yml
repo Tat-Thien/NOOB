@@ -1,0 +1,4 @@
+EntityBundle\Entity\EmailHistory:
+		properties:
+				id:
+						exclude: true

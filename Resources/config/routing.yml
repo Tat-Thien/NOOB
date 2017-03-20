@@ -1,0 +1,47 @@
+persons:
+    type:     rest
+    resource: NoobBundle:People
+
+agbs:
+    type:     rest
+    resource: NoobBundle:Agb
+
+agb_agreement:
+    type:     rest
+    resource: NoobBundle:AgbAgreement
+
+exchanges:
+    type:     rest
+    resource: NoobBundle:Exchange
+
+outgoer_preparation:
+    type:     rest
+    resource: NoobBundle:OutgoerPreparation
+
+outgoer_preparation_participation:
+    type:     rest
+    resource: NoobBundle:OutgoerPreparationParticipation
+
+online_outgoer_preparation_participation:
+    type:     rest
+    resource: NoobBundle:OnlineOutgoerPreparationParticipation
+
+reintegration_activity:
+    type:     rest
+    resource: NoobBundle:ReintegrationActivity
+
+reintegration_activity_participation:
+    type:     rest
+    resource: NoobBundle:ReintegrationActivityParticipation
+
+lead_assignment:
+    type:     rest
+    resource: NoobBundle:Leadassignment
+
+jds:
+    type:     rest
+    resource: NoobBundle:Jd
+
+reports:
+    type:     rest
+    resource: NoobBundle:Reports

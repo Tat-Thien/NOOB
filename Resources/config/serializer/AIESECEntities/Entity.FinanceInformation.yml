@@ -1,0 +1,4 @@
+EntityBundle\Entity\FinanceInformation:
+		properties:
+				id:
+						exclude: true

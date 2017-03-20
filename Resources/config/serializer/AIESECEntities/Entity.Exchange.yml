@@ -1,0 +1,43 @@
+EntityBundle\Entity\Exchange:
+	properties:
+		person:
+			exclude: true
+		agbAgreement:
+			exclude: true
+		bankAccount:
+			exclude: true
+		standardsAndSatisfaction:
+			exclude: true
+		financeInformation:
+			exclude: true
+		reintegrationActivityParticipations:
+			exclude: true
+	relations:
+		-
+			rel: financeInformation
+			href:
+				route: get_people_exchanges_financeinformation
+				parameters:
+					personID: expr(object.getPerson().getId())
+					exchangeID: expr(object.getId())
+			exclusion:
+				exclude_if: expr(object.getFinanceInformation() === null)
+		-
+			rel: agbAgreement
+			href:
+				route: get_agbagreement
+				parameters:
+					agbAgreementID: expr(object.getAgbAgreement().getId())
+			exclusion:
+				exclude_if: expr(object.getAgbAgreement() === null)
+		-
+			rel: standardsAndSatisfaction
+			href:
+				route: get_people_exchanges_standardsandsatisfaction
+				parameters:
+					personID: expr(object.getPerson().getId())
+					exchangeID: expr(object.getId())
+					standardsAndSatisfactionID: expr(object.getStandardsAndSatisfaction().getId())
+			exclusion:
+				exclude_if: expr(object.getStandardsAndSatisfaction() === null)
+	relation_providers: [ 'RESTBundle\Controller\ExchangeReintegrationActivityParticipationRelationProvider::getRelations']

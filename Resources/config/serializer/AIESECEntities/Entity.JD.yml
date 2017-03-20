@@ -1,0 +1,8 @@
+EntityBundle\Entity\JD:
+		properties:
+			successorJd:
+				exclude: true
+		virtual_properties:
+				getSuccessorJdId:
+						serialized_name: successorJd
+						type: integer

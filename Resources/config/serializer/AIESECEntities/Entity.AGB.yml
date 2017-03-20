@@ -1,0 +1,4 @@
+EntityBundle\Entity\AGB:
+		properties:
+				implementationDate:
+						type: DateTime

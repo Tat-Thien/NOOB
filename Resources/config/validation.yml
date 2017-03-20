@@ -1,0 +1,111 @@
+EntityBundle\Entity\OutgoerPreparation:
+  constraints:
+    - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: salesforceID
+  properties:
+    lc:
+      - NotBlank: ~
+    startDate:
+      - NotBlank: ~
+    endDate:
+      - NotBlank: ~
+EntityBundle\Entity\OutgoerPreparationParticipation:
+  constraints:
+    - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: person
+  properties:
+    confirmed:
+      - NotNull: ~
+    person:
+      - NotBlank: ~
+    outgoerPreparation:
+      - NotBlank: ~
+EntityBundle\Entity\OnlineOutgoerPreparationParticipation:
+  constraints:
+    - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: person
+  properties:
+    confirmed:
+      - NotNull: ~
+    person:
+      - NotBlank: ~
+EntityBundle\Entity\Person:
+  constraints:
+    - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: id
+  properties:
+    id:
+      - NotBlank: ~
+    email:
+      - NotBlank: ~
+EntityBundle\Entity\Exchange:
+  constraints:
+    - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: salesforceID
+    - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: applicationID
+EntityBundle\Entity\AGB:
+  constraints:
+    - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: implementationDate
+  properties:
+    implementationDate:
+      - NotBlank: ~
+EntityBundle\Entity\AGBAgreement:
+  constraints:
+    - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: exchange
+  properties:
+    dateSigned:
+      - NotBlank: ~
+    agb:
+      - NotBlank: ~
+    exchange:
+      - NotBlank: ~
+EntityBundle\Entity\ReintegrationActivityParticipation:
+  properties:
+    confirmed:
+      - NotNull: ~
+    exchange:
+      - NotBlank: ~
+    reintegrationActivity:
+      - NotBlank: ~
+EntityBundle\Entity\StandardReintegrationActivity:
+  constraints:
+    - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: name
+EntityBundle\Entity\WelcomeHomeSeminar:
+  constraints:
+    - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: salesforceID
+  properties:
+    lc:
+      - NotBlank: ~
+    startDate:
+      - NotBlank: ~
+    endDate:
+      - NotBlank: ~
+EntityBundle\Entity\StandardsAndSatisfaction:
+  properties:
+    visaWorkPermit:
+      - NotNull: ~
+    arrivalPickup:
+      - NotNull: ~
+    departureSupport:
+      - NotNull: ~
+    jobDescription:
+      - NotNull: ~
+    duration:
+      - NotNull: ~
+    workingHours:
+      - NotNull: ~
+    firstDayOfWork:
+      - NotNull: ~
+    individualGoals:
+      - NotNull: ~
+    insurance:
+      - NotNull: ~
+    accomodation:
+      - NotNull: ~
+    livingCosts:
+      - NotNull: ~
+    purpose:
+      - NotNull: ~
+    expectationSetting:
+      - NotNull: ~
+    preparation:
+      - NotNull: ~
+    hostFacilitatedLearning:
+      - NotNull: ~
+    homeFacilitatedLearning:
+      - NotNull: ~

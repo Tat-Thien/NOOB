@@ -1,0 +1,12 @@
+services:
+  rest.expa_user_provider:
+    class: NoobBundle\Security\ExpaUserProvider
+    arguments: ["@session"]
+
+  rest.expa_authenticator:
+        class: NoobBundle\Security\ExpaAuthenticator
+        arguments: ["@session", %simple_access_token%, %advanced_access_token%]
+
+#    rest.example:
+#        class: NoobBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]

@@ -1,0 +1,23 @@
+EntityBundle\Entity\OutgoerPreparationParticipation:
+	relations:
+		-
+			rel: person
+			href:
+				route: get_people
+				parameters:
+					personID: expr(object.getPerson().getId())
+			exclusion:
+				exclude_if: expr(object.getPerson() === null)
+		-
+			rel: outgoerPreparation
+			href:
+				route: get_outgoerpreparation
+				parameters:
+					outgoerPreparationID: expr(object.getOutgoerPreparation().getId())
+			exclusion:
+				exclude_if: expr(object.getOutgoerPreparation() === null)
+	properties:
+		person:
+			exclude: true
+		outgoerPreparation:
+			exclude: true
