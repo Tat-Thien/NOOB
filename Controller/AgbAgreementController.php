@@ -96,7 +96,7 @@ class AgbAgreementController extends NoobBundleController
 		}
 		$agbAgreement = new AGBAgreement();
 		$form = $this->createForm(AGBAgreementType::class, $agbAgreement);
-		$form->submit($request);
+		$form->handleRequest($request);
 		if ($form->isValid()) {
 			$em->persist($agbAgreement);
 			$em->flush();

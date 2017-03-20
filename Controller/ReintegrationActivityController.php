@@ -98,7 +98,7 @@ class ReintegrationActivityController extends NoobBundleController
 		$this->checkAuthentication($paramFetcher, true);
 		$reintegrationActivity = new ReintegrationActivity();
 		$form = $this->createForm(ReintegrationActivityType::class, $reintegrationActivity);
-		$form->submit($request);
+		$form->handleRequest($request);
 		if ($form->isValid()) {
 			$type = $reintegrationActivity->getType();
 			if ($type != 'welcomeHomeSeminar' && $type != 'standardReintegrationActivity') {
@@ -108,7 +108,7 @@ class ReintegrationActivityController extends NoobBundleController
 			$activity = $isWhs ? new WelcomeHomeSeminar() : new StandardReintegrationActivity();
 			$activityType = $isWhs ? new WelcomeHomeSeminarType() : new StandardReintegrationActivityType();
 			$form = $this->createForm($activityType, $activity);
-			$form->submit($request);
+			$form->handleRequest($request);
 			if ($form->isValid()) {
 				$em = $this->getDoctrine()->getManager();
 				$em->persist($activity);

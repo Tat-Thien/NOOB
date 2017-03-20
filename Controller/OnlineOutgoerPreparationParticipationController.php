@@ -80,7 +80,7 @@ class OnlineOutgoerPreparationParticipationController extends NoobBundleControll
 		$this->checkAuthentication($paramFetcher, true);
 		$onlineOutgoerPreparationParticipation = new OnlineOutgoerPreparationParticipation();
 		$form = $this->createForm(OnlineOutgoerPreparationParticipationType::class, $onlineOutgoerPreparationParticipation);
-		$form->submit($request);
+		$form->handleRequest($request);
 		if ($form->isValid()) {
 			$em = $this->getDoctrine()->getManager();
 			$em->persist($onlineOutgoerPreparationParticipation);

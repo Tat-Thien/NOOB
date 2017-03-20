@@ -80,7 +80,7 @@ class AgbController extends NoobBundleController
 		$this->checkAuthentication($paramFetcher, true);
 		$agb = new AGB();
 		$form = $this->createForm(AGBType::class, $agb);
-		$form->submit($request);
+		$form->handleRequest($request);
 		if ($form->isValid()) {
 			$em = $this->getDoctrine()->getManager();
 			$em->persist($agb);

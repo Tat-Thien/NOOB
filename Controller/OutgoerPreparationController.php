@@ -83,7 +83,7 @@ class OutgoerPreparationController extends NoobBundleController
 		$this->checkAuthentication($paramFetcher, true);
 		$ops = new OutgoerPreparation();
 		$form = $this->createForm(OutgoerPreparationType::class, $ops);
-		$form->submit($request);
+		$form->handleRequest($request);
 		if ($form->isValid()) {
 			$em = $this->getDoctrine()->getManager();
 			$em->persist($ops);

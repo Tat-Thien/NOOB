@@ -114,7 +114,7 @@ class PeopleController extends NoobBundleController
 		$this->checkAuthentication($paramFetcher);
 		$person = new Person();
 		$form = $this->createForm(PersonType::class, $person);
-		$form->submit($request);
+		$form->handleRequest($request);
 		if ($form->isValid()) {
 			$this->sendNotificationEmail($person, $request);
 
@@ -246,7 +246,7 @@ class PeopleController extends NoobBundleController
 		$this->checkAuthentication($paramFetcher);
 		$emailHistory = new EmailHistory();
 		$form = $this->createForm(EmailHistoryType::class, $emailHistory);
-		$form->submit($request);
+		$form->handleRequest($request);
 		if ($form->isValid()) {
 			$em = $this->getDoctrine()->getManager();
 			$person = $em->getRepository('EntityBundle\Entity\Person')->findOneById($personID);
@@ -339,7 +339,7 @@ class PeopleController extends NoobBundleController
 		$this->checkAuthentication($paramFetcher);
 		$applicationInformation = new ApplicationInformation();
 		$form = $this->createForm(ApplicationInformationType::class, $applicationInformation);
-		$form->submit($request);
+		$form->handleRequest($request);
 		if ($form->isValid()) {
 			$em = $this->getDoctrine()->getManager();
 			$person = $em->getRepository('EntityBundle\Entity\Person')->findOneById($personID);
@@ -364,7 +364,7 @@ class PeopleController extends NoobBundleController
 			$applicationInformation = $informationEntityMapper[$type];
 			$applicationInformationType = $informationTypeMapper[$type];
 			$form = $this->createForm($applicationInformationType, $applicationInformation);
-			$form->submit($request);
+			$form->handleRequest($request);
 			if ($form->isValid()) {
 				$person->setApplicationInformation($applicationInformation);
 				$em->persist($person);
@@ -459,7 +459,7 @@ class PeopleController extends NoobBundleController
 		$this->checkAuthentication($paramFetcher);
 		$bankAccount = new BankAccount();
 		$form = $this->createForm(BankAccountType::class, $bankAccount);
-		$form->submit($request);
+		$form->handleRequest($request);
 		if ($form->isValid()) {
 			$em = $this->getDoctrine()->getManager();
 			$person = $em->getRepository('EntityBundle\Entity\Person')->findOneById($personID);
@@ -613,7 +613,7 @@ class PeopleController extends NoobBundleController
 		$this->checkAuthentication($paramFetcher);
 		$exchange = new Exchange();
 		$form = $this->createForm(ExchangeType::class, $exchange);
-		$form->submit($request);
+		$form->handleRequest($request);
 		if ($form->isValid()) {
 			$em = $this->getDoctrine()->getManager();
 			$person = $em->getRepository('EntityBundle\Entity\Person')->findOneById($personID);
@@ -816,7 +816,7 @@ class PeopleController extends NoobBundleController
 			$sands = $exchange->getStandardsAndSatisfaction();
 		}
 		$form = $this->createForm(StandardsAndSatisfactionType::class, $sands);
-		$form->submit($request);
+		$form->handleRequest($request);
 		if ($form->isValid()) {
 			$exchange->setStandardsAndSatisfaction($sands);
 			$sands->setExchange($exchange);

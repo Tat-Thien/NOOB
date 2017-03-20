@@ -135,7 +135,7 @@ class JdController extends NoobBundleController
 		$this->checkAuthentication($paramFetcher);
 		$jd = new JD();
 		$form = $this->createForm(JdType::class, $jd);
-		$form->submit($request);
+		$form->handleRequest($request);
 		if ($form->isValid()) {
 			$em = $this->getDoctrine()->getManager();
 

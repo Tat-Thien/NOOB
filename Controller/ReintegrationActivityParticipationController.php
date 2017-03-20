@@ -96,7 +96,7 @@ class ReintegrationActivityParticipationController extends NoobBundleController
 		$this->checkAuthentication($paramFetcher, true);
 		$reintegrationActivityParticipation = new ReintegrationActivityParticipation();
 		$form = $this->createForm(ReintegrationActivityParticipationType::class, $reintegrationActivityParticipation);
-		$form->submit($request);
+		$form->handleRequest($request);
 		if ($form->isValid()) {
 			$em = $this->getDoctrine()->getManager();
 			$em->persist($reintegrationActivityParticipation);
