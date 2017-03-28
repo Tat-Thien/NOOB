@@ -276,7 +276,7 @@ class ReportsController extends NoobBundleController
 		SELECT fin.date_of_inpayment, x.id exchangeId, x.person_id personId,
 		person.ops_online_booking_date opsOnlineBookingDate,
 		op.type opType, op.lc opLc, op.start_date opStartDate, op.end_date opEndDate,
-		agb.implementation_date agbImplementationDate, agb.pdf_url agbUrl,
+		agb.implementation_date agbImplementationDate, agb.agb_pdf_url agbUrl,
 		fin.id as finId, fin.exact_epaccount_number,
 		fin.amount_of_iccfee amountOfIccFee, fin.icc_fee_booked iccFeeBooked,
 		fin.amount_of_matching_fee amountOfMatchingFee, fin.matching_fee_booked matchingFeeBooked,
