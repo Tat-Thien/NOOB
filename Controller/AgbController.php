@@ -53,7 +53,7 @@ class AgbController extends NoobBundleController
 		if($agbID == "latest"){
 			$entity = $em->getRepository('EntityBundle\Entity\AGB')->findOneBy(
 				array(),
-				array('id' => 'ASC')
+				array('id' => 'DESC')
 			);
 		} else {
 			$entity = $em->getRepository('EntityBundle\Entity\AGB')->findOneById($agbID);
