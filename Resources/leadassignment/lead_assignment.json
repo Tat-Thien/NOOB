@@ -1,0 +1,1161 @@
+{
+	"OGV":[
+		{
+			"name": "Aachen",
+			"cities": [
+				"Aachen",
+				"Düren"
+			]
+		},
+		{
+			"name": "Augsburg",
+			"cities": [
+				"Augsburg"
+			]
+		},
+		{
+			"name": "Bayreuth",
+			"cities": [
+				"Bamberg",
+				"Bayreuth"
+			]
+		},
+		{
+			"name": "Berlin HU",
+			"cities": [
+				"Berlin",
+				"Frankfurt Oder",
+				"Potsdamm"
+			]
+		},
+		{
+			"name": "Bielefeld",
+			"cities": [
+				"Bielefeld",
+				"Gütersloh",
+				"Minden"
+			]
+		},
+		{
+			"name": "Bochum",
+			"cities": [
+				"Bochum",
+				"Bottrop",
+				"Dortmund",
+				"Duisburg",
+				"Düsseldorf",
+				"Essen",
+				"Gelsenkirchen",
+				"Hagen",
+				"Herne",
+				"Iserlohn",
+				"Krefeld",
+				"Lünen",
+				"Marl",
+				"Moers",
+				"Mönchengladbach",
+				"Müllheim an der Ruhr",
+				"Neuss",
+				"Oberhausen",
+				"Ratingen",
+				"Recklinghausen",
+				"Remscheid",
+				"Solingen",
+				"Velbert",
+				"Wuppertal"
+			]
+		},
+		{
+			"name": "Bonn",
+			"cities": [
+				"Bonn",
+				"Brühl",
+				"Koblenz"
+			]
+		},
+		{
+			"name": "Braunschweig",
+			"cities": [
+				"Braunschweig"
+			]
+		},
+		{
+			"name": "Bremen",
+			"cities": [
+				"Bremen",
+				"Bremerhaven",
+				"Oldenburg"
+			]
+		},
+		{
+			"name": "Dresden",
+			"cities": [
+				"Chemnitz",
+				"Cottbus",
+				"Dresden",
+				"Görlitz",
+				"Zwickau"
+			]
+		},
+		{
+			"name": "Frankfurt",
+			"cities": [
+				"Aschaffenburg",
+				"Frankfurt",
+				"Fulda",
+				"Hanau",
+				"Offenbach am Main"
+			]
+		},
+		{
+			"name": "Gießen",
+			"cities": [
+				"Gießen",
+				"Marburg",
+				"Siegen",
+				"Wetzlar"
+			]
+		},
+		{
+			"name": "Göttingen",
+			"cities": [
+				"Göttingen",
+				"Kassel"
+			]
+		},
+		{
+			"name": "Halle",
+			"cities": [
+				"Halle",
+				"Witten"
+			]
+		},
+		{
+			"name": "Hamburg",
+			"cities": [
+				"Hamburg",
+				"Lübeck",
+				"Rostock",
+				"Schwerin"
+			]
+		},
+		{
+			"name": "Hannover",
+			"cities": [
+				"Hameln",
+				"Hannover",
+				"Hildesheim"
+			]
+		},
+		{
+			"name": "Heidelberg",
+			"cities": [
+				"Heidelberg",
+				"Speyer"
+			]
+		},
+		{
+			"name": "Jena",
+			"cities": [
+				"Erfurt",
+				"Gera",
+				"Jena",
+				"Weimar"
+			]
+		},
+		{
+			"name": "Kaiserslautern",
+			"cities": [
+				"Kaiserslautern",
+				"Saarbeücken",
+				"Saarlouis",
+				"Trier"
+			]
+		},
+		{
+			"name": "Karlsruhe",
+			"cities": [
+				"BadenBaden",
+				"Freiburg im Breisgau",
+				"Karlsruhe",
+				"Offenburg"
+			]
+		},
+		{
+			"name": "Kiel",
+			"cities": [
+				"Flensburg",
+				"Kiel"
+			]
+		},
+		{
+			"name": "Kleve",
+			"cities": [
+				"Kleve"
+			]
+		},
+		{
+			"name": "Köln",
+			"cities": [
+				"Köln",
+				"Bergisch Gladbach",
+				"Leverkusen"
+			]
+		},
+		{
+			"name": "Leipzig",
+			"cities": [
+				"Leipzig",
+				"Wittenberg"
+			]
+		},
+		{
+			"name": "Lüneburg",
+			"cities": [
+				"Lüneburg",
+				"Salzgitter",
+				"Wolfsburg"
+			]
+		},
+		{
+			"name": "Magdeburg",
+			"cities": [
+				"Magdeburg",
+				"Dessau"
+			]
+		},
+		{
+			"name": "Mainz",
+			"cities": [
+				"Mainz",
+				"Darmstadt",
+				"Wiesbaden"
+			]
+		},
+		{
+			"name": "Mannheim",
+			"cities": [
+				"Mannheim",
+				"Worms",
+				"Ludwigshafen"
+			]
+		},
+		{
+			"name": "München",
+			"cities": [
+				"München"
+			]
+		},
+		{
+			"name": "Münster",
+			"cities": [
+				"Münster",
+				"Osnabrück"
+			]
+		},
+		{
+			"name": "Nürnberg",
+			"cities": [
+				"Amberg",
+				"Ansbach",
+				"Erlangen",
+				"Fürth",
+				"Nürnberg",
+				"Weiden"
+			]
+		},
+		{
+			"name": "Paderborn",
+			"cities": [
+				"Paderborn",
+				"Hamm"
+			]
+		},
+		{
+			"name": "Passau",
+			"cities": [
+				"Passau"
+			]
+		},
+		{
+			"name": "Regensburg",
+			"cities": [
+				"Regensburg",
+				"Ingolstadt"
+			]
+		},
+		{
+			"name": "Stuttgart",
+			"cities": [
+				"Stuttgart",
+				"Ulm",
+				"Heilbronn",
+				"Pforzheim",
+				"Reutlingen",
+				"Ludwigsburg",
+				"Esslingen am Neckar",
+				"Tübingen",
+				"VillingenSchwenningen",
+				"Konstanz",
+				"Aalen",
+				"NeuUlm",
+				"Ravensburg",
+				"Singen",
+				"Nürtingen"
+			]
+		},
+		{
+			"name": "Würzburg",
+			"cities": [
+				"Schweinfurt",
+				"Würzburg"
+			]
+		}
+	]
+,
+"OGT": [
+	{
+		"name": "Berlin TU",
+		"cities": [
+			"Berlin",
+			"Potsdamm",
+			"Frankfurt Oder"
+		]
+	},
+	{
+		"name": "Bielefeld",
+		"cities": [
+			"Bielefeld",
+			"Gütersloh",
+			"Minden"
+		]
+	},
+	{
+		"name": "Bochum",
+		"cities": [
+			"Dortmund",
+			"Essen",
+			"Duisburg",
+			"Bochum",
+			"Wuppertal",
+			"Gelsenkirchen",
+			"Mönchengladbach",
+			"Krefeld",
+			"Oberhausen",
+			"Hagen",
+			"Müllheim an der Ruhr",
+			"Solingen",
+			"Herne",
+			"Neuss",
+			"Bottrop",
+			"Recklinghausen",
+			"Remscheid",
+			"Moers",
+			"Iserlohn",
+			"Ratingen",
+			"Lünen",
+			"Marl",
+			"Velbert",
+			"Bonn",
+			"Koblenz",
+			"Brühl"
+		]
+	},
+	{
+		"name": "Darmstadt",
+		"cities": [
+			"Darmstadt",
+			"Aachen",
+			"Wiesbaden",
+			"Mainz",
+			"Düren"
+		]
+	},
+	{
+		"name": "Dresden",
+		"cities": [
+			"Dresden",
+			"Chemnitz",
+			"Zwickau",
+			"Cottbus",
+			"Görlitz"
+		]
+	},
+	{
+		"name": "Frankfurt",
+		"cities": [
+			"Frankfurt",
+			"Offenbach am Main",
+			"Hanau",
+			"Aschaffenburg",
+			"Fulda"
+		]
+	},
+	{
+		"name": "Gießen",
+		"cities": [
+			"Siegen",
+			"Gießen",
+			"Marburg",
+			"Wetzlar"
+		]
+	},
+	{
+		"name": "Halle",
+		"cities": [
+			"Halle",
+			"Witten",
+			"Leipzig",
+			"Wittenberg",
+			"Magdeburg",
+			"Dessau"
+		]
+	},
+	{
+		"name": "Hamburg",
+		"cities": [
+			"Hamburg",
+			"Lübeck",
+			"Rostock",
+			"Schwerin",
+			"Braunschweig",
+			"Oldenburg",
+			"Bremen",
+			"Bremerhaven",
+			"Hannover",
+			"Hildesheim",
+			"Hameln",
+			"Kiel",
+			"Flensburg",
+			"Wolfsburg",
+			"Salzgitter",
+			"Lüneburg"
+		]
+	},
+	{
+		"name": "Jena",
+		"cities": [
+			"Jena",
+			"Erfurt",
+			"Gera",
+			"Weimar",
+			"Kassel",
+			"Göttingen"
+		]
+	},
+	{
+		"name": "Kaiserslautern",
+		"cities": [
+			"Saarbeücken",
+			"Trier",
+			"Kaiserslautern",
+			"Saarlouis"
+		]
+	},
+	{
+		"name": "Karlsruhe",
+		"cities": [
+			"Karlsruhe",
+			"Freiburg im Breisgau",
+			"Offenburg",
+			"BadenBaden",
+			"Mannheim",
+			"Worms",
+			"Ludwigshafen"
+		]
+	},
+	{
+		"name": "Kleve",
+		"cities": [
+			"Kleve"
+		]
+	},
+	{
+		"name": "München",
+		"cities": [
+			"München",
+			"Augsburg"
+		]
+	},
+	{
+		"name": "Münster",
+		"cities": [
+			"Münster",
+			"Osnabrück",
+			"Düsseldorf",
+			"Köln",
+			"Leverkusen",
+			"Bergisch Gladbach",
+			"Paderborn",
+			"Hamm"
+		]
+	},
+	{
+		"name": "Nürnberg",
+		"cities": [
+			"Amberg",
+			"Ansbach",
+			"Bamberg",
+			"Bayreuth",
+			"Erlangen",
+			"Fürth",
+			"Nürnberg",
+			"Weiden"
+		]
+	},
+	{
+		"name": "Passau",
+		"cities": [
+			"Passau"
+		]
+	},
+	{
+		"name": "Regensburg",
+		"cities": [
+			"Regensburg",
+			"Ingolstadt"
+		]
+	},
+	{
+		"name": "Stuttgart",
+		"cities": [
+			"Stuttgart",
+			"Ulm",
+			"Heilbronn",
+			"Pforzheim",
+			"Reutlingen",
+			"Ludwigsburg",
+			"Esslingen am Neckar",
+			"Tübingen",
+			"VillingenSchwenningen",
+			"Konstanz",
+			"Aalen",
+			"NeuUlm",
+			"Ravensburg",
+			"Singen",
+			"Nürtingen",
+			"Heidelberg",
+			"Speyer"
+		]
+	},
+	{
+		"name": "Würzburg",
+		"cities": [
+			"Schweinfurt",
+			"Würzburg"
+		]
+	}
+],
+"OGE": [
+	{
+		"name": "Berlin TU",
+		"cities": [
+			"Berlin",
+			"Potsdamm",
+			"Frankfurt Oder"
+		]
+	},
+	{
+		"name": "Bielefeld",
+		"cities": [
+			"Bielefeld",
+			"Gütersloh",
+			"Minden"
+		]
+	},
+	{
+		"name": "Bochum",
+		"cities": [
+			"Dortmund",
+			"Essen",
+			"Duisburg",
+			"Bochum",
+			"Wuppertal",
+			"Gelsenkirchen",
+			"Mönchengladbach",
+			"Krefeld",
+			"Oberhausen",
+			"Hagen",
+			"Müllheim an der Ruhr",
+			"Solingen",
+			"Herne",
+			"Neuss",
+			"Bottrop",
+			"Recklinghausen",
+			"Remscheid",
+			"Moers",
+			"Iserlohn",
+			"Ratingen",
+			"Lünen",
+			"Marl",
+			"Velbert",
+			"Bonn",
+			"Koblenz",
+			"Brühl"
+		]
+	},
+	{
+		"name": "Darmstadt",
+		"cities": [
+			"Darmstadt",
+			"Aachen",
+			"Wiesbaden",
+			"Mainz",
+			"Düren"
+		]
+	},
+	{
+		"name": "Dresden",
+		"cities": [
+			"Dresden",
+			"Chemnitz",
+			"Zwickau",
+			"Cottbus",
+			"Görlitz"
+		]
+	},
+	{
+		"name": "Frankfurt",
+		"cities": [
+			"Frankfurt",
+			"Offenbach am Main",
+			"Hanau",
+			"Aschaffenburg",
+			"Fulda"
+		]
+	},
+	{
+		"name": "Gießen",
+		"cities": [
+			"Siegen",
+			"Gießen",
+			"Marburg",
+			"Wetzlar"
+		]
+	},
+	{
+		"name": "Halle",
+		"cities": [
+			"Halle",
+			"Witten",
+			"Leipzig",
+			"Wittenberg",
+			"Magdeburg",
+			"Dessau"
+		]
+	},
+	{
+		"name": "Hamburg",
+		"cities": [
+			"Hamburg",
+			"Lübeck",
+			"Rostock",
+			"Schwerin",
+			"Braunschweig",
+			"Oldenburg",
+			"Bremen",
+			"Bremerhaven",
+			"Hannover",
+			"Hildesheim",
+			"Hameln",
+			"Kiel",
+			"Flensburg",
+			"Wolfsburg",
+			"Salzgitter",
+			"Lüneburg"
+		]
+	},
+	{
+		"name": "Jena",
+		"cities": [
+			"Jena",
+			"Erfurt",
+			"Gera",
+			"Weimar",
+			"Kassel",
+			"Göttingen"
+		]
+	},
+	{
+		"name": "Kaiserslautern",
+		"cities": [
+			"Saarbeücken",
+			"Trier",
+			"Kaiserslautern",
+			"Saarlouis"
+		]
+	},
+	{
+		"name": "Karlsruhe",
+		"cities": [
+			"Karlsruhe",
+			"Freiburg im Breisgau",
+			"Offenburg",
+			"BadenBaden",
+			"Mannheim",
+			"Worms",
+			"Ludwigshafen"
+		]
+	},
+	{
+		"name": "Kleve",
+		"cities": [
+			"Kleve"
+		]
+	},
+	{
+		"name": "München",
+		"cities": [
+			"München",
+			"Augsburg"
+		]
+	},
+	{
+		"name": "Münster",
+		"cities": [
+			"Münster",
+			"Osnabrück",
+			"Düsseldorf",
+			"Köln",
+			"Leverkusen",
+			"Bergisch Gladbach",
+			"Paderborn",
+			"Hamm"
+		]
+	},
+	{
+		"name": "Nürnberg",
+		"cities": [
+			"Amberg",
+			"Ansbach",
+			"Bamberg",
+			"Bayreuth",
+			"Erlangen",
+			"Fürth",
+			"Nürnberg",
+			"Weiden"
+		]
+	},
+	{
+		"name": "Passau",
+		"cities": [
+			"Passau"
+		]
+	},
+	{
+		"name": "Regensburg",
+		"cities": [
+			"Regensburg",
+			"Ingolstadt"
+		]
+	},
+	{
+		"name": "Stuttgart",
+		"cities": [
+			"Stuttgart",
+			"Ulm",
+			"Heilbronn",
+			"Pforzheim",
+			"Reutlingen",
+			"Ludwigsburg",
+			"Esslingen am Neckar",
+			"Tübingen",
+			"VillingenSchwenningen",
+			"Konstanz",
+			"Aalen",
+			"NeuUlm",
+			"Ravensburg",
+			"Singen",
+			"Nürtingen",
+			"Heidelberg",
+			"Speyer"
+		]
+	},
+	{
+		"name": "Würzburg",
+		"cities": [
+			"Schweinfurt",
+			"Würzburg"
+		]
+	}
+],
+"YT": [
+	{
+		"name": "Aachen",
+		"cities": [
+			"FH Aachen",
+			"RWTH Aachen"
+		]
+	},
+	{
+		"name": "Augsburg",
+		"cities": [
+			"Hochschule Augsburg",
+			"Uni Augsburg"
+		]
+	},
+	{
+		"name": "Bayreuth",
+		"cities": [
+			"Hochschule für angewandte Wissenschaften Coburg",
+			"OttoFriedrichUni Bamberg",
+			"Uni Bayreuth"
+		]
+	},
+	{
+		"name": "Berlin HU",
+		"cities": [
+			"Charité  Universitätsmedizin Berlin",
+			"ESCPEAP European School of Management",
+			"EuropaUni Viadrina",
+			"Fachhochschule Brandenburg",
+			"Freie Uni Berlin",
+			"HumboldtUni zu Berlin",
+			"Katholische Hochschule für Sozialwesen Berlin",
+			"Wildau"
+		]
+	},
+	{
+		"name": "Berlin TU",
+		"cities": [
+			"Beuth Hochschule für Technik Berlin",
+			"Brandenburgische Technische Uni",
+			"European School of Management and Technology",
+			"Hochschule für Technik und Wirtschaft Berlin",
+			"Hochschule für Wirtschaft und Recht Berlin",
+			"Technische Uni Berlin",
+			"Uni der Künste Berlin",
+			"Uni Potsdam"
+		]
+	},
+	{
+		"name": "Bielefeld",
+		"cities": [
+			"Fachhochschule des Mittelstands (Bielefeld)",
+			"FH Bielefeld",
+			"Hochschule für Musik Detmold",
+			"Hochschule OstwestfalenLippe",
+			"Uni Bielefeld"
+		]
+	},
+	{
+		"name": "Bochum",
+		"cities": [
+			"Evangelische FH Bochum",
+			"FH Dortmund",
+			"Hochschule Bochum",
+			"Hochschule Niederrhein",
+			"hsg Hochschule für Gesundheit Bochum",
+			"RuhrUni Bochum",
+			"Technische Uni Dortmund",
+			"Uni DuisburgEssen",
+			"Westfälische Hochschule Gelsenkirchen Bocholt Recklinghausen"
+		]
+	},
+	{
+		"name": "Bonn",
+		"cities": [
+			"Alanus Hochschule für Kunst und Gesellschaft",
+			"FH für Rechtspflege NordrheinWestfalen",
+			"FOM Hochschule Bonn",
+			"Hochschule BonnRheinSieg",
+			"Hochschule der SparkassenFinanzgruppe",
+			"Hochschule Koblenz",
+			"Internationale Hochschule Bad Honnef  Bonn",
+			"PhilosophischTheologische Hochschule SVD St. Augustin",
+			"PhilosophischTheologische Hochschule Vallendar",
+			"Rheinische FriedrichWilhelmsUni Bonn",
+			"Uni KoblenzLandau  Campus Koblenz",
+			"WHU – Otto Beisheim School of Management"
+		]
+	},
+	{
+		"name": "Braunschweig",
+		"cities": [
+			"Technische Uni Braunschweig"
+		]
+	},
+	{
+		"name": "Bremen",
+		"cities": [
+			"Hochschule Bremen",
+			"Jacobs cities Bremen",
+			"Uni Bremen"
+		]
+	},
+	{
+		"name": "Darmstadt",
+		"cities": [
+			"Hochschule Darmstadt",
+			"Technische Uni Darmstadt"
+		]
+	},
+	{
+		"name": "Dresden",
+		"cities": [
+			"Hochschule für Technik und Wirtschaft Dresden",
+			"Technische Uni Dresden"
+		]
+	},
+	{
+		"name": "Düsseldorf",
+		"cities": [
+			"FH Düsseldorf",
+			"Fliedner Fachhochschule Düsseldorf",
+			"FOM Hochschule Düsseldorf",
+			"HeinrichHeineUni Düsseldorf",
+			"Hochschule Niederrhein",
+			"Mediadesign Hochschule Düsseldorf",
+			"RobertSchumannHochschule Düsseldorf"
+		]
+	},
+	{
+		"name": "Frankfurt",
+		"cities": [
+			"accadis Hochschule Bad Homburg",
+			"FH Frankfurt am Main",
+			"Hochschule Aschaffenburg",
+			"Hochschule Fresenius (Idstein)",
+			"Hochschule Fulda",
+			"Johann Wolfgang GoetheUni Frankfurt am Main"
+		]
+	},
+	{
+		"name": "Freiburg",
+		"cities": [
+			"AlbertLudwigsUni Freiburg",
+			"Angell Akademie Freiburg",
+			"Pädagogische Hochschule Freiburg",
+			"Cities College Freiburg"
+		]
+	},
+	{
+		"name": "Gießen",
+		"cities": [
+			"JustusLiebigUni Gießen",
+			"PhilippsUni Marburg",
+			"Technische Hochschule Mittelhessen",
+			"Universität Siegen"
+		]
+	},
+	{
+		"name": "Göttingen",
+		"cities": [
+			"FH Nordhausen",
+			"FOM Hochschule Kassel",
+			"GeorgAugustUni Göttingen",
+			"Kunsthochschule Kassel",
+			"PFH Private Hochschule Göttingen",
+			"Technische Uni Clausthal",
+			"Uni Kassel"
+		]
+	},
+	{
+		"name": "Halle",
+		"cities": [
+			"Hochschule Anhalt",
+			"Hochschule Merseburg",
+			"MartinLutherUni HalleWittenberg"
+		]
+	},
+	{
+		"name": "Hamburg",
+		"cities": [
+			"Bucerius Law School",
+			"EBC Euro Business College Hamburg",
+			"Fachhochschule Stralsund",
+			"Hamburg School of Business Administration",
+			"Hochschule Fresenius (Idstein)",
+			"Hochschule für Angewandte Wissenschaften Hamburg",
+			"Technische Uni HamburgHarburg",
+			"Uni Hamburg"
+		]
+	},
+	{
+		"name": "Hannover",
+		"cities": [
+			"Gottfried Wilhelm Leibniz Uni Hannover",
+			"HAWK Hochschule Hildesheim/Holzminden/Göttingen",
+			"Hochschule Hannover",
+			"Uni Hildesheim"
+		]
+	},
+	{
+		"name": "Heidelberg",
+		"cities": [
+			" Sprach und Kulturwissenschaft Germersheim\"",
+			"\"Johannes GutenbergUni Mainz Fachbereich Translations",
+			"Pädagogische Hochschule Heidelberg",
+			"RuprechtKarlsUni Heidelberg",
+			"SRH Hochschule Heidelberg"
+		]
+	},
+	{
+		"name": "Jena",
+		"cities": [
+			"AdamRiesFH",
+			"BauhausUni Weimar",
+			"ErnstAbbeFachhochschule Jena",
+			"FH Erfurt",
+			"FH KUNST Arnstadt",
+			"FH Schmalkalden",
+			"FriedrichSchillerUni Jena",
+			"Hochschule für Musik Franz Liszt Weimar",
+			"SRH FH für Gesundheit Gera",
+			"Technische Uni Ilmenau",
+			"Thüringer FH für öffentliche Verwaltung",
+			"Uni Erfurt"
+		]
+	},
+	{
+		"name": "Kaiserslautern",
+		"cities": [
+			"FH Kaiserslautern",
+			"Technische Uni Kaiserslautern",
+			"Uni Saarbrücken",
+			"Uni Trier"
+		]
+	},
+	{
+		"name": "Karlsruhe",
+		"cities": [
+			"Duale Hochschule Baden Württemberg Karlsruhe",
+			"Hochschule Karlsruhe – Technik und Wirtschaft",
+			"Hochschule Pforzheim",
+			"Karlshochschule International Cities",
+			"KIT  Karlsruher Institut für Technologie",
+			"Pädagogische Hochschule Karlsruhe"
+		]
+	},
+	{
+		"name": "Kiel",
+		"cities": [
+			"ChristianAlbrechtsUni zu Kiel",
+			"FH Kiel"
+		]
+	},
+	{
+		"name": "Köln",
+		"cities": [
+			"FH Köln",
+			"Uni zu Köln"
+		]
+	},
+	{
+		"name": "Leipzig",
+		"cities": [
+			"Hochschule für Technik Wirtschaft und Kultur Leipzig",
+			"Uni Leipzig"
+		]
+	},
+	{
+		"name": "Lüneburg",
+		"cities": [
+			"Leuphana Uni Lüneburg"
+		]
+	},
+	{
+		"name": "Magdeburg",
+		"cities": [
+			"Hochschule MagdeburgStendal",
+			"OttovonGuerickeUni Magdeburg"
+		]
+	},
+	{
+		"name": "Mainz",
+		"cities": [
+			"FH Mainz",
+			"Hochschule Wiesbaden",
+			"Johannes GutenbergUni Mainz"
+		]
+	},
+	{
+		"name": "Mannheim",
+		"cities": [
+			"Duale Hochschule Baden Württemberg Mannheim",
+			"FH Worms",
+			"Hochschule der Bundesagentur für Arbeit",
+			"Hochschule der Wirtschaft für Management (HdWM)",
+			"Hochschule Ludwigshafen am Rhein",
+			"Hochschule Mannheim",
+			"Popakademie BadenWürttemberg",
+			"Uni Mannheim"
+		]
+	},
+	{
+		"name": "München",
+		"cities": [
+			"FOM Hochschule München",
+			"Hochschule München",
+			"LudwigMaximiliansUni München",
+			"Macromedia Hochschule für Medien und Kommunikation",
+			"Technische Uni München",
+			"Zeppelin Universität Friedrichshafen"
+		]
+	},
+	{
+		"name": "Münster",
+		"cities": [
+			"FH Münster",
+			"FH Osnabrück",
+			"Uni Osnabrück",
+			"WWU Münster"
+		]
+	},
+	{
+		"name": "Nürnberg",
+		"cities": [
+			"Evangelische Hochschule Nürnberg",
+			"FriedrichAlexanderUni ErlangenNürnberg Standort Erlangen",
+			"FriedrichAlexanderUni ErlangenNürnberg Standort Nürnberg",
+			"GeorgSimonOhmHochschule für angewandte Wissenschaften – FH Nürnberg"
+		]
+	},
+	{
+		"name": "Paderborn",
+		"cities": [
+			"FH der Wirtschaft",
+			"FHDW Paderborn",
+			"Hochschule HammLippstadt",
+			"Uni Paderborn"
+		]
+	},
+	{
+		"name": "Passau",
+		"cities": [
+			"FH Deggendorf",
+			"Uni Passau"
+		]
+	},
+	{
+		"name": "Regensburg",
+		"cities": [
+			"Ostbayerische Technische Hochschule Regensburg",
+			"Uni Regensburg"
+		]
+	},
+	{
+		"name": "Stuttgart",
+		"cities": [
+			"Duale Hochschule Baden Württemberg Stuttgart",
+			"Eberhard Karls Universität Tübingen",
+			"ESB Reutlingen",
+			"Hochschule der Medien",
+			"Hochschule Esslingen",
+			"Hochschule für Technik Stuttgart",
+			"Hochschule Heilbronn",
+			"ISM Stuttgart",
+			"Pädagogische Hochschule Ludwigsburg",
+			"Uni Hohenheim",
+			"Uni Stuttgart"
+		]
+	},
+	{
+		"name": "Würzburg",
+		"cities": [
+			"Hochschule für angewandte Wissenschaften WürzburgSchweinfurt",
+			"JuliusMaximiliansUni Würzburg"
+		]
+	}
+]
+}

@@ -28,30 +28,13 @@ class LeadassignmentController extends NoobBundleController
 	{
 		$program = $paramFetcher->get('program');
 		$city = $paramFetcher->get('city');
-		$lcMappingDocument = new \DOMDocument();
-		$lcMappingDocument->loadXml(file_get_contents(__DIR__ . '/../Resources/leadassignment/lead_assignment.xml'));
-		$lcMappingXpathvar = new \Domxpath($lcMappingDocument);
-		$lcMappingFilterString = "//program[@name='%s']//city[@name='%s']/../@name";
-		$lcMappingFilterString = sprintf($lcMappingFilterString, $program, $city);
-		$lcMappingQueryResult = $lcMappingXpathvar->query($lcMappingFilterString);
-		if ($lcMappingQueryResult->length == 0) {
+
+		$lc = $this->get('noob.leadassignment')->getLc($program, $city);
+		if($lc == null) {
 			throw new NotFoundHttpException();
 		}
-		$lc = $lcMappingQueryResult->item(0)->textContent;
-		$lcMappingDocument = new \DOMDocument();
-		$lcMappingDocument->loadXml(file_get_contents(__DIR__ . '/../Resources/leadassignment/gis_lc_mapping.xml'));
-		$lcMappingXpathvar = new \Domxpath($lcMappingDocument);
-		$lcMappingFilterString = "//lc[@name='%s']/@gis-id";
-		$lcMappingFilterString = sprintf($lcMappingFilterString, $lc);
-		$lcMappingQueryResult = $lcMappingXpathvar->query($lcMappingFilterString);
-		if ($lcMappingQueryResult->length == 0) {
-			throw new NotFoundHttpException();
-		}
-		$gisId = $lcMappingQueryResult->item(0)->textContent;
-		$result = new LeadAssignment();
-		$result->setLc($lc);
-		$result->setGisId($gisId);
-		return $result;
+
+		return $lc;
 	}
 
 }

@@ -1,0 +1,172 @@
+{
+	"lcs": [
+		{
+			"name": "Aachen",
+			"id": "713"
+		},
+		{
+			"name": "Augsburg",
+			"id": "686"
+		},
+		{
+			"name": "Bamberg",
+			"id": "1465"
+		},
+		{
+			"name": "Bayreuth",
+			"id": "1454"
+		},
+		{
+			"name": "Berlin HU",
+			"id": "680"
+		},
+		{
+			"name": "Berlin TU",
+			"id": "708"
+		},
+		{
+			"name": "Bielefeld",
+			"id": "664"
+		},
+		{
+			"name": "Bochum",
+			"id": "1442"
+		},
+		{
+			"name": "Bonn",
+			"id": "693"
+		},
+		{
+			"name": "Braunschweig",
+			"id": "678"
+		},
+		{
+			"name": "Bremen",
+			"id": "665"
+		},
+		{
+			"name": "Darmstadt",
+			"id": "667"
+		},
+		{
+			"name": "Dresden",
+			"id": "677"
+		},
+		{
+			"name": "Düsseldorf",
+			"id": "1448"
+		},
+		{
+			"name": "Frankfurt",
+			"id": "657"
+		},
+		{
+			"name": "Freiburg",
+			"id": "1653"
+		},
+		{
+			"name": "Gießen",
+			"id": "1420"
+		},
+		{
+			"name": "Göttingen",
+			"id": "1415"
+		},
+		{
+			"name": "Halle",
+			"id": "757"
+		},
+		{
+			"name": "Hamburg",
+			"id": "1523"
+		},
+		{
+			"name": "Hannover",
+			"id": "1441"
+		},
+		{
+			"name": "Heidelberg",
+			"id": "699"
+		},
+		{
+			"name": "Jena",
+			"id": "696"
+		},
+		{
+			"name": "Kaiserslautern",
+			"id": "1533"
+		},
+		{
+			"name": "Karlsruhe",
+			"id": "643"
+		},
+		{
+			"name": "Kiel",
+			"id": "1438"
+		},
+		{
+			"name": "Köln",
+			"id": "1421"
+		},
+		{
+			"name": "Leipzig",
+			"id": "1410"
+		},
+		{
+			"name": "Lüneburg",
+			"id": "1414"
+		},
+		{
+			"name": "Magdeburg",
+			"id": "1447"
+		},
+		{
+			"name": "Mainz",
+			"id": "60"
+		},
+		{
+			"name": "Mannheim",
+			"id": "1520"
+		},
+		{
+			"name": "München",
+			"id": "1394"
+		},
+		{
+			"name": "Münster",
+			"id": "1484"
+		},
+		{
+			"name": "Nürnberg",
+			"id": "1440"
+		},
+		{
+			"name": "Oldenburg",
+			"id": "625"
+		},
+		{
+			"name": "Paderborn",
+			"id": "663"
+		},
+		{
+			"name": "Passau",
+			"id": "1403"
+		},
+		{
+			"name": "Regensburg",
+			"id": "648"
+		},
+		{
+			"name": "Stuttgart",
+			"id": "647"
+		},
+		{
+			"name": "Würzburg",
+			"id": "1443"
+		},
+		{
+			"name": "Brühl",
+			"id": "1844"
+		}
+	]
+}
