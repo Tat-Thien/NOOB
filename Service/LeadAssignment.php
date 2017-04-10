@@ -36,6 +36,20 @@ class LeadAssignment
 		return $result;
 	}
 
+	public function getCities($program){
+		$result = null;
+		$program = strtoupper($program);
+
+		if(isset($this->cityMapping[$program])){
+			$result = [];
+			foreach($this->cityMapping[$program] as $lc) {
+				$result = array_merge($result, $lc['cities']);
+			}
+		}
+
+		return $result;
+	}
+
 	public function getLcName($id){
 		$result = null;
 		foreach($this->lcMapping['lcs'] as $lc){
