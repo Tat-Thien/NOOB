@@ -548,6 +548,13 @@
 ],
 "OGE": [
 	{
+		"name": "Aachen",
+		"cities": [
+			"Aachen",
+			"Düren"
+		]
+	},
+	{
 		"name": "Berlin TU",
 		"cities": [
 			"Berlin",
@@ -598,10 +605,8 @@
 		"name": "Darmstadt",
 		"cities": [
 			"Darmstadt",
-			"Aachen",
 			"Wiesbaden",
-			"Mainz",
-			"Düren"
+			"Mainz"
 		]
 	},
 	{
